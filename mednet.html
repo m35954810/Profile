@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Comprehensive Networking Exam | MCQs + Matching + All Problems with Diagrams</title>
+    <title>Computer Networks Exam | Based on Dr. Ayman's Lecture</title>
     <style>
         * {
             margin: 0;
@@ -12,34 +12,30 @@
         }
 
         body {
-            background: linear-gradient(135deg, #1a3c3a 0%, #0e2a2f 100%);
-            font-family: 'Segoe UI', 'Roboto', 'Cascadia Code', monospace;
+            background: linear-gradient(135deg, #0f2c2f, #1a3f3a);
+            font-family: 'Segoe UI', 'Roboto', monospace;
             padding: 2rem 1rem;
         }
 
         .exam-container {
-            max-width: 1400px;
+            max-width: 1300px;
             margin: 0 auto;
-            background: #fefcf7;
+            background: #fefef7;
             border-radius: 2rem;
-            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 30px 45px rgba(0, 0, 0, 0.3);
             overflow: hidden;
         }
 
         .exam-header {
-            background: linear-gradient(95deg, #0b3b3f, #06262b);
+            background: linear-gradient(95deg, #0a4b44, #063b36);
             padding: 1.8rem 2rem;
-            color: #f5f7e9;
-            border-bottom: 4px solid #ffb347;
+            color: #f9f3df;
+            border-bottom: 4px solid #f4b942;
         }
 
         .exam-header h1 {
-            font-size: 2rem;
+            font-size: 1.9rem;
             letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
         }
 
         .exam-header p {
@@ -49,18 +45,18 @@
         }
 
         .stats-bar {
-            background: #e5ede8;
+            background: #e2ede5;
             padding: 0.8rem 2rem;
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 12px;
             font-weight: bold;
-            border-bottom: 1px solid #cbdccf;
+            border-bottom: 1px solid #c7dbc9;
         }
 
         .stat {
-            background: #2b6c5c;
+            background: #2a6b5e;
             color: white;
             padding: 0.3rem 1.2rem;
             border-radius: 30px;
@@ -68,7 +64,7 @@
         }
 
         .stat span {
-            background: #ffd966;
+            background: #f5c542;
             color: #1e4a3b;
             padding: 0.1rem 0.7rem;
             border-radius: 30px;
@@ -83,31 +79,30 @@
             background: #ffffff;
             border-radius: 1.5rem;
             margin-bottom: 2rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e0eae2;
+            border: 1px solid #dde8e0;
             overflow: hidden;
         }
 
         .section-title {
-            background: #eef3ea;
+            background: #eef4ea;
             padding: 1rem 1.8rem;
             font-size: 1.4rem;
             font-weight: 700;
             color: #1f6e5a;
             border-left: 6px solid #3aa57c;
-            border-bottom: 1px solid #d7e4cf;
+            border-bottom: 1px solid #d2e0cf;
         }
 
         .question-card {
             padding: 1.2rem 1.8rem;
-            border-bottom: 1px solid #eef2e6;
+            border-bottom: 1px solid #edf3e8;
         }
 
         .q-text {
             font-weight: 700;
             font-size: 1rem;
             margin-bottom: 0.8rem;
-            color: #1a4f48;
+            color: #1f5e50;
         }
 
         .options {
@@ -151,12 +146,11 @@
             border-left: 3px solid #e07a5f;
         }
 
-        /* matching table */
         .matching-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
-            margin: 1rem 0;
+            margin: 1rem;
         }
 
         .match-col {
@@ -188,14 +182,12 @@
             border: 1px solid #bdd0b5;
             background: white;
             font-family: monospace;
-            font-weight: 500;
         }
 
-        /* Problem styles */
         .problem-card {
             background: #fefaf0;
             border-radius: 1.2rem;
-            margin-bottom: 1.8rem;
+            margin: 1rem;
             border: 1px solid #eadbbf;
             overflow: hidden;
         }
@@ -204,30 +196,23 @@
             background: #e7dcc4;
             padding: 0.8rem 1.5rem;
             font-weight: bold;
-            font-size: 1.1rem;
             color: #3b4e2c;
         }
 
         .prob-body {
             padding: 1.2rem 1.5rem;
-            font-family: 'Segoe UI', system-ui;
             line-height: 1.5;
         }
 
-        .diagram-container {
-            background: #f8f4e8;
-            padding: 1rem;
+        .diagram {
+            background: #f9f3e3;
+            padding: 0.8rem;
             border-radius: 1rem;
-            margin: 1rem 0;
-            text-align: center;
             font-family: monospace;
+            font-size: 0.8rem;
+            margin: 0.8rem 0;
+            text-align: center;
             border: 1px dashed #c9b87a;
-        }
-
-        .diagram-svg {
-            background: #ffffff;
-            border-radius: 0.8rem;
-            padding: 0.5rem;
         }
 
         .prob-input-area {
@@ -242,7 +227,7 @@
             border-radius: 1rem;
             border: 1px solid #cbc3a8;
             width: 100%;
-            max-width: 400px;
+            max-width: 350px;
             font-family: monospace;
         }
 
@@ -270,7 +255,7 @@
         .btn-group {
             display: flex;
             gap: 1rem;
-            margin: 1.5rem 0 1rem;
+            margin: 1rem 1.5rem;
             flex-wrap: wrap;
         }
 
@@ -282,8 +267,6 @@
             color: white;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.1s;
-            font-size: 0.9rem;
         }
 
         .reset-btn {
@@ -293,8 +276,8 @@
         .key-section {
             background: #f2f6ef;
             border-radius: 1.2rem;
-            margin-top: 1.5rem;
-            padding: 1rem 1.8rem;
+            margin: 1rem 1.5rem 1.5rem;
+            padding: 1rem 1.5rem;
         }
 
         .key-toggle {
@@ -303,14 +286,13 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 1rem;
             color: #2b6b58;
         }
 
         .key-content {
             display: none;
             margin-top: 1rem;
-            background: #ffffffdb;
+            background: #fffff0;
             border-radius: 1rem;
             padding: 1rem;
         }
@@ -321,11 +303,7 @@
             padding: 0.8rem;
             text-align: center;
             font-weight: bold;
-            margin-top: 1rem;
-        }
-
-        hr {
-            margin: 0.6rem 0;
+            margin: 1rem 1.5rem;
         }
 
         @media (max-width: 750px) {
@@ -342,166 +320,158 @@
 <body>
 <div class="exam-container">
     <div class="exam-header">
-        <h1>🌐 Comprehensive Networking Final Exam <span style="font-size:0.9rem;">| All Problems + Diagrams</span></h1>
-        <p>📡 Based on: Network Devices, IOS, Packet Switching, Delay Analysis, Store-and-Forward, P1, P2, P3 from Sheet</p>
+        <h1>📡 Computer Networks Exam <span style="font-size:0.9rem;">| Based on Dr. Ayman's Lecture</span></h1>
+        <p>Introduction | Network Edge, Core, Protocols, Delay, Throughput, Layering, Security</p>
     </div>
     <div class="stats-bar">
-        <div class="stat">📋 MCQs answered: <span id="mcqCount">0</span>/10</div>
-        <div class="stat">🔗 Matching answered: <span id="matchCount">0</span>/5</div>
-        <div class="stat">📊 Problems solved: <span id="probCount">0</span>/3</div>
-        <div class="stat">🏆 Total Score: <span id="totalScoreSpan">0</span>/100</div>
+        <div class="stat">📋 MCQs: <span id="mcqCount">0</span>/10</div>
+        <div class="stat">🔗 Matching: <span id="matchCount">0</span>/5</div>
+        <div class="stat">📊 Problems: <span id="probCount">0</span>/3</div>
+        <div class="stat">🏆 Total: <span id="totalScore">0</span>/100</div>
     </div>
     <div class="exam-body">
-        <!-- SECTION 1: 10 MULTIPLE CHOICE -->
+        <!-- Part 1: MCQs (10 questions from lecture) -->
         <div class="section">
-            <div class="section-title">📌 Part 1: Multiple Choice Questions (10 Questions, 3 points each)</div>
+            <div class="section-title">📌 Part 1: Multiple Choice Questions (10 × 3 pts)</div>
             <div id="mcqContainer"></div>
         </div>
 
-        <!-- SECTION 2: MATCHING (5 items) -->
+        <!-- Part 2: Matching (protocol layers, switching, etc) -->
         <div class="section">
-            <div class="section-title">🔗 Part 2: Matching (5 pairs, 4 points each)</div>
+            <div class="section-title">🔗 Part 2: Matching (5 × 4 pts)</div>
             <div id="matchingContainer"></div>
         </div>
 
-        <!-- SECTION 3: ALL PROBLEMS FROM SHEET (P1, P2, P3 with diagrams) -->
+        <!-- Part 3: Problems (based on caravan analogy, delay, throughput) -->
         <div class="section">
-            <div class="section-title">📐 Part 3: Problem Solving (3 Problems, 30 points total)</div>
+            <div class="section-title">📐 Part 3: Numerical Problems (3 × 10 pts)</div>
             <div id="problemsContainer"></div>
         </div>
 
         <div class="btn-group">
-            <button id="gradeAllBtn" class="grade-btn">✅ Grade Entire Exam</button>
-            <button id="resetExamBtn" class="reset-btn">⟳ Reset All Answers</button>
+            <button id="gradeBtn">✅ Grade Exam</button>
+            <button id="resetBtn" class="reset-btn">⟳ Reset All</button>
         </div>
-        <div id="finalMessageArea"></div>
+        <div id="finalMsg"></div>
 
-        <!-- ANSWER KEY SECTION -->
         <div class="key-section">
-            <div class="key-toggle" id="toggleKeyBtn">📘 Show Complete Answer Key (Correct Answers + Problem Solutions) ▼</div>
-            <div id="answerKeyPanel" class="key-content"></div>
+            <div class="key-toggle" id="keyToggle">📘 Show Answer Key (MCQ + Matching + Problem Solutions) ▼</div>
+            <div id="keyPanel" class="key-content"></div>
         </div>
     </div>
 </div>
 
 <script>
-    // ===================== MCQs (10 questions) =====================
+    // ==================== MCQs (based on lecture slides) ====================
     const mcqs = [
-        { text: "Which device is NOT an end device?", options: ["Smartphone", "Printer", "Switch", "Laptop"], correct: "Switch", explanation: "Switch is a networking intermediary, not an end device." },
-        { text: "Which networking device interconnects dissimilar networks or protocols?", options: ["Hub", "Gateway", "Switch", "Repeater"], correct: "Gateway", explanation: "Gateway translates between different network architectures or protocols." },
-        { text: "Which type of network covers a city or large campus?", options: ["LAN", "WAN", "MAN", "PAN"], correct: "MAN", explanation: "MAN (Metropolitan Area Network) spans a city." },
-        { text: "What is the best high-speed medium immune to electromagnetic interference (EMI)?", options: ["Twisted Pair", "Coaxial Cable", "Wi-Fi", "Fiber Optic"], correct: "Fiber Optic", explanation: "Fiber optic uses light, immune to EMI, high bandwidth." },
-        { text: "Which IEEE standard defines Wi-Fi technology?", options: ["802.3", "802.11", "802.15", "802.16"], correct: "802.11", explanation: "IEEE 802.11 is the standard for Wireless LAN." },
-        { text: "In Cisco IOS, which command saves the running configuration to NVRAM?", options: ["save config", "write memory", "copy running-config startup-config", "backup running"], correct: "copy running-config startup-config", explanation: "copy running-config startup-config saves to NVRAM for persistence." },
-        { text: "What does 'store-and-forward' mean in a router/switch context?", options: ["Forwards bits immediately", "Receives entire packet, stores, checks, then forwards", "Only stores header information", "Encrypts before forwarding"], correct: "Receives entire packet, stores, checks, then forwards", explanation: "Store-and-forward ensures error checking before forwarding, adding some latency." },
-        { text: "What is the formula for Transmission Delay?", options: ["Distance / Speed", "Packet size (bits) / Link bandwidth (bps)", "Queue length / Service rate", "Processing time per packet"], correct: "Packet size (bits) / Link bandwidth (bps)", explanation: "D_trans = L / R, where L is packet length in bits, R is transmission rate." },
-        { text: "Which command encrypts plaintext passwords (like console) on a Cisco switch?", options: ["enable secret", "service password-encryption", "password encrypt", "crypt password"], correct: "service password-encryption", explanation: "service password-encryption encrypts plaintext passwords in the config." },
-        { text: "Which type of delay increases when traffic intensity approaches 1 (congestion)?", options: ["Processing delay", "Transmission delay", "Propagation delay", "Queueing delay"], correct: "Queueing delay", explanation: "Queueing delay grows with congestion as packets wait in buffers." }
+        { text: "What is the Internet according to the 'nuts and bolts' view?", options: ["A single large network", "A network of networks interconnecting ISPs", "Only the World Wide Web", "A collection of satellites"], correct: "A network of networks interconnecting ISPs", explanation: "Internet is a network of networks connecting ISPs, routers, and end systems." },
+        { text: "What is a protocol?", options: ["A programming language", "A set of rules governing communication", "A type of network device", "A transmission medium"], correct: "A set of rules governing communication", explanation: "Protocol defines format, order of messages and actions taken." },
+        { text: "Which access technology uses HFC (Hybrid Fiber Coax) and is asymmetric?", options: ["DSL", "Cable Internet", "Fiber to the Home", "Satellite"], correct: "Cable Internet", explanation: "Cable uses HFC, FDM, asymmetric: up to 1.2 Gbps downstream, 100 Mbps upstream." },
+        { text: "What is the transmission delay formula?", options: ["d/s", "L/R", "L*a/R", "d_proc + d_queue"], correct: "L/R", explanation: "Transmission delay = packet length (bits) / link bandwidth (bps)." },
+        { text: "In packet switching, what does 'store-and-forward' mean?", options: ["Packets are forwarded immediately", "Router receives entire packet before forwarding", "Packets are dropped if queue full", "Circuit is reserved"], correct: "Router receives entire packet before forwarding", explanation: "Store-and-forward: entire packet must arrive before being sent to next link." },
+        { text: "Which of the following is a key difference between circuit switching and packet switching?", options: ["Circuit switching uses packets", "Packet switching requires call setup", "Circuit switching reserves resources end-to-end", "Packet switching has dedicated circuits"], correct: "Circuit switching reserves resources end-to-end", explanation: "Circuit switching allocates dedicated resources; packet switching uses statistical multiplexing." },
+        { text: "What is the function of a router's forwarding table?", options: ["Store web pages", "Map destination addresses to output links", "Encrypt data", "Manage wireless signals"], correct: "Map destination addresses to output links", explanation: "Forwarding uses local table to decide output link for incoming packet." },
+        { text: "Which layer in the Internet protocol stack is responsible for process-to-process data transfer?", options: ["Application", "Transport", "Network", "Link"], correct: "Transport", explanation: "Transport layer (TCP/UDP) provides process-to-process communication." },
+        { text: "What is the main cause of packet loss in routers?", options: ["High propagation speed", "Buffer overflow when queue exceeds capacity", "Low transmission rate", "Processing delay"], correct: "Buffer overflow when queue exceeds capacity", explanation: "Packets dropped when router's queue/buffer is full." },
+        { text: "What does 'throughput' measure?", options: ["Propagation speed", "Rate at which bits are transferred from sender to receiver", "Packet size", "Router processing time"], correct: "Rate at which bits are transferred from sender to receiver", explanation: "Throughput is the actual bits/time unit delivered to destination." }
     ];
 
-    // ===================== Matching Data =====================
-    const matchLeft = [
-        "1. Packet Switching", "2. Propagation Delay", "3. MOTD Banner", "4. NVRAM", "5. enable secret"
+    // ==================== Matching (terms from lecture) ====================
+    const matchTerms = ["1. HTTP", "2. Packet Switching", "3. Traceroute", "4. Firewall", "5. Encapsulation"];
+    const matchDefs = [
+        "A. Application layer protocol for web", 
+        "B. Data divided into chunks, each travels independently", 
+        "C. Utility that measures delay along network path", 
+        "D. Device that blocks unauthorized access", 
+        "E. Process of adding headers as data moves down layers"
     ];
-    const matchRightLabels = [
-        "A. Stores startup configuration persistently", 
-        "B. Divides data into packets sent independently", 
-        "C. Message displayed before login (security warning)", 
-        "D. Time for signal to travel physical medium (distance/speed)", 
-        "E. Encrypted password that overrides enable password"
-    ];
-    const matchCorrectMapping = [1, 3, 2, 0, 4]; // index in rightLabels: PacketSwitching->B(1), PropDelay->D(3), MOTD->C(2), NVRAM->A(0), enable secret->E(4)
+    const matchCorrectIdx = [0, 1, 2, 3, 4]; // HTTP→A(0), PacketSwitching→B(1), Traceroute→C(2), Firewall→D(3), Encapsulation→E(4)
 
-    // ===================== PROBLEMS (P1, P2, P3 with diagrams) =====================
+    // ==================== Problems (based on caravan analogy, delay, throughput) ====================
     const problems = [
         {
-            id: "p1",
-            title: "P1: Bandwidth where Propagation Delay = Transmission Delay",
-            description: "Consider a point-to-point link 100 km in length. The propagation speed of bits in this link is 2×10⁸ m/s. At what bandwidth will propagation delay equal transmission delay for a 100 byte packet?",
-            diagram: "📡 [Sender] ===== 100 km ===== [Receiver] | Propagation speed = 2×10⁸ m/s | Packet = 100 bytes",
-            formula: "Dprop = distance/speed = (100×10³)/(2×10⁸) = 5×10⁻⁴ s. Dtrans = L/R = (100×8)/R. Set equal: 5×10⁻⁴ = 800/R → R = 800 / (5×10⁻⁴) = 1,600,000 bps = 1.6 Mbps",
-            correctValue: 1600000,
-            correctValueAlt: 1.6e6,
-            unit: "bps (1.6 Mbps)"
+            id: "prob1",
+            title: "Caravan Analogy (Packet Delay)",
+            description: "Ten-car caravan (10-bit packet). Toll booth takes 12 sec to service each car (bit transmission). Cars propagate at 100 km/hr. Distance between toll booths = 100 km. How long until the last car arrives at the second toll booth?",
+            diagram: "🚗🚗🚗... (10 cars) → Toll booth (12 sec/car) → 100 km → Toll booth 2",
+            hint: "Time to push entire caravan = 10 × 12 = 120 sec. Propagation = 100 km / 100 km/hr = 1 hr = 3600 sec. Total = 3720 sec.",
+            correctValue: 3720,
+            unit: "seconds",
+            solution: "Transmission (service) time = 10 cars × 12 sec = 120 sec. Propagation = distance/speed = 100 km / 100 km/hr = 1 hour = 3600 sec. Total = 120 + 3600 = 3720 seconds."
         },
         {
-            id: "p2",
-            title: "P2: End-to-End Delay with Store-and-Forward Router",
-            description: "Host A wants to send a 1 Mbyte packet to Host B. Propagation speed = 2×10⁸ m/sec. A and B connected via router R. Link AR = 1 km, link RB = 2 km. Capacity of each link = 10 Mbytes/sec. Processing delay at router = 10 ms. Router uses store-and-forward. Find total time until B receives the packet.",
-            diagram: "┌─────┐    1 km    ┌─────┐    2 km    ┌─────┐\n│  A  │───────────│  R  │───────────│  B  │\n└─────┘           └─────┘           └─────┘\nLink rate = 10 MB/s, L = 1 MByte, Dproc = 10 ms",
-            formula: "L = 1 MByte = 1×10⁶ × 8 = 8×10⁶ bits. R = 10 MB/s = 80×10⁶ bps. Dtrans = 8e6/80e6 = 0.1 s per link. Dprop_AR = 1000/2e8 = 5×10⁻⁶ s. Dprop_RB = 2000/2e8 = 1×10⁻⁵ s. Dproc = 0.01 s. Total = Dtrans_AR + Dprop_AR + Dtrans_RB + Dprop_RB + Dproc = 0.1 + 0.000005 + 0.1 + 0.00001 + 0.01 = 0.210015 s",
-            correctValue: 0.210015,
-            correctValueAlt: 0.21,
-            unit: "seconds"
+            id: "prob2",
+            title: "End-to-End Delay (Two Links)",
+            description: "Host A sends 1500-byte packet to Host B via one router. Link A-R: R=10 Mbps, length=5 km. Link R-B: R=5 Mbps, length=10 km. Propagation speed = 2×10⁸ m/s. Processing delay = 2 ms. Store-and-forward. Find total delay.",
+            diagram: "A ──(5km,10Mbps)── R ──(10km,5Mbps)── B",
+            hint: "Dtrans1 = 1500×8/10e6 = 0.0012 s, Dprop1 = 5000/2e8=2.5e-5 s, Dtrans2=12000/5e6=0.0024 s, Dprop2=10000/2e8=5e-5 s, Dproc=0.002 s. Sum.",
+            correctValue: 0.00569,
+            unit: "seconds (approx 5.69 ms)",
+            solution: "L=1500×8=12000 bits. Dtrans1=12000/10e6=0.0012 s, Dprop1=5000/2e8=2.5e-5 s, Dtrans2=12000/5e6=0.0024 s, Dprop2=10000/2e8=5e-5 s, Dproc=0.002 s. Total=0.0012+0.000025+0.0024+0.00005+0.002=0.005675 s ≈ 5.68 ms."
         },
         {
-            id: "p3",
-            title: "P3: Three Links End-to-End Delay (with Diagram)",
-            description: "Consider the figure with three links, each with specified transmission rate and link length. Packet length = 12000 bits. Propagation speed = 3×10⁸ m/sec on each link.",
-            diagram: "┌───┐    Link 1     ┌───┐    Link 2     ┌───┐    Link 3     ┌───┐\n│ A │──Rate: 10 Mbps─│ R1│──Rate: 5 Mbps──│ R2│──Rate: 8 Mbps──│ B │\n└───┘  Length: 2 km  └───┘  Length: 3 km  └───┘  Length: 1 km  └───┘\nPacket = 12000 bits, v = 3×10⁸ m/s, store-and-forward at each router",
-            formula: "Link1: Dtrans1 = 12000/(10×10⁶) = 0.0012 s, Dprop1 = 2000/3e8 = 6.667×10⁻⁶ s\nLink2: Dtrans2 = 12000/(5×10⁶) = 0.0024 s, Dprop2 = 3000/3e8 = 1×10⁻⁵ s\nLink3: Dtrans3 = 12000/(8×10⁶) = 0.0015 s, Dprop3 = 1000/3e8 = 3.333×10⁻⁶ s\nProcessing delay assumed 0. Total = (0.0012+0.00000667)+(0.0024+0.00001)+(0.0015+0.00000333) = 0.00512 s ≈ 5.12 ms",
-            correctValue: 0.00512,
-            correctValueAlt: 0.00512,
-            unit: "seconds (5.12 ms)"
+            id: "prob3",
+            title: "Throughput Calculation",
+            description: "Server sends file to client. Link capacity Rs = 2 Mbps, Rc = 5 Mbps. There are 3 intermediate links each 10 Mbps. What is the throughput?",
+            diagram: "Server ──Rs=2Mbps── ... ──Rc=5Mbps── Client",
+            hint: "Throughput is bottleneck link (minimum capacity along path).",
+            correctValue: 2,
+            unit: "Mbps",
+            solution: "Throughput = min(Rs, Rc, all intermediate links) = min(2,5,10,10,10) = 2 Mbps."
         }
     ];
 
-    // State variables
+    // State
     let mcqAnswers = new Array(10).fill(null);
-    let matchingAnswers = new Array(5).fill(null);
-    let problemAnswers = new Array(3).fill(null);
-    let examGradedFlag = false;
-    let problemScores = [0, 0, 0]; // each problem max 10 points
+    let matchAnswers = new Array(5).fill(null);
+    let probAnswers = new Array(3).fill(null);
+    let probScores = [0, 0, 0];
+    let graded = false;
 
-    // DOM elements
-    const mcqContainer = document.getElementById('mcqContainer');
-    const matchingContainer = document.getElementById('matchingContainer');
-    const problemsContainer = document.getElementById('problemsContainer');
+    // DOM
+    const mcqDiv = document.getElementById('mcqContainer');
+    const matchDiv = document.getElementById('matchingContainer');
+    const probDiv = document.getElementById('problemsContainer');
     const mcqCountSpan = document.getElementById('mcqCount');
     const matchCountSpan = document.getElementById('matchCount');
     const probCountSpan = document.getElementById('probCount');
-    const totalScoreSpan = document.getElementById('totalScoreSpan');
-    const gradeBtn = document.getElementById('gradeAllBtn');
-    const resetBtn = document.getElementById('resetExamBtn');
-    const finalMsgDiv = document.getElementById('finalMessageArea');
+    const totalSpan = document.getElementById('totalScore');
+    const finalMsgDiv = document.getElementById('finalMsg');
+    const keyPanel = document.getElementById('keyPanel');
+    const keyToggle = document.getElementById('keyToggle');
 
     function updateStats() {
-        let answeredMcq = mcqAnswers.filter(a => a !== null).length;
-        let answeredMatch = matchingAnswers.filter(a => a !== null && a !== "").length;
-        let answeredProb = problemAnswers.filter(a => a !== null && a !== "").length;
-        mcqCountSpan.innerText = answeredMcq;
-        matchCountSpan.innerText = answeredMatch;
-        probCountSpan.innerText = answeredProb;
-        if (!examGradedFlag) {
-            totalScoreSpan.innerText = "0";
-        } else {
-            let total = calculateTotalScore();
-            totalScoreSpan.innerText = total;
+        let mcqAnswered = mcqAnswers.filter(a => a !== null).length;
+        let matchAnswered = matchAnswers.filter(a => a !== null).length;
+        let probAnswered = probAnswers.filter(a => a !== null && a !== "").length;
+        mcqCountSpan.innerText = mcqAnswered;
+        matchCountSpan.innerText = matchAnswered;
+        probCountSpan.innerText = probAnswered;
+        if (!graded) totalSpan.innerText = "0";
+        else {
+            let total = calculateTotal();
+            totalSpan.innerText = total;
         }
     }
 
-    function calculateTotalScore() {
+    function calculateTotal() {
         let mcqCorrect = 0;
-        for (let i = 0; i < mcqs.length; i++) {
-            if (mcqAnswers[i] !== null && mcqAnswers[i] === mcqs[i].correct) mcqCorrect++;
-        }
+        for (let i=0; i<10; i++) if (mcqAnswers[i] === mcqs[i].correct) mcqCorrect++;
         let matchCorrect = 0;
-        for (let i = 0; i < matchLeft.length; i++) {
-            if (matchingAnswers[i] !== null && matchingAnswers[i] === matchCorrectMapping[i]) matchCorrect++;
-        }
-        let probTotal = problemScores.reduce((a, b) => a + b, 0);
-        return (mcqCorrect * 3) + (matchCorrect * 4) + probTotal;
+        for (let i=0; i<5; i++) if (matchAnswers[i] === matchCorrectIdx[i]) matchCorrect++;
+        let probTotal = probScores.reduce((a,b)=>a+b,0);
+        return mcqCorrect*3 + matchCorrect*4 + probTotal;
     }
 
     // Render MCQs
     function renderMCQs() {
-        mcqContainer.innerHTML = '';
+        mcqDiv.innerHTML = '';
         mcqs.forEach((q, idx) => {
             const card = document.createElement('div');
             card.className = 'question-card';
-            card.innerHTML = `<div class="q-text">${idx + 1}. ${q.text}</div><div class="options" id="mcq-${idx}"></div><div id="mcq-fb-${idx}" class="feedback"></div>`;
-            mcqContainer.appendChild(card);
-            const optsDiv = card.querySelector(`#mcq-${idx}`);
+            card.innerHTML = `<div class="q-text">${idx+1}. ${q.text}</div><div class="options" id="mcq-opts-${idx}"></div><div id="mcq-fb-${idx}" class="feedback"></div>`;
+            mcqDiv.appendChild(card);
+            const optsDiv = card.querySelector(`#mcq-opts-${idx}`);
             q.options.forEach(opt => {
                 const optDiv = document.createElement('div');
                 optDiv.className = 'option';
@@ -513,7 +483,7 @@
                 radio.addEventListener('change', (e) => {
                     if (e.target.checked) {
                         mcqAnswers[idx] = opt;
-                        if (examGradedFlag) examGradedFlag = false;
+                        if (graded) graded = false;
                         updateStats();
                         updateMcqFeedback(idx);
                     }
@@ -529,65 +499,55 @@
     }
 
     function updateMcqFeedback(idx) {
-        const fbDiv = document.getElementById(`mcq-fb-${idx}`);
-        if (!fbDiv) return;
+        const fb = document.getElementById(`mcq-fb-${idx}`);
+        if (!fb) return;
         const selected = mcqAnswers[idx];
-        if (!selected) { fbDiv.innerHTML = ''; return; }
+        if (!selected) { fb.innerHTML = ''; return; }
         if (selected === mcqs[idx].correct) {
-            fbDiv.innerHTML = `<div class="correct-fb">✓ Correct. ${mcqs[idx].explanation}</div>`;
+            fb.innerHTML = `<div class="correct-fb">✓ Correct. ${mcqs[idx].explanation}</div>`;
         } else {
-            fbDiv.innerHTML = `<div class="wrong-fb">✗ Incorrect. Correct: ${mcqs[idx].correct}. ${mcqs[idx].explanation}</div>`;
+            fb.innerHTML = `<div class="wrong-fb">✗ Incorrect. Correct: ${mcqs[idx].correct}. ${mcqs[idx].explanation}</div>`;
         }
     }
 
-    // Render Matching
+    // Matching
     function renderMatching() {
-        matchingContainer.innerHTML = '';
+        matchDiv.innerHTML = '';
         const grid = document.createElement('div');
         grid.className = 'matching-grid';
-        const leftCol = document.createElement('div');
-        leftCol.className = 'match-col';
-        leftCol.innerHTML = '<strong>📌 Term</strong>';
-        const rightCol = document.createElement('div');
-        rightCol.className = 'match-col';
-        rightCol.innerHTML = '<strong>🔗 Select Matching Definition</strong>';
-        
-        for (let i = 0; i < matchLeft.length; i++) {
-            const leftItem = document.createElement('div');
-            leftItem.className = 'match-item';
-            leftItem.innerHTML = `<span class="match-left">${matchLeft[i]}</span>`;
+        const leftCol = document.createElement('div'); leftCol.className = 'match-col'; leftCol.innerHTML = '<strong>Term</strong>';
+        const rightCol = document.createElement('div'); rightCol.className = 'match-col'; rightCol.innerHTML = '<strong>Match Definition</strong>';
+        for (let i=0; i<matchTerms.length; i++) {
+            const leftItem = document.createElement('div'); leftItem.className = 'match-item';
+            leftItem.innerHTML = `<span class="match-left">${matchTerms[i]}</span>`;
             leftCol.appendChild(leftItem);
-            
-            const rightItem = document.createElement('div');
-            rightItem.className = 'match-item';
+            const rightItem = document.createElement('div'); rightItem.className = 'match-item';
             const select = document.createElement('select');
             select.id = `matchSel_${i}`;
             select.innerHTML = `<option value="">-- Select --</option>`;
-            matchRightLabels.forEach((opt, optIdx) => {
-                const option = document.createElement('option');
-                option.value = optIdx;
-                option.text = opt;
-                if (matchingAnswers[i] !== null && matchingAnswers[i] == optIdx) select.value = optIdx;
-                select.appendChild(option);
+            matchDefs.forEach((def, didx) => {
+                const opt = document.createElement('option');
+                opt.value = didx;
+                opt.text = def;
+                if (matchAnswers[i] === didx) select.value = didx;
+                select.appendChild(opt);
             });
             select.addEventListener('change', (e) => {
                 const val = e.target.value;
-                if (val === "") matchingAnswers[i] = null;
-                else matchingAnswers[i] = parseInt(val);
-                if (examGradedFlag) examGradedFlag = false;
+                matchAnswers[i] = val === "" ? null : parseInt(val);
+                if (graded) graded = false;
                 updateStats();
             });
             rightItem.appendChild(select);
             rightCol.appendChild(rightItem);
         }
-        grid.appendChild(leftCol);
-        grid.appendChild(rightCol);
-        matchingContainer.appendChild(grid);
+        grid.appendChild(leftCol); grid.appendChild(rightCol);
+        matchDiv.appendChild(grid);
     }
 
-    // Render Problems with diagrams
+    // Problems
     function renderProblems() {
-        problemsContainer.innerHTML = '';
+        probDiv.innerHTML = '';
         problems.forEach((prob, idx) => {
             const card = document.createElement('div');
             card.className = 'problem-card';
@@ -595,179 +555,128 @@
                 <div class="prob-header">📐 ${prob.title}</div>
                 <div class="prob-body">
                     <p>${prob.description}</p>
-                    <div class="diagram-container">
-                        <strong>📡 Network Diagram:</strong><br>
-                        <pre style="font-family: monospace; font-size: 0.8rem; margin-top: 0.5rem;">${prob.diagram}</pre>
-                    </div>
-                    <div class="formula-note" style="background:#f4f0e0; padding:0.5rem; border-radius:0.8rem; margin:0.5rem 0;">
-                        💡 <strong>Hint:</strong> Use Dtrans = L/R, Dprop = distance/speed, store-and-forward requires each link transmission separately.
-                    </div>
+                    <div class="diagram">${prob.diagram}</div>
                     <div class="prob-input-area">
-                        <input type="text" id="ans_${prob.id}" placeholder="Enter your answer (numeric value)" value="${problemAnswers[idx] || ''}">
-                        <button class="solve-btn" data-idx="${idx}" data-id="${prob.id}">🔍 Check / Reveal Solution</button>
+                        <input type="text" id="ans_${prob.id}" placeholder="Enter numeric answer" value="${probAnswers[idx] || ''}">
+                        <button class="solve-btn" data-idx="${idx}" data-id="${prob.id}">🔍 Check Solution</button>
                     </div>
                     <div id="sol_${prob.id}" class="solution-area"></div>
-                    <div id="prob-fb-${idx}" class="feedback" style="margin-top:0.5rem;"></div>
+                    <div id="prob-fb-${idx}" class="feedback"></div>
                 </div>
             `;
-            problemsContainer.appendChild(card);
-            
-            const inputField = card.querySelector(`#ans_${prob.id}`);
-            inputField.addEventListener('input', (e) => {
-                problemAnswers[idx] = e.target.value;
-                if (examGradedFlag) examGradedFlag = false;
+            probDiv.appendChild(card);
+            const input = card.querySelector(`#ans_${prob.id}`);
+            input.addEventListener('input', (e) => {
+                probAnswers[idx] = e.target.value;
+                if (graded) graded = false;
                 updateStats();
             });
-            
-            const solveBtn = card.querySelector('.solve-btn');
-            solveBtn.addEventListener('click', () => {
+            const btn = card.querySelector('.solve-btn');
+            btn.addEventListener('click', () => {
                 const solDiv = document.getElementById(`sol_${prob.id}`);
-                const userVal = parseFloat(problemAnswers[idx]);
+                const fbDiv = document.getElementById(`prob-fb-${idx}`);
+                const userVal = parseFloat(probAnswers[idx]);
+                const correct = prob.correctValue;
+                const tol = prob.id === 'prob1' ? 0.5 : (prob.id === 'prob2' ? 0.00001 : 0.01);
                 let isCorrect = false;
                 if (!isNaN(userVal)) {
-                    const correct = prob.correctValue;
-                    const tolerance = prob.id === 'p1' ? 1000 : (prob.id === 'p2' ? 0.0005 : 0.00001);
-                    isCorrect = Math.abs(userVal - correct) <= tolerance;
-                    if (isCorrect) problemScores[idx] = 10;
-                    else problemScores[idx] = 0;
+                    isCorrect = Math.abs(userVal - correct) <= tol;
+                    probScores[idx] = isCorrect ? 10 : 0;
+                    fbDiv.innerHTML = isCorrect ? `<div class="correct-fb">✓ Correct! 10/10</div>` : `<div class="wrong-fb">✗ Incorrect. Expected: ${correct} ${prob.unit}</div>`;
                 } else {
-                    problemScores[idx] = 0;
-                }
-                const fbDiv = document.getElementById(`prob-fb-${idx}`);
-                if (isNaN(userVal)) {
-                    fbDiv.innerHTML = `<div class="wrong-fb">⚠ Please enter a numeric answer.</div>`;
-                } else if (isCorrect) {
-                    fbDiv.innerHTML = `<div class="correct-fb">✓ Correct! Full points (10/10).</div>`;
-                } else {
-                    fbDiv.innerHTML = `<div class="wrong-fb">✗ Incorrect. Expected: ${prob.correctValue} ${prob.unit}</div>`;
+                    fbDiv.innerHTML = `<div class="wrong-fb">⚠ Please enter a number.</div>`;
+                    probScores[idx] = 0;
                 }
                 solDiv.style.display = 'block';
-                solDiv.innerHTML = `<strong>✅ Solution:</strong><br>${prob.formula}<br><strong>Final Answer:</strong> ${prob.correctValue} ${prob.unit}`;
+                solDiv.innerHTML = `<strong>✅ Solution:</strong><br>${prob.solution}<br><strong>Final Answer:</strong> ${correct} ${prob.unit}`;
                 updateStats();
             });
         });
     }
 
-    function gradeFullExam() {
+    function gradeExam() {
         let mcqCorrect = 0;
-        for (let i = 0; i < mcqs.length; i++) {
-            if (mcqAnswers[i] !== null && mcqAnswers[i] === mcqs[i].correct) mcqCorrect++;
-            updateMcqFeedback(i);
-        }
-        
+        for (let i=0; i<10; i++) if (mcqAnswers[i] === mcqs[i].correct) mcqCorrect++;
         let matchCorrect = 0;
-        for (let i = 0; i < matchLeft.length; i++) {
-            if (matchingAnswers[i] !== null && matchingAnswers[i] === matchCorrectMapping[i]) matchCorrect++;
-        }
-        
-        // Grade problems based on stored answers
-        for (let idx = 0; idx < problems.length; idx++) {
-            const prob = problems[idx];
-            const userVal = parseFloat(problemAnswers[idx]);
-            if (!isNaN(userVal)) {
-                const tolerance = prob.id === 'p1' ? 1000 : (prob.id === 'p2' ? 0.0005 : 0.00001);
-                if (Math.abs(userVal - prob.correctValue) <= tolerance) {
-                    problemScores[idx] = 10;
-                } else {
-                    problemScores[idx] = 0;
-                }
-            } else {
-                problemScores[idx] = 0;
-            }
+        for (let i=0; i<5; i++) if (matchAnswers[i] === matchCorrectIdx[i]) matchCorrect++;
+        // grade problems automatically based on stored answers
+        for (let idx=0; idx<problems.length; idx++) {
+            const userVal = parseFloat(probAnswers[idx]);
+            const correct = problems[idx].correctValue;
+            const tol = problems[idx].id === 'prob1' ? 0.5 : (problems[idx].id === 'prob2' ? 0.00001 : 0.01);
+            if (!isNaN(userVal) && Math.abs(userVal - correct) <= tol) probScores[idx] = 10;
+            else probScores[idx] = 0;
             const fbDiv = document.getElementById(`prob-fb-${idx}`);
-            if (fbDiv && !isNaN(parseFloat(problemAnswers[idx]))) {
-                if (problemScores[idx] === 10) {
-                    fbDiv.innerHTML = `<div class="correct-fb">✓ Correct (10/10)</div>`;
-                } else {
-                    fbDiv.innerHTML = `<div class="wrong-fb">✗ Incorrect. Correct: ${prob.correctValue} ${prob.unit}</div>`;
-                }
-            } else if (fbDiv && problemAnswers[idx]) {
-                fbDiv.innerHTML = `<div class="wrong-fb">✗ Invalid numeric input.</div>`;
+            if (fbDiv && !isNaN(userVal)) {
+                fbDiv.innerHTML = probScores[idx] === 10 ? `<div class="correct-fb">✓ Correct (10/10)</div>` : `<div class="wrong-fb">✗ Incorrect. Expected: ${correct} ${problems[idx].unit}</div>`;
             }
         }
-        
-        const total = (mcqCorrect * 3) + (matchCorrect * 4) + problemScores.reduce((a, b) => a + b, 0);
-        totalScoreSpan.innerText = total;
-        examGradedFlag = true;
-        const percent = (total / 100) * 100;
-        let msg = `🎓 Exam Graded: MCQs: ${mcqCorrect}/10 (${mcqCorrect*3} pts), Matching: ${matchCorrect}/5 (${matchCorrect*4} pts), Problems: ${problemScores.reduce((a,b)=>a+b,0)}/30 → TOTAL = ${total}/100 (${percent}%)`;
-        if (total >= 80) msg += " 🏅 Excellent!";
-        else if (total >= 60) msg += " 👍 Good, review weak areas.";
-        else msg += " 📚 Review theory and delay calculations.";
-        finalMsgDiv.innerHTML = `<div class="final-score-area">${msg}</div>`;
+        const total = mcqCorrect*3 + matchCorrect*4 + probScores.reduce((a,b)=>a+b,0);
+        totalSpan.innerText = total;
+        graded = true;
+        finalMsgDiv.innerHTML = `<div class="final-score-area">🎓 Score: ${total}/100 (${Math.round(total)}%)</div>`;
         updateStats();
     }
-    
+
     function resetExam() {
         mcqAnswers.fill(null);
-        matchingAnswers.fill(null);
-        problemAnswers.fill(null);
-        problemScores.fill(0);
-        examGradedFlag = false;
-        finalMsgDiv.innerHTML = "";
-        
-        for (let i = 0; i < mcqs.length; i++) {
+        matchAnswers.fill(null);
+        probAnswers.fill(null);
+        probScores.fill(0);
+        graded = false;
+        for (let i=0; i<10; i++) {
             const radios = document.getElementsByName(`mcq_${i}`);
             radios.forEach(r => r.checked = false);
             updateMcqFeedback(i);
         }
-        for (let i = 0; i < matchLeft.length; i++) {
+        for (let i=0; i<5; i++) {
             const sel = document.getElementById(`matchSel_${i}`);
             if (sel) sel.value = "";
         }
-        for (let i = 0; i < problems.length; i++) {
-            const input = document.getElementById(`ans_${problems[i].id}`);
-            if (input) input.value = "";
-            const fbDiv = document.getElementById(`prob-fb-${i}`);
-            if (fbDiv) fbDiv.innerHTML = "";
-            const solDiv = document.getElementById(`sol_${problems[i].id}`);
-            if (solDiv) solDiv.style.display = "none";
+        for (let i=0; i<problems.length; i++) {
+            const inp = document.getElementById(`ans_${problems[i].id}`);
+            if (inp) inp.value = "";
+            const sol = document.getElementById(`sol_${problems[i].id}`);
+            if (sol) sol.style.display = 'none';
+            const fb = document.getElementById(`prob-fb-${i}`);
+            if (fb) fb.innerHTML = "";
         }
+        finalMsgDiv.innerHTML = "";
+        totalSpan.innerText = "0";
         updateStats();
-        totalScoreSpan.innerText = "0";
     }
-    
-    function buildAnswerKey() {
-        let html = `<div><strong>✅ COMPLETE ANSWER KEY</strong><hr>`;
-        html += `<h4>Part 1: MCQs (3 pts each)</h4>`;
-        mcqs.forEach((q, i) => { html += `<div><strong>Q${i+1}:</strong> ${q.correct} — ${q.explanation}</div>`; });
-        html += `<hr><h4>Part 2: Matching (4 pts each)</h4>`;
-        for (let i = 0; i < matchLeft.length; i++) {
-            let correctDef = matchRightLabels[matchCorrectMapping[i]];
-            html += `<div><strong>${matchLeft[i]}</strong> → ${correctDef}</div>`;
+
+    function buildKey() {
+        let html = `<strong>✅ ANSWER KEY</strong><hr>`;
+        html += `<h4>MCQs (3 pts each)</h4>`;
+        mcqs.forEach((q,i) => html += `<div><strong>Q${i+1}:</strong> ${q.correct}</div>`);
+        html += `<hr><h4>Matching (4 pts each)</h4>`;
+        for (let i=0; i<matchTerms.length; i++) {
+            html += `<div><strong>${matchTerms[i]}</strong> → ${matchDefs[matchCorrectIdx[i]]}</div>`;
         }
-        html += `<hr><h4>Part 3: Problem Solutions (10 pts each)</h4>`;
+        html += `<hr><h4>Problem Solutions</h4>`;
         problems.forEach(p => {
-            html += `<div><strong>${p.title}</strong><br>📖 ${p.formula}<br>✅ Final Answer: ${p.correctValue} ${p.unit}</div><br>`;
+            html += `<div><strong>${p.title}</strong><br>${p.solution}<br>✅ Answer: ${p.correctValue} ${p.unit}</div><br>`;
         });
-        html += `</div>`;
         return html;
     }
-    
-    let keyVisible = false;
-    function toggleKey() {
-        const keyDiv = document.getElementById('answerKeyPanel');
-        const toggleBtn = document.getElementById('toggleKeyBtn');
-        keyVisible = !keyVisible;
-        if (keyVisible) {
-            keyDiv.innerHTML = buildAnswerKey();
-            keyDiv.style.display = 'block';
-            toggleBtn.innerHTML = '📕 Hide Complete Answer Key ▲';
-        } else {
-            keyDiv.style.display = 'none';
-            toggleBtn.innerHTML = '📘 Show Complete Answer Key (Correct Answers + Problem Solutions) ▼';
-        }
-    }
-    
-    gradeBtn.addEventListener('click', gradeFullExam);
-    resetBtn.addEventListener('click', resetExam);
-    document.getElementById('toggleKeyBtn').addEventListener('click', toggleKey);
-    
+
+    let keyVis = false;
+    keyToggle.onclick = () => {
+        keyVis = !keyVis;
+        keyPanel.style.display = keyVis ? 'block' : 'none';
+        if (keyVis) keyPanel.innerHTML = buildKey();
+        keyToggle.innerHTML = keyVis ? '📕 Hide Answer Key ▲' : '📘 Show Answer Key ▼';
+    };
+
+    document.getElementById('gradeBtn').onclick = gradeExam;
+    document.getElementById('resetBtn').onclick = resetExam;
+
     renderMCQs();
     renderMatching();
     renderProblems();
     updateStats();
-    document.getElementById('answerKeyPanel').style.display = 'none';
+    keyPanel.style.display = 'none';
 </script>
 </body>
 </html>
