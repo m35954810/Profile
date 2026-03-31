@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Network Basics Quiz | Interactive Exam</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #e0eaf4 0%, #cfdef3 100%);
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            padding: 2rem 1rem;
+            color: #1a2c3e;
+        }
+
+        .quiz-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 2rem;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.35);
+            overflow: hidden;
+            backdrop-filter: blur(0px);
+            transition: all 0.2s ease;
+        }
+
+        /* header */
+        .quiz-header {
+            background: #0f2b3d;
+            color: white;
+            padding: 1.6rem 2rem;
+            text-align: center;
+        }
+
+        .quiz-header h1 {
+            font-size: 1.9rem;
+            letter-spacing: -0.3px;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .quiz-header p {
+            font-size: 1rem;
+            opacity: 0.85;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: space-between;
+            background: #eef2f7;
+            padding: 0.8rem 2rem;
+            border-bottom: 1px solid #cbdde9;
+            font-weight: 500;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .score-area, .question-counter {
+            background: #1e4a6e;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2), 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .score-area span, .question-counter span {
+            font-weight: bold;
+            margin-left: 6px;
+            background: #ffcd7e;
+            color: #1e3a4d;
+            padding: 0.1rem 0.6rem;
+            border-radius: 30px;
+        }
+
+        .quiz-body {
+            padding: 2rem 2rem 1.8rem;
+        }
+
+        .question-card {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1.8rem;
+            box-shadow: 0 6px 12px -8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2edf2;
+            transition: all 0.2s;
+        }
+
+        .question-text {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            color: #0a2f44;
+            border-left: 5px solid #2c7da0;
+            padding-left: 1rem;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f9fbfd;
+            padding: 0.7rem 1rem;
+            border-radius: 1rem;
+            border: 1px solid #dce7ef;
+            cursor: pointer;
+            transition: 0.1s linear;
+        }
+
+        .option:hover {
+            background: #eef3fc;
+            border-color: #7fafcf;
+        }
+
+        input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #1f6e8c;
+            cursor: pointer;
+            margin-right: 4px;
+        }
+
+        .option label {
+            flex: 1;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #1e4a6e;
+            cursor: pointer;
+        }
+
+        /* feedback & answer key style */
+        .feedback-area {
+            margin-top: 0.8rem;
+            font-size: 0.85rem;
+            padding: 0.4rem 0.6rem;
+            border-radius: 12px;
+            display: inline-block;
+            width: auto;
+        }
+
+        .correct-feedback {
+            color: #0f6b3a;
+            background: #e1f7e9;
+            padding: 0.25rem 1rem;
+            border-radius: 2rem;
+            font-weight: 500;
+        }
+
+        .wrong-feedback {
+            color: #b13e3e;
+            background: #ffe6e6;
+            padding: 0.25rem 1rem;
+            border-radius: 2rem;
+            font-weight: 500;
+        }
+
+        .show-answer-key {
+            background: #f0f4f9;
+            border-radius: 1rem;
+            padding: 1rem 1.5rem;
+            margin-top: 1.8rem;
+            border: 1px solid #cbdbe6;
+        }
+
+        .key-header {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            color: #1f5068;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .answer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 0.6rem;
+            margin-top: 0.5rem;
+        }
+
+        .answer-item {
+            background: white;
+            border-radius: 1rem;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.85rem;
+            border-left: 4px solid #2c7da0;
+            font-family: monospace;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.8rem;
+            gap: 12px;
+        }
+
+        button {
+            background: #1f6e8c;
+            border: none;
+            padding: 0.7rem 1.8rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 40px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        button:hover {
+            background: #0e4d66;
+            transform: translateY(-1px);
+        }
+
+        .reset-btn {
+            background: #4f6f8f;
+        }
+
+        .submit-btn {
+            background: #2c7a4d;
+        }
+
+        .score-summary {
+            background: #e9f0f5;
+            border-radius: 1.5rem;
+            padding: 0.8rem 1.5rem;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        hr {
+            margin: 1rem 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, #c0d4e3, transparent);
+        }
+
+        @media (max-width: 680px) {
+            .quiz-body {
+                padding: 1rem;
+            }
+            .question-text {
+                font-size: 1rem;
+            }
+        }
+
+        footer {
+            font-size: 0.7rem;
+            text-align: center;
+            padding: 1rem;
+            background: #f1f5f9;
+            color: #2c5a74;
+        }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <div class="quiz-header">
+        <h1>📡 Network Fundamentals Quiz</h1>
+        <p>Based on LAN, WAN, MAN, Devices, Protocols & Media | Interactive Exam</p>
+    </div>
+    <div class="stats-bar">
+        <div class="question-counter">📋 Questions answered: <span id="answeredCount">0</span> / <span id="totalQuestions"></span></div>
+        <div class="score-area">🏆 Your Score: <span id="liveScore">0</span></div>
+    </div>
+    <div class="quiz-body" id="quizBody">
+        <!-- dynamic questions injected here -->
+        <div id="questionsContainer"></div>
+        
+        <div class="btn-group">
+            <button class="reset-btn" id="resetQuizBtn">⟳ Reset All Answers</button>
+            <button class="submit-btn" id="submitQuizBtn">✅ Submit & Show Score</button>
+        </div>
+
+        <div id="answerKeyPanel" class="show-answer-key" style="margin-top: 1.8rem;">
+            <div class="key-header" id="toggleKeyBtn">
+                📖 Show Answer Key (Correct Answers)
+                <span style="font-size:1.2rem;">▼</span>
+            </div>
+            <div id="answerKeyContent" style="display: none;"></div>
+        </div>
+        <div id="finalScoreMessage" style="margin-top: 1rem;"></div>
+    </div>
+    <footer>🌐 Based on real network concepts: end devices, gateways, fiber optics, IETF standards & more</footer>
+</div>
+
+<script>
+    // ---------- QUESTION BANK (from your material) ----------
+    const QUESTIONS = [
+        {
+            text: "Which of the following is considered an End Device?",
+            options: ["Router", "Switch", "Firewall", "Smartphone"],
+            correct: "Smartphone",
+            explanation: "End devices include computers, smartphones, servers — devices used directly by people."
+        },
+        {
+            text: "Which device interconnects dissimilar networks or protocols?",
+            options: ["Hub", "Gateway", "Switch", "NIC"],
+            correct: "Gateway",
+            explanation: "Gateway translates between different network architectures or protocols."
+        },
+        {
+            text: "What type of network covers an entire city?",
+            options: ["LAN", "WAN", "MAN", "PAN"],
+            correct: "MAN",
+            explanation: "MAN (Metropolitan Area Network) spans a city or large campus."
+        },
+        {
+            text: "Which transmission medium is considered Unguided (Wireless)?",
+            options: ["Fiber Optic", "Coaxial Cable", "Twisted Pair", "Wi-Fi"],
+            correct: "Wi-Fi",
+            explanation: "Wi-Fi is wireless, unguided media. The others are guided (physical cables)."
+        },
+        {
+            text: "This device repeats signals to all ports (broadcasts out every port):",
+            options: ["Switch", "Router", "Hub", "Gateway"],
+            correct: "Hub",
+            explanation: "A hub is a simple repeater that sends incoming data to all connected ports."
+        },
+        {
+            text: "What does ISP stand for?",
+            options: ["Internet Service Protocol", "Internet Service Provider", "Internal Service Provider", "International Service Protocol"],
+            correct: "Internet Service Provider",
+            explanation: "ISP provides internet access to customers (e.g., telecom companies)."
+        },
+        {
+            text: "Best high-speed medium, immune to electromagnetic interference (EMI):",
+            options: ["Twisted Pair", "Coaxial Cable", "Wi-Fi", "Fiber Optic"],
+            correct: "Fiber Optic",
+            explanation: "Fiber optic uses light pulses, immune to EMI and offers very high bandwidth."
+        },
+        {
+            text: "Which organization develops Internet protocols like TCP/IP, HTTP, and DNS?",
+            options: ["IEEE", "IETF", "ISO", "ITU"],
+            correct: "IETF",
+            explanation: "IETF (Internet Engineering Task Force) creates internet standards and protocols."
+        },
+        {
+            text: "Which IEEE standard defines Wi-Fi technology?",
+            options: ["802.3", "802.15", "802.11", "802.5"],
+            correct: "802.11",
+            explanation: "IEEE 802.11 is the standard for Wireless LAN (Wi-Fi)."
+        },
+        {
+            text: "Small pieces of data containing routing information sent over the internet are called:",
+            options: ["Frames", "Packets", "Segments", "Bits"],
+            correct: "Packets",
+            explanation: "Packets are the fundamental units with headers containing routing info."
+        },
+        {
+            text: "What switching method is used by the Internet where data is split into small pieces sent via different routes?",
+            options: ["Circuit Switching", "Message Switching", "Packet Switching", "Dedicated Switching"],
+            correct: "Packet Switching",
+            explanation: "Packet switching is efficient and fault-tolerant, used in modern IP networks."
+        },
+        {
+            text: "Which device is NOT a network edge device?",
+            options: ["Desktop PC", "Network Printer", "Smartphone", "Switch"],
+            correct: "Switch",
+            explanation: "Switch is an intermediate networking device, not an edge/end device."
+        },
+        {
+            text: "Which media type is NOT guided (wireless LAN example)?",
+            options: ["Fiber Optics", "Coaxial Cable", "Wireless LAN (Wi-Fi)", "Twisted Pair"],
+            correct: "Wireless LAN (Wi-Fi)",
+            explanation: "Wireless LAN uses radio waves, thus unguided media."
+        },
+        {
+            text: "What is the primary function of a Firewall?",
+            options: ["Increase network speed", "Connect two different protocols", "Protect networks from unauthorized access", "Forward packets to all ports"],
+            correct: "Protect networks from unauthorized access",
+            explanation: "Firewall monitors and filters incoming/outgoing traffic based on security rules."
+        },
+        {
+            text: "Which device is necessary for a computer to connect to a network (hardware interface)?",
+            options: ["Gateway", "NIC (Network Interface Card)", "Repeater", "Bridge"],
+            correct: "NIC (Network Interface Card)",
+            explanation: "NIC provides physical and data link connection to the network medium."
+        }
+    ];
+
+    // shuffle order but keep consistent for each load? we keep the order as designed but optionally shuffle?
+    // For better exam dynamic, we keep the original order which is rich. but we can shuffle questions optionally? 
+    // However we want fixed exam for reference. Keep the order but interactive.
+    let userAnswers = new Array(QUESTIONS.length).fill(null);
+    let score = 0;
+    let submittedFlag = false;
+
+    const questionsContainer = document.getElementById('questionsContainer');
+    const totalSpan = document.getElementById('totalQuestions');
+    const answeredSpan = document.getElementById('answeredCount');
+    const liveScoreSpan = document.getElementById('liveScore');
+    const finalScoreDiv = document.getElementById('finalScoreMessage');
+    const answerKeyContentDiv = document.getElementById('answerKeyContent');
+    let answerKeyVisible = false;
+
+    function updateStats() {
+        const answered = userAnswers.filter(a => a !== null && a !== undefined && a !== "").length;
+        answeredSpan.innerText = answered;
+        if (!submittedFlag) {
+            // show dynamic partial score only based on current correct choices? we'll show live pending?
+            // better show current tentative correct count (if we check on the fly)
+            let tentative = 0;
+            for (let i = 0; i < QUESTIONS.length; i++) {
+                if (userAnswers[i] !== null && userAnswers[i] === QUESTIONS[i].correct) {
+                    tentative++;
+                }
+            }
+            liveScoreSpan.innerText = tentative;
+        } else {
+            // after submit we already computed final score, keep displaying that final
+            // but after reset we need to reset flag
+        }
+    }
+
+    function computeFullScore() {
+        let correctCount = 0;
+        for (let i = 0; i < QUESTIONS.length; i++) {
+            if (userAnswers[i] && userAnswers[i] === QUESTIONS[i].correct) {
+                correctCount++;
+            }
+        }
+        return correctCount;
+    }
+
+    function renderQuestions() {
+        questionsContainer.innerHTML = '';
+        QUESTIONS.forEach((q, idx) => {
+            const card = document.createElement('div');
+            card.className = 'question-card';
+            card.dataset.qidx = idx;
+
+            const qText = document.createElement('div');
+            qText.className = 'question-text';
+            qText.innerText = `${idx+1}. ${q.text}`;
+            card.appendChild(qText);
+
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'options';
+            
+            q.options.forEach(opt => {
+                const optionWrapper = document.createElement('div');
+                optionWrapper.className = 'option';
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = `q${idx}`;
+                radio.value = opt;
+                radio.id = `q${idx}_${opt.replace(/\s/g, '')}`;
+                if (userAnswers[idx] === opt) {
+                    radio.checked = true;
+                }
+                radio.addEventListener('change', (e) => {
+                    if (e.target.checked) {
+                        userAnswers[idx] = opt;
+                        // remove previous feedback display? we can refresh feedback but keep simple.
+                        // update stats & re-render feedback markers
+                        updateStats();
+                        // if submitted flag true and user changes answer, we might reset submission state optionally.
+                        if (submittedFlag) {
+                            // optionally reset submitted flag so score recalculation can be done again
+                            submittedFlag = false;
+                            finalScoreDiv.innerHTML = '';
+                            document.getElementById('submitQuizBtn').innerText = '✅ Submit & Show Score';
+                            liveScoreSpan.style.color = 'inherit';
+                        }
+                        // update inline feedback for this question (show check mark)
+                        updateSingleQuestionFeedback(idx);
+                    }
+                });
+                
+                const label = document.createElement('label');
+                label.htmlFor = radio.id;
+                label.innerText = opt;
+                optionWrapper.appendChild(radio);
+                optionWrapper.appendChild(label);
+                optionsDiv.appendChild(optionWrapper);
+            });
+            card.appendChild(optionsDiv);
+            
+            // feedback area
+            const feedbackSpan = document.createElement('div');
+            feedbackSpan.className = 'feedback-area';
+            feedbackSpan.id = `fb-${idx}`;
+            card.appendChild(feedbackSpan);
+            
+            questionsContainer.appendChild(card);
+            updateSingleQuestionFeedback(idx);
+        });
+        totalSpan.innerText = QUESTIONS.length;
+        updateStats();
+    }
+
+    function updateSingleQuestionFeedback(idx) {
+        const fbDiv = document.getElementById(`fb-${idx}`);
+        if (!fbDiv) return;
+        const selected = userAnswers[idx];
+        const correctAns = QUESTIONS[idx].correct;
+        if (!selected) {
+            fbDiv.innerHTML = '';
+            fbDiv.className = 'feedback-area';
+            return;
+        }
+        if (selected === correctAns) {
+            fbDiv.innerHTML = `<div class="correct-feedback">✓ Correct! ${QUESTIONS[idx].explanation ? QUESTIONS[idx].explanation.substring(0,100) : ''}</div>`;
+            fbDiv.className = 'feedback-area';
+        } else {
+            fbDiv.innerHTML = `<div class="wrong-feedback">✗ Incorrect. Correct answer: ${correctAns}. ${QUESTIONS[idx].explanation ? QUESTIONS[idx].explanation.substring(0,120) : ''}</div>`;
+        }
+    }
+
+    function refreshAllFeedbacks() {
+        for (let i = 0; i < QUESTIONS.length; i++) {
+            updateSingleQuestionFeedback(i);
+        }
+    }
+
+    function buildAnswerKeyHTML() {
+        let html = `<div class="answer-grid">`;
+        QUESTIONS.forEach((q, idx) => {
+            html += `
+                <div class="answer-item">
+                    <strong>Q${idx+1}:</strong> ${q.correct}<br>
+                    <span style="font-size:0.7rem; color:#3c6e47;">${q.explanation.substring(0,70)}${q.explanation.length>70?'...':''}</span>
+                </div>
+            `;
+        });
+        html += `</div><p style="margin-top:0.5rem; font-size:0.75rem;">✅ Full answer key with explanations</p>`;
+        return html;
+    }
+
+    function toggleAnswerKey() {
+        answerKeyVisible = !answerKeyVisible;
+        const keyContent = document.getElementById('answerKeyContent');
+        const toggleBtn = document.getElementById('toggleKeyBtn');
+        if (answerKeyVisible) {
+            keyContent.style.display = 'block';
+            keyContent.innerHTML = buildAnswerKeyHTML();
+            toggleBtn.innerHTML = `📖 Hide Answer Key ▲`;
+        } else {
+            keyContent.style.display = 'none';
+            toggleBtn.innerHTML = `📖 Show Answer Key (Correct Answers) ▼`;
+        }
+    }
+
+    function submitQuiz() {
+        let correctCount = 0;
+        for (let i = 0; i < QUESTIONS.length; i++) {
+            if (userAnswers[i] !== null && userAnswers[i] === QUESTIONS[i].correct) {
+                correctCount++;
+            }
+        }
+        score = correctCount;
+        const total = QUESTIONS.length;
+        const percent = Math.round((score/total)*100);
+        finalScoreDiv.innerHTML = `<div class="score-summary">🎉 Your Score: ${score} / ${total} (${percent}%)<br> ${percent >= 70 ? 'Excellent! 🌟' : (percent>=50 ? 'Good, keep reviewing! 📘' : 'Review the answer key and try again! 🔍')}</div>`;
+        liveScoreSpan.innerText = score;
+        submittedFlag = true;
+        document.getElementById('submitQuizBtn').innerText = '✅ Score Updated';
+        refreshAllFeedbacks(); // ensure every feedback shows correct/wrong
+        updateStats();
+    }
+
+    function resetQuiz() {
+        userAnswers.fill(null);
+        submittedFlag = false;
+        score = 0;
+        // clear all radio buttons
+        for (let i = 0; i < QUESTIONS.length; i++) {
+            const radios = document.getElementsByName(`q${i}`);
+            radios.forEach(r => r.checked = false);
+            const fbDiv = document.getElementById(`fb-${i}`);
+            if (fbDiv) fbDiv.innerHTML = '';
+        }
+        finalScoreDiv.innerHTML = '';
+        liveScoreSpan.innerText = '0';
+        updateStats();
+        refreshAllFeedbacks();
+        document.getElementById('submitQuizBtn').innerText = '✅ Submit & Show Score';
+        // keep answer key optional
+    }
+
+    // attach global event handlers after render
+    function bindGlobalEvents() {
+        const resetBtn = document.getElementById('resetQuizBtn');
+        const submitBtn = document.getElementById('submitQuizBtn');
+        const toggleKey = document.getElementById('toggleKeyBtn');
+        if (resetBtn) resetBtn.onclick = () => resetQuiz();
+        if (submitBtn) submitBtn.onclick = () => submitQuiz();
+        if (toggleKey) toggleKey.onclick = () => toggleAnswerKey();
+    }
+
+    function init() {
+        renderQuestions();
+        bindGlobalEvents();
+        // initially answer key hidden
+        document.getElementById('answerKeyContent').style.display = 'none';
+        updateStats();
+    }
+    
+    init();
+</script>
+</body>
+</html>
