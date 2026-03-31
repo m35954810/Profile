@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Comprehensive Networking Exam | MCQs + Matching + All Problems with Diagrams</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a3c3a 0%, #0e2a2f 100%);
+            font-family: 'Segoe UI', 'Roboto', 'Cascadia Code', monospace;
+            padding: 2rem 1rem;
+        }
+
+        .exam-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #fefcf7;
+            border-radius: 2rem;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.35);
+            overflow: hidden;
+        }
+
+        .exam-header {
+            background: linear-gradient(95deg, #0b3b3f, #06262b);
+            padding: 1.8rem 2rem;
+            color: #f5f7e9;
+            border-bottom: 4px solid #ffb347;
+        }
+
+        .exam-header h1 {
+            font-size: 2rem;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .exam-header p {
+            margin-top: 0.5rem;
+            opacity: 0.85;
+            font-family: monospace;
+        }
+
+        .stats-bar {
+            background: #e5ede8;
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-weight: bold;
+            border-bottom: 1px solid #cbdccf;
+        }
+
+        .stat {
+            background: #2b6c5c;
+            color: white;
+            padding: 0.3rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+        }
+
+        .stat span {
+            background: #ffd966;
+            color: #1e4a3b;
+            padding: 0.1rem 0.7rem;
+            border-radius: 30px;
+            margin-left: 8px;
+        }
+
+        .exam-body {
+            padding: 2rem;
+        }
+
+        .section {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e0eae2;
+            overflow: hidden;
+        }
+
+        .section-title {
+            background: #eef3ea;
+            padding: 1rem 1.8rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1f6e5a;
+            border-left: 6px solid #3aa57c;
+            border-bottom: 1px solid #d7e4cf;
+        }
+
+        .question-card {
+            padding: 1.2rem 1.8rem;
+            border-bottom: 1px solid #eef2e6;
+        }
+
+        .q-text {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            color: #1a4f48;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-left: 1rem;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            padding: 0.3rem 0;
+        }
+
+        input[type="radio"] {
+            width: 17px;
+            height: 17px;
+            accent-color: #2e8b6c;
+        }
+
+        .feedback {
+            margin-top: 0.6rem;
+            font-size: 0.8rem;
+            padding: 0.3rem 1rem;
+            border-radius: 2rem;
+            display: inline-block;
+        }
+
+        .correct-fb {
+            background: #e0f2e6;
+            color: #1d6b4a;
+            border-left: 3px solid #3aa57c;
+        }
+
+        .wrong-fb {
+            background: #ffe3df;
+            color: #b6492e;
+            border-left: 3px solid #e07a5f;
+        }
+
+        /* matching table */
+        .matching-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 1rem 0;
+        }
+
+        .match-col {
+            background: #fafcf8;
+            padding: 0.8rem;
+            border-radius: 1rem;
+        }
+
+        .match-item {
+            background: white;
+            margin: 0.6rem 0;
+            padding: 0.5rem 0.8rem;
+            border-radius: 0.8rem;
+            border: 1px solid #d6e4d4;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .match-left {
+            font-weight: 600;
+            color: #1f5c50;
+        }
+
+        .match-right select {
+            padding: 0.4rem 0.8rem;
+            border-radius: 2rem;
+            border: 1px solid #bdd0b5;
+            background: white;
+            font-family: monospace;
+            font-weight: 500;
+        }
+
+        /* Problem styles */
+        .problem-card {
+            background: #fefaf0;
+            border-radius: 1.2rem;
+            margin-bottom: 1.8rem;
+            border: 1px solid #eadbbf;
+            overflow: hidden;
+        }
+
+        .prob-header {
+            background: #e7dcc4;
+            padding: 0.8rem 1.5rem;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #3b4e2c;
+        }
+
+        .prob-body {
+            padding: 1.2rem 1.5rem;
+            font-family: 'Segoe UI', system-ui;
+            line-height: 1.5;
+        }
+
+        .diagram-container {
+            background: #f8f4e8;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+            font-family: monospace;
+            border: 1px dashed #c9b87a;
+        }
+
+        .diagram-svg {
+            background: #ffffff;
+            border-radius: 0.8rem;
+            padding: 0.5rem;
+        }
+
+        .prob-input-area {
+            margin: 1rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .prob-input-area input {
+            padding: 0.6rem;
+            border-radius: 1rem;
+            border: 1px solid #cbc3a8;
+            width: 100%;
+            max-width: 400px;
+            font-family: monospace;
+        }
+
+        .solve-btn {
+            background: #2d6a4f;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            width: fit-content;
+        }
+
+        .solution-area {
+            background: #eef3ea;
+            padding: 0.8rem;
+            border-radius: 1rem;
+            margin-top: 0.8rem;
+            font-family: monospace;
+            font-size: 0.85rem;
+            display: none;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0 1rem;
+            flex-wrap: wrap;
+        }
+
+        button {
+            background: #2d6a4f;
+            border: none;
+            padding: 0.7rem 2rem;
+            border-radius: 40px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.1s;
+            font-size: 0.9rem;
+        }
+
+        .reset-btn {
+            background: #5f6c5b;
+        }
+
+        .key-section {
+            background: #f2f6ef;
+            border-radius: 1.2rem;
+            margin-top: 1.5rem;
+            padding: 1rem 1.8rem;
+        }
+
+        .key-toggle {
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            color: #2b6b58;
+        }
+
+        .key-content {
+            display: none;
+            margin-top: 1rem;
+            background: #ffffffdb;
+            border-radius: 1rem;
+            padding: 1rem;
+        }
+
+        .final-score-area {
+            background: #e1ede4;
+            border-radius: 1.5rem;
+            padding: 0.8rem;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        hr {
+            margin: 0.6rem 0;
+        }
+
+        @media (max-width: 750px) {
+            .matching-grid {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            .exam-body {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="exam-container">
+    <div class="exam-header">
+        <h1>🌐 Comprehensive Networking Final Exam <span style="font-size:0.9rem;">| All Problems + Diagrams</span></h1>
+        <p>📡 Based on: Network Devices, IOS, Packet Switching, Delay Analysis, Store-and-Forward, P1, P2, P3 from Sheet</p>
+    </div>
+    <div class="stats-bar">
+        <div class="stat">📋 MCQs answered: <span id="mcqCount">0</span>/10</div>
+        <div class="stat">🔗 Matching answered: <span id="matchCount">0</span>/5</div>
+        <div class="stat">📊 Problems solved: <span id="probCount">0</span>/3</div>
+        <div class="stat">🏆 Total Score: <span id="totalScoreSpan">0</span>/100</div>
+    </div>
+    <div class="exam-body">
+        <!-- SECTION 1: 10 MULTIPLE CHOICE -->
+        <div class="section">
+            <div class="section-title">📌 Part 1: Multiple Choice Questions (10 Questions, 3 points each)</div>
+            <div id="mcqContainer"></div>
+        </div>
+
+        <!-- SECTION 2: MATCHING (5 items) -->
+        <div class="section">
+            <div class="section-title">🔗 Part 2: Matching (5 pairs, 4 points each)</div>
+            <div id="matchingContainer"></div>
+        </div>
+
+        <!-- SECTION 3: ALL PROBLEMS FROM SHEET (P1, P2, P3 with diagrams) -->
+        <div class="section">
+            <div class="section-title">📐 Part 3: Problem Solving (3 Problems, 30 points total)</div>
+            <div id="problemsContainer"></div>
+        </div>
+
+        <div class="btn-group">
+            <button id="gradeAllBtn" class="grade-btn">✅ Grade Entire Exam</button>
+            <button id="resetExamBtn" class="reset-btn">⟳ Reset All Answers</button>
+        </div>
+        <div id="finalMessageArea"></div>
+
+        <!-- ANSWER KEY SECTION -->
+        <div class="key-section">
+            <div class="key-toggle" id="toggleKeyBtn">📘 Show Complete Answer Key (Correct Answers + Problem Solutions) ▼</div>
+            <div id="answerKeyPanel" class="key-content"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ===================== MCQs (10 questions) =====================
+    const mcqs = [
+        { text: "Which device is NOT an end device?", options: ["Smartphone", "Printer", "Switch", "Laptop"], correct: "Switch", explanation: "Switch is a networking intermediary, not an end device." },
+        { text: "Which networking device interconnects dissimilar networks or protocols?", options: ["Hub", "Gateway", "Switch", "Repeater"], correct: "Gateway", explanation: "Gateway translates between different network architectures or protocols." },
+        { text: "Which type of network covers a city or large campus?", options: ["LAN", "WAN", "MAN", "PAN"], correct: "MAN", explanation: "MAN (Metropolitan Area Network) spans a city." },
+        { text: "What is the best high-speed medium immune to electromagnetic interference (EMI)?", options: ["Twisted Pair", "Coaxial Cable", "Wi-Fi", "Fiber Optic"], correct: "Fiber Optic", explanation: "Fiber optic uses light, immune to EMI, high bandwidth." },
+        { text: "Which IEEE standard defines Wi-Fi technology?", options: ["802.3", "802.11", "802.15", "802.16"], correct: "802.11", explanation: "IEEE 802.11 is the standard for Wireless LAN." },
+        { text: "In Cisco IOS, which command saves the running configuration to NVRAM?", options: ["save config", "write memory", "copy running-config startup-config", "backup running"], correct: "copy running-config startup-config", explanation: "copy running-config startup-config saves to NVRAM for persistence." },
+        { text: "What does 'store-and-forward' mean in a router/switch context?", options: ["Forwards bits immediately", "Receives entire packet, stores, checks, then forwards", "Only stores header information", "Encrypts before forwarding"], correct: "Receives entire packet, stores, checks, then forwards", explanation: "Store-and-forward ensures error checking before forwarding, adding some latency." },
+        { text: "What is the formula for Transmission Delay?", options: ["Distance / Speed", "Packet size (bits) / Link bandwidth (bps)", "Queue length / Service rate", "Processing time per packet"], correct: "Packet size (bits) / Link bandwidth (bps)", explanation: "D_trans = L / R, where L is packet length in bits, R is transmission rate." },
+        { text: "Which command encrypts plaintext passwords (like console) on a Cisco switch?", options: ["enable secret", "service password-encryption", "password encrypt", "crypt password"], correct: "service password-encryption", explanation: "service password-encryption encrypts plaintext passwords in the config." },
+        { text: "Which type of delay increases when traffic intensity approaches 1 (congestion)?", options: ["Processing delay", "Transmission delay", "Propagation delay", "Queueing delay"], correct: "Queueing delay", explanation: "Queueing delay grows with congestion as packets wait in buffers." }
+    ];
+
+    // ===================== Matching Data =====================
+    const matchLeft = [
+        "1. Packet Switching", "2. Propagation Delay", "3. MOTD Banner", "4. NVRAM", "5. enable secret"
+    ];
+    const matchRightLabels = [
+        "A. Stores startup configuration persistently", 
+        "B. Divides data into packets sent independently", 
+        "C. Message displayed before login (security warning)", 
+        "D. Time for signal to travel physical medium (distance/speed)", 
+        "E. Encrypted password that overrides enable password"
+    ];
+    const matchCorrectMapping = [1, 3, 2, 0, 4]; // index in rightLabels: PacketSwitching->B(1), PropDelay->D(3), MOTD->C(2), NVRAM->A(0), enable secret->E(4)
+
+    // ===================== PROBLEMS (P1, P2, P3 with diagrams) =====================
+    const problems = [
+        {
+            id: "p1",
+            title: "P1: Bandwidth where Propagation Delay = Transmission Delay",
+            description: "Consider a point-to-point link 100 km in length. The propagation speed of bits in this link is 2×10⁸ m/s. At what bandwidth will propagation delay equal transmission delay for a 100 byte packet?",
+            diagram: "📡 [Sender] ===== 100 km ===== [Receiver] | Propagation speed = 2×10⁸ m/s | Packet = 100 bytes",
+            formula: "Dprop = distance/speed = (100×10³)/(2×10⁸) = 5×10⁻⁴ s. Dtrans = L/R = (100×8)/R. Set equal: 5×10⁻⁴ = 800/R → R = 800 / (5×10⁻⁴) = 1,600,000 bps = 1.6 Mbps",
+            correctValue: 1600000,
+            correctValueAlt: 1.6e6,
+            unit: "bps (1.6 Mbps)"
+        },
+        {
+            id: "p2",
+            title: "P2: End-to-End Delay with Store-and-Forward Router",
+            description: "Host A wants to send a 1 Mbyte packet to Host B. Propagation speed = 2×10⁸ m/sec. A and B connected via router R. Link AR = 1 km, link RB = 2 km. Capacity of each link = 10 Mbytes/sec. Processing delay at router = 10 ms. Router uses store-and-forward. Find total time until B receives the packet.",
+            diagram: "┌─────┐    1 km    ┌─────┐    2 km    ┌─────┐\n│  A  │───────────│  R  │───────────│  B  │\n└─────┘           └─────┘           └─────┘\nLink rate = 10 MB/s, L = 1 MByte, Dproc = 10 ms",
+            formula: "L = 1 MByte = 1×10⁶ × 8 = 8×10⁶ bits. R = 10 MB/s = 80×10⁶ bps. Dtrans = 8e6/80e6 = 0.1 s per link. Dprop_AR = 1000/2e8 = 5×10⁻⁶ s. Dprop_RB = 2000/2e8 = 1×10⁻⁵ s. Dproc = 0.01 s. Total = Dtrans_AR + Dprop_AR + Dtrans_RB + Dprop_RB + Dproc = 0.1 + 0.000005 + 0.1 + 0.00001 + 0.01 = 0.210015 s",
+            correctValue: 0.210015,
+            correctValueAlt: 0.21,
+            unit: "seconds"
+        },
+        {
+            id: "p3",
+            title: "P3: Three Links End-to-End Delay (with Diagram)",
+            description: "Consider the figure with three links, each with specified transmission rate and link length. Packet length = 12000 bits. Propagation speed = 3×10⁸ m/sec on each link.",
+            diagram: "┌───┐    Link 1     ┌───┐    Link 2     ┌───┐    Link 3     ┌───┐\n│ A │──Rate: 10 Mbps─│ R1│──Rate: 5 Mbps──│ R2│──Rate: 8 Mbps──│ B │\n└───┘  Length: 2 km  └───┘  Length: 3 km  └───┘  Length: 1 km  └───┘\nPacket = 12000 bits, v = 3×10⁸ m/s, store-and-forward at each router",
+            formula: "Link1: Dtrans1 = 12000/(10×10⁶) = 0.0012 s, Dprop1 = 2000/3e8 = 6.667×10⁻⁶ s\nLink2: Dtrans2 = 12000/(5×10⁶) = 0.0024 s, Dprop2 = 3000/3e8 = 1×10⁻⁵ s\nLink3: Dtrans3 = 12000/(8×10⁶) = 0.0015 s, Dprop3 = 1000/3e8 = 3.333×10⁻⁶ s\nProcessing delay assumed 0. Total = (0.0012+0.00000667)+(0.0024+0.00001)+(0.0015+0.00000333) = 0.00512 s ≈ 5.12 ms",
+            correctValue: 0.00512,
+            correctValueAlt: 0.00512,
+            unit: "seconds (5.12 ms)"
+        }
+    ];
+
+    // State variables
+    let mcqAnswers = new Array(10).fill(null);
+    let matchingAnswers = new Array(5).fill(null);
+    let problemAnswers = new Array(3).fill(null);
+    let examGradedFlag = false;
+    let problemScores = [0, 0, 0]; // each problem max 10 points
+
+    // DOM elements
+    const mcqContainer = document.getElementById('mcqContainer');
+    const matchingContainer = document.getElementById('matchingContainer');
+    const problemsContainer = document.getElementById('problemsContainer');
+    const mcqCountSpan = document.getElementById('mcqCount');
+    const matchCountSpan = document.getElementById('matchCount');
+    const probCountSpan = document.getElementById('probCount');
+    const totalScoreSpan = document.getElementById('totalScoreSpan');
+    const gradeBtn = document.getElementById('gradeAllBtn');
+    const resetBtn = document.getElementById('resetExamBtn');
+    const finalMsgDiv = document.getElementById('finalMessageArea');
+
+    function updateStats() {
+        let answeredMcq = mcqAnswers.filter(a => a !== null).length;
+        let answeredMatch = matchingAnswers.filter(a => a !== null && a !== "").length;
+        let answeredProb = problemAnswers.filter(a => a !== null && a !== "").length;
+        mcqCountSpan.innerText = answeredMcq;
+        matchCountSpan.innerText = answeredMatch;
+        probCountSpan.innerText = answeredProb;
+        if (!examGradedFlag) {
+            totalScoreSpan.innerText = "0";
+        } else {
+            let total = calculateTotalScore();
+            totalScoreSpan.innerText = total;
+        }
+    }
+
+    function calculateTotalScore() {
+        let mcqCorrect = 0;
+        for (let i = 0; i < mcqs.length; i++) {
+            if (mcqAnswers[i] !== null && mcqAnswers[i] === mcqs[i].correct) mcqCorrect++;
+        }
+        let matchCorrect = 0;
+        for (let i = 0; i < matchLeft.length; i++) {
+            if (matchingAnswers[i] !== null && matchingAnswers[i] === matchCorrectMapping[i]) matchCorrect++;
+        }
+        let probTotal = problemScores.reduce((a, b) => a + b, 0);
+        return (mcqCorrect * 3) + (matchCorrect * 4) + probTotal;
+    }
+
+    // Render MCQs
+    function renderMCQs() {
+        mcqContainer.innerHTML = '';
+        mcqs.forEach((q, idx) => {
+            const card = document.createElement('div');
+            card.className = 'question-card';
+            card.innerHTML = `<div class="q-text">${idx + 1}. ${q.text}</div><div class="options" id="mcq-${idx}"></div><div id="mcq-fb-${idx}" class="feedback"></div>`;
+            mcqContainer.appendChild(card);
+            const optsDiv = card.querySelector(`#mcq-${idx}`);
+            q.options.forEach(opt => {
+                const optDiv = document.createElement('div');
+                optDiv.className = 'option';
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = `mcq_${idx}`;
+                radio.value = opt;
+                if (mcqAnswers[idx] === opt) radio.checked = true;
+                radio.addEventListener('change', (e) => {
+                    if (e.target.checked) {
+                        mcqAnswers[idx] = opt;
+                        if (examGradedFlag) examGradedFlag = false;
+                        updateStats();
+                        updateMcqFeedback(idx);
+                    }
+                });
+                const label = document.createElement('label');
+                label.innerText = opt;
+                optDiv.appendChild(radio);
+                optDiv.appendChild(label);
+                optsDiv.appendChild(optDiv);
+            });
+            updateMcqFeedback(idx);
+        });
+    }
+
+    function updateMcqFeedback(idx) {
+        const fbDiv = document.getElementById(`mcq-fb-${idx}`);
+        if (!fbDiv) return;
+        const selected = mcqAnswers[idx];
+        if (!selected) { fbDiv.innerHTML = ''; return; }
+        if (selected === mcqs[idx].correct) {
+            fbDiv.innerHTML = `<div class="correct-fb">✓ Correct. ${mcqs[idx].explanation}</div>`;
+        } else {
+            fbDiv.innerHTML = `<div class="wrong-fb">✗ Incorrect. Correct: ${mcqs[idx].correct}. ${mcqs[idx].explanation}</div>`;
+        }
+    }
+
+    // Render Matching
+    function renderMatching() {
+        matchingContainer.innerHTML = '';
+        const grid = document.createElement('div');
+        grid.className = 'matching-grid';
+        const leftCol = document.createElement('div');
+        leftCol.className = 'match-col';
+        leftCol.innerHTML = '<strong>📌 Term</strong>';
+        const rightCol = document.createElement('div');
+        rightCol.className = 'match-col';
+        rightCol.innerHTML = '<strong>🔗 Select Matching Definition</strong>';
+        
+        for (let i = 0; i < matchLeft.length; i++) {
+            const leftItem = document.createElement('div');
+            leftItem.className = 'match-item';
+            leftItem.innerHTML = `<span class="match-left">${matchLeft[i]}</span>`;
+            leftCol.appendChild(leftItem);
+            
+            const rightItem = document.createElement('div');
+            rightItem.className = 'match-item';
+            const select = document.createElement('select');
+            select.id = `matchSel_${i}`;
+            select.innerHTML = `<option value="">-- Select --</option>`;
+            matchRightLabels.forEach((opt, optIdx) => {
+                const option = document.createElement('option');
+                option.value = optIdx;
+                option.text = opt;
+                if (matchingAnswers[i] !== null && matchingAnswers[i] == optIdx) select.value = optIdx;
+                select.appendChild(option);
+            });
+            select.addEventListener('change', (e) => {
+                const val = e.target.value;
+                if (val === "") matchingAnswers[i] = null;
+                else matchingAnswers[i] = parseInt(val);
+                if (examGradedFlag) examGradedFlag = false;
+                updateStats();
+            });
+            rightItem.appendChild(select);
+            rightCol.appendChild(rightItem);
+        }
+        grid.appendChild(leftCol);
+        grid.appendChild(rightCol);
+        matchingContainer.appendChild(grid);
+    }
+
+    // Render Problems with diagrams
+    function renderProblems() {
+        problemsContainer.innerHTML = '';
+        problems.forEach((prob, idx) => {
+            const card = document.createElement('div');
+            card.className = 'problem-card';
+            card.innerHTML = `
+                <div class="prob-header">📐 ${prob.title}</div>
+                <div class="prob-body">
+                    <p>${prob.description}</p>
+                    <div class="diagram-container">
+                        <strong>📡 Network Diagram:</strong><br>
+                        <pre style="font-family: monospace; font-size: 0.8rem; margin-top: 0.5rem;">${prob.diagram}</pre>
+                    </div>
+                    <div class="formula-note" style="background:#f4f0e0; padding:0.5rem; border-radius:0.8rem; margin:0.5rem 0;">
+                        💡 <strong>Hint:</strong> Use Dtrans = L/R, Dprop = distance/speed, store-and-forward requires each link transmission separately.
+                    </div>
+                    <div class="prob-input-area">
+                        <input type="text" id="ans_${prob.id}" placeholder="Enter your answer (numeric value)" value="${problemAnswers[idx] || ''}">
+                        <button class="solve-btn" data-idx="${idx}" data-id="${prob.id}">🔍 Check / Reveal Solution</button>
+                    </div>
+                    <div id="sol_${prob.id}" class="solution-area"></div>
+                    <div id="prob-fb-${idx}" class="feedback" style="margin-top:0.5rem;"></div>
+                </div>
+            `;
+            problemsContainer.appendChild(card);
+            
+            const inputField = card.querySelector(`#ans_${prob.id}`);
+            inputField.addEventListener('input', (e) => {
+                problemAnswers[idx] = e.target.value;
+                if (examGradedFlag) examGradedFlag = false;
+                updateStats();
+            });
+            
+            const solveBtn = card.querySelector('.solve-btn');
+            solveBtn.addEventListener('click', () => {
+                const solDiv = document.getElementById(`sol_${prob.id}`);
+                const userVal = parseFloat(problemAnswers[idx]);
+                let isCorrect = false;
+                if (!isNaN(userVal)) {
+                    const correct = prob.correctValue;
+                    const tolerance = prob.id === 'p1' ? 1000 : (prob.id === 'p2' ? 0.0005 : 0.00001);
+                    isCorrect = Math.abs(userVal - correct) <= tolerance;
+                    if (isCorrect) problemScores[idx] = 10;
+                    else problemScores[idx] = 0;
+                } else {
+                    problemScores[idx] = 0;
+                }
+                const fbDiv = document.getElementById(`prob-fb-${idx}`);
+                if (isNaN(userVal)) {
+                    fbDiv.innerHTML = `<div class="wrong-fb">⚠ Please enter a numeric answer.</div>`;
+                } else if (isCorrect) {
+                    fbDiv.innerHTML = `<div class="correct-fb">✓ Correct! Full points (10/10).</div>`;
+                } else {
+                    fbDiv.innerHTML = `<div class="wrong-fb">✗ Incorrect. Expected: ${prob.correctValue} ${prob.unit}</div>`;
+                }
+                solDiv.style.display = 'block';
+                solDiv.innerHTML = `<strong>✅ Solution:</strong><br>${prob.formula}<br><strong>Final Answer:</strong> ${prob.correctValue} ${prob.unit}`;
+                updateStats();
+            });
+        });
+    }
+
+    function gradeFullExam() {
+        let mcqCorrect = 0;
+        for (let i = 0; i < mcqs.length; i++) {
+            if (mcqAnswers[i] !== null && mcqAnswers[i] === mcqs[i].correct) mcqCorrect++;
+            updateMcqFeedback(i);
+        }
+        
+        let matchCorrect = 0;
+        for (let i = 0; i < matchLeft.length; i++) {
+            if (matchingAnswers[i] !== null && matchingAnswers[i] === matchCorrectMapping[i]) matchCorrect++;
+        }
+        
+        // Grade problems based on stored answers
+        for (let idx = 0; idx < problems.length; idx++) {
+            const prob = problems[idx];
+            const userVal = parseFloat(problemAnswers[idx]);
+            if (!isNaN(userVal)) {
+                const tolerance = prob.id === 'p1' ? 1000 : (prob.id === 'p2' ? 0.0005 : 0.00001);
+                if (Math.abs(userVal - prob.correctValue) <= tolerance) {
+                    problemScores[idx] = 10;
+                } else {
+                    problemScores[idx] = 0;
+                }
+            } else {
+                problemScores[idx] = 0;
+            }
+            const fbDiv = document.getElementById(`prob-fb-${idx}`);
+            if (fbDiv && !isNaN(parseFloat(problemAnswers[idx]))) {
+                if (problemScores[idx] === 10) {
+                    fbDiv.innerHTML = `<div class="correct-fb">✓ Correct (10/10)</div>`;
+                } else {
+                    fbDiv.innerHTML = `<div class="wrong-fb">✗ Incorrect. Correct: ${prob.correctValue} ${prob.unit}</div>`;
+                }
+            } else if (fbDiv && problemAnswers[idx]) {
+                fbDiv.innerHTML = `<div class="wrong-fb">✗ Invalid numeric input.</div>`;
+            }
+        }
+        
+        const total = (mcqCorrect * 3) + (matchCorrect * 4) + problemScores.reduce((a, b) => a + b, 0);
+        totalScoreSpan.innerText = total;
+        examGradedFlag = true;
+        const percent = (total / 100) * 100;
+        let msg = `🎓 Exam Graded: MCQs: ${mcqCorrect}/10 (${mcqCorrect*3} pts), Matching: ${matchCorrect}/5 (${matchCorrect*4} pts), Problems: ${problemScores.reduce((a,b)=>a+b,0)}/30 → TOTAL = ${total}/100 (${percent}%)`;
+        if (total >= 80) msg += " 🏅 Excellent!";
+        else if (total >= 60) msg += " 👍 Good, review weak areas.";
+        else msg += " 📚 Review theory and delay calculations.";
+        finalMsgDiv.innerHTML = `<div class="final-score-area">${msg}</div>`;
+        updateStats();
+    }
+    
+    function resetExam() {
+        mcqAnswers.fill(null);
+        matchingAnswers.fill(null);
+        problemAnswers.fill(null);
+        problemScores.fill(0);
+        examGradedFlag = false;
+        finalMsgDiv.innerHTML = "";
+        
+        for (let i = 0; i < mcqs.length; i++) {
+            const radios = document.getElementsByName(`mcq_${i}`);
+            radios.forEach(r => r.checked = false);
+            updateMcqFeedback(i);
+        }
+        for (let i = 0; i < matchLeft.length; i++) {
+            const sel = document.getElementById(`matchSel_${i}`);
+            if (sel) sel.value = "";
+        }
+        for (let i = 0; i < problems.length; i++) {
+            const input = document.getElementById(`ans_${problems[i].id}`);
+            if (input) input.value = "";
+            const fbDiv = document.getElementById(`prob-fb-${i}`);
+            if (fbDiv) fbDiv.innerHTML = "";
+            const solDiv = document.getElementById(`sol_${problems[i].id}`);
+            if (solDiv) solDiv.style.display = "none";
+        }
+        updateStats();
+        totalScoreSpan.innerText = "0";
+    }
+    
+    function buildAnswerKey() {
+        let html = `<div><strong>✅ COMPLETE ANSWER KEY</strong><hr>`;
+        html += `<h4>Part 1: MCQs (3 pts each)</h4>`;
+        mcqs.forEach((q, i) => { html += `<div><strong>Q${i+1}:</strong> ${q.correct} — ${q.explanation}</div>`; });
+        html += `<hr><h4>Part 2: Matching (4 pts each)</h4>`;
+        for (let i = 0; i < matchLeft.length; i++) {
+            let correctDef = matchRightLabels[matchCorrectMapping[i]];
+            html += `<div><strong>${matchLeft[i]}</strong> → ${correctDef}</div>`;
+        }
+        html += `<hr><h4>Part 3: Problem Solutions (10 pts each)</h4>`;
+        problems.forEach(p => {
+            html += `<div><strong>${p.title}</strong><br>📖 ${p.formula}<br>✅ Final Answer: ${p.correctValue} ${p.unit}</div><br>`;
+        });
+        html += `</div>`;
+        return html;
+    }
+    
+    let keyVisible = false;
+    function toggleKey() {
+        const keyDiv = document.getElementById('answerKeyPanel');
+        const toggleBtn = document.getElementById('toggleKeyBtn');
+        keyVisible = !keyVisible;
+        if (keyVisible) {
+            keyDiv.innerHTML = buildAnswerKey();
+            keyDiv.style.display = 'block';
+            toggleBtn.innerHTML = '📕 Hide Complete Answer Key ▲';
+        } else {
+            keyDiv.style.display = 'none';
+            toggleBtn.innerHTML = '📘 Show Complete Answer Key (Correct Answers + Problem Solutions) ▼';
+        }
+    }
+    
+    gradeBtn.addEventListener('click', gradeFullExam);
+    resetBtn.addEventListener('click', resetExam);
+    document.getElementById('toggleKeyBtn').addEventListener('click', toggleKey);
+    
+    renderMCQs();
+    renderMatching();
+    renderProblems();
+    updateStats();
+    document.getElementById('answerKeyPanel').style.display = 'none';
+</script>
+</body>
+</html>
