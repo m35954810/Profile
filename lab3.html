@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Network Delay Problems | Store-and-Forward | Transmission & Propagation Delay</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #e0eef7 0%, #c9dfe9 100%);
+            font-family: 'Segoe UI', 'Poppins', 'Roboto', sans-serif;
+            padding: 2rem 1rem;
+        }
+
+        .main-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* header */
+        .hero {
+            background: linear-gradient(135deg, #0b2f44, #124e5e);
+            border-radius: 2rem 2rem 1.5rem 1.5rem;
+            padding: 2rem 2rem;
+            margin-bottom: 2rem;
+            color: white;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .hero p {
+            margin-top: 0.8rem;
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        /* problem cards grid */
+        .problems-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .problem-card {
+            background: #ffffff;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+            border: 1px solid rgba(100, 140, 120, 0.2);
+        }
+
+        .problem-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card-header {
+            background: linear-gradient(95deg, #1e6f5c, #2c8b74);
+            padding: 1rem 2rem;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .card-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+        }
+
+        .badge-points {
+            background: #ffcd7e;
+            color: #1e4a3b;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-weight: bold;
+        }
+
+        .card-body {
+            padding: 1.8rem 2rem;
+        }
+
+        /* diagram styling */
+        .network-diagram {
+            background: #f8faf6;
+            border-radius: 1.2rem;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #cfe2cf;
+            font-family: 'Courier New', 'Cascadia Code', monospace;
+            text-align: center;
+            box-shadow: inset 0 0 0 1px #ffffff80, 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        .diagram-title {
+            font-weight: 700;
+            color: #2c6e5c;
+            margin-bottom: 0.6rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .diagram-svg {
+            background: #ffffff;
+            padding: 0.8rem;
+            border-radius: 1rem;
+            display: inline-block;
+            width: 100%;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+
+        .formula-box {
+            background: #eef3ec;
+            padding: 0.8rem 1rem;
+            border-radius: 1rem;
+            margin: 1rem 0;
+            font-family: monospace;
+            border-left: 5px solid #3aa57c;
+        }
+
+        .input-area {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem;
+            margin: 1.2rem 0;
+        }
+
+        .input-area input {
+            padding: 0.7rem 1rem;
+            border-radius: 2rem;
+            border: 2px solid #cbdcd0;
+            font-size: 1rem;
+            width: 240px;
+            font-family: monospace;
+            transition: 0.1s;
+        }
+
+        .input-area input:focus {
+            border-color: #2d8f6e;
+            outline: none;
+        }
+
+        .btn-check {
+            background: #2d6a4f;
+            border: none;
+            padding: 0.7rem 1.8rem;
+            border-radius: 2rem;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.1s;
+            font-size: 0.9rem;
+        }
+
+        .btn-check:hover {
+            background: #1e5a43;
+            transform: scale(0.98);
+        }
+
+        .solution-panel {
+            background: #fef9e6;
+            border-radius: 1rem;
+            margin-top: 1rem;
+            padding: 1rem 1.2rem;
+            border-left: 5px solid #f4b942;
+            display: none;
+            font-family: 'Segoe UI', monospace;
+        }
+
+        .solution-panel h4 {
+            color: #ad7a2b;
+            margin-bottom: 0.6rem;
+        }
+
+        .feedback {
+            margin-top: 0.6rem;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        .correct-feedback {
+            background: #d4f0db;
+            color: #1b6b3f;
+            border-left: 4px solid #2e8b57;
+        }
+
+        .wrong-feedback {
+            background: #ffe0db;
+            color: #c33c2c;
+            border-left: 4px solid #e07a5f;
+        }
+
+        .info-note {
+            background: #e1eef1;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .theoretical-section {
+            background: white;
+            border-radius: 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border: 1px solid #cfe2cf;
+            overflow: hidden;
+        }
+
+        .theo-header {
+            background: #e2eede;
+            padding: 1rem 2rem;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2d6e5a;
+            border-bottom: 1px solid #cce0c4;
+        }
+
+        .theo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 0.8rem;
+            padding: 1.5rem;
+        }
+
+        .theo-item {
+            background: #fafef8;
+            border-radius: 1rem;
+            padding: 0.8rem;
+            border: 1px solid #dceada;
+        }
+
+        .key-section {
+            background: #f0f5ea;
+            border-radius: 1.5rem;
+            margin-top: 2rem;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+        }
+
+        .key-toggle {
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        .answer-key-content {
+            display: none;
+            margin-top: 1rem;
+            background: white;
+            border-radius: 1rem;
+            padding: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.7rem;
+            color: #3c6e5e;
+        }
+
+        @media (max-width: 680px) {
+            .card-body {
+                padding: 1rem;
+            }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <div class="hero">
+        <h1>📡 Delay & Throughput Problems <span style="font-size: 0.9rem;">| Store-and-Forward | Nodal Delay</span></h1>
+        <p>Based on Sheet 2: Transmission, Propagation, Queuing, Processing Delay | End-to-End Calculations</p>
+    </div>
+
+    <div class="problems-grid" id="problemsGrid"></div>
+
+    <!-- Theoretical concepts quick reference -->
+    <div class="theoretical-section">
+        <div class="theo-header">📖 Key Formulas & Definitions (Sheet 2)</div>
+        <div class="theo-grid">
+            <div class="theo-item"><strong>📤 Transmission Delay</strong><br>D<sub>trans</sub> = L / R<br><span style="font-size:0.75rem;">L = packet size (bits), R = link rate (bps)</span></div>
+            <div class="theo-item"><strong>⚡ Propagation Delay</strong><br>D<sub>prop</sub> = d / s<br><span style="font-size:0.75rem;">d = distance (m), s = propagation speed (2×10⁸ m/s typical)</span></div>
+            <div class="theo-item"><strong>⏳ Queuing Delay</strong><br>Increases when traffic intensity (L·a/R) → 1</div>
+            <div class="theo-item"><strong>🖥️ Processing Delay</strong><br>Time to inspect header, lookup routing, error check.</div>
+            <div class="theo-item"><strong>🔁 Nodal Delay</strong><br>d<sub>nodal</sub> = d<sub>proc</sub> + d<sub>queue</sub> + d<sub>trans</sub> + d<sub>prop</sub></div>
+            <div class="theo-item"><strong>🌍 End-to-End Delay</strong><br>Sum of all nodal delays along path + store-and-forward contributions.</div>
+            <div class="theo-item"><strong>📦 Store-and-Forward</strong><br>Router receives full packet before forwarding → adds full transmission delay per hop.</div>
+            <div class="theo-item"><strong>📈 Throughput</strong><br>Min(R<sub>1</sub>, R<sub>2</sub>, ...) bottleneck link.</div>
+        </div>
+    </div>
+
+    <div class="key-section" id="keySection">
+        <div class="key-toggle" id="toggleKeyBtn">
+            📘 Show Complete Answer Key (All Problems Solved) ▼
+        </div>
+        <div id="answerKeyPanel" class="answer-key-content"></div>
+    </div>
+    <footer>⚡ Interactive problem solver | Enter numeric answers to check correctness | Based on official Sheet 2 solutions</footer>
+</div>
+
+<script>
+    // Problem definitions with diagrams, formulas, correct values
+    const problems = [
+        {
+            id: "p1",
+            title: "P1: Bandwidth where Propagation Delay = Transmission Delay",
+            description: "Point-to-point link: length = 100 km, propagation speed = 2×10⁸ m/s, packet = 100 bytes. Find bandwidth R (bps) so that D<sub>prop</sub> = D<sub>trans</sub>.",
+            diagram: `
+                <div class="diagram-title">📡 LINK DIAGRAM</div>
+                <pre style="font-family: monospace; font-size:0.85rem;">[ Sender ] ========= 100 km ========= [ Receiver ]
+Propagation speed = 2×10⁸ m/s | Packet = 100 bytes (800 bits)</pre>
+                <div class="formula-box">
+                    <strong>⚖️ Equation:</strong> D<sub>prop</sub> = D<sub>trans</sub><br>
+                    distance / speed = L / R  →  (100×10³) / (2×10⁸) = (100×8) / R
+                </div>
+            `,
+            correctValue: 1600000,
+            tolerance: 1000,
+            unit: "bps (1.6 Mbps)",
+            solutionSteps: `Dprop = distance / speed = (100 × 10³) / (2×10⁸) = 5×10⁻⁴ seconds.<br>
+            Dtrans = L / R = (100 bytes × 8) / R = 800 / R.<br>
+            Set equal: 5×10⁻⁴ = 800 / R  →  R = 800 / (5×10⁻⁴) = 1,600,000 bps = 1.6 Mbps.`
+        },
+        {
+            id: "p2",
+            title: "P2: End-to-End Delay via Router (Store-and-Forward)",
+            description: "Host A → Router R → Host B. Packet = 1 Mbyte. Link AR: 1 km, Link RB: 2 km. Link capacity = 10 Mbytes/sec each. Propagation speed = 2×10⁸ m/s. Processing delay at router = 10 ms. Store-and-forward. Find total time until B receives the whole packet.",
+            diagram: `
+                <div class="diagram-title">🔁 NETWORK TOPOLOGY</div>
+                <pre style="font-family: monospace; font-size:0.8rem;">
+   A ──────(1 km)────── R ──────(2 km)────── B
+     Link rate: 10 MB/s       Link rate: 10 MB/s
+     Packet: 1 MByte = 8×10⁶ bits, Dproc = 10 ms
+                </pre>
+                <div class="formula-box">
+                    <strong>📐 Approach:</strong> D<sub>total</sub> = D<sub>trans,AR</sub> + D<sub>prop,AR</sub> + D<sub>trans,RB</sub> + D<sub>prop,RB</sub> + D<sub>proc</sub>
+                </div>
+            `,
+            correctValue: 0.210015,
+            tolerance: 0.0005,
+            unit: "seconds (≈210 ms)",
+            solutionSteps: `L = 1 MByte = 1×10⁶ × 8 = 8×10⁶ bits.<br>
+            R = 10 MB/s = 80×10⁶ bps.<br>
+            Dtrans_AR = 8e6 / 80e6 = 0.1 s.<br>
+            Dprop_AR = 1000 m / 2e8 m/s = 5×10⁻⁶ s.<br>
+            Dtrans_RB = same = 0.1 s.<br>
+            Dprop_RB = 2000 / 2e8 = 1×10⁻⁵ s.<br>
+            Dproc = 10 ms = 0.01 s.<br>
+            Total = 0.1 + 0.000005 + 0.1 + 0.00001 + 0.01 = <strong>0.210015 seconds</strong>.`
+        },
+        {
+            id: "p3",
+            title: "P3: Three Links End-to-End Delay (with Diagram)",
+            description: "Packet length = 12000 bits. Propagation speed = 3×10⁸ m/s on each link. Three links with rates and lengths as shown. Store-and-forward at each router. Find total delay (ignore queuing and processing).",
+            diagram: `
+                <div class="diagram-title">🌐 THREE-LINK NETWORK</div>
+                <pre style="font-family: monospace; font-size:0.75rem;">
+   A ────Link 1──── R1 ────Link 2──── R2 ────Link 3──── B
+   |               |               |               |
+   |Rate: 10 Mbps  |Rate: 5 Mbps   |Rate: 8 Mbps   |
+   |Len: 2 km      |Len: 3 km      |Len: 1 km      |
+   └───────────────┴───────────────┴───────────────┘
+   Packet = 12000 bits, v = 3×10⁸ m/s
+                </pre>
+                <div class="formula-box">
+                    <strong>🔁 Store-and-forward:</strong> Total = Σ (D<sub>trans,i</sub> + D<sub>prop,i</sub>) for i=1..3
+                </div>
+            `,
+            correctValue: 0.00512,
+            tolerance: 0.00001,
+            unit: "seconds (≈5.12 ms)",
+            solutionSteps: `Link1: Dtrans1 = 12000 / (10×10⁶) = 0.0012 s, Dprop1 = 2000 / 3e8 = 6.6667×10⁻⁶ s.<br>
+            Link2: Dtrans2 = 12000 / (5×10⁶) = 0.0024 s, Dprop2 = 3000 / 3e8 = 1×10⁻⁵ s.<br>
+            Link3: Dtrans3 = 12000 / (8×10⁶) = 0.0015 s, Dprop3 = 1000 / 3e8 = 3.333×10⁻⁶ s.<br>
+            Total = (0.0012+0.000006667) + (0.0024+0.00001) + (0.0015+0.000003333) = 0.001206667 + 0.00241 + 0.001503333 = <strong>0.00512 seconds (5.12 ms)</strong>.`
+        }
+    ];
+
+    // Store user answers and feedback states
+    let userValues = ["", "", ""];
+    let scoreFeedback = [null, null, null];
+
+    const gridContainer = document.getElementById('problemsGrid');
+
+    function renderProblems() {
+        gridContainer.innerHTML = '';
+        problems.forEach((prob, idx) => {
+            const card = document.createElement('div');
+            card.className = 'problem-card';
+            card.innerHTML = `
+                <div class="card-header">
+                    <h2>${prob.title}</h2>
+                    <span class="badge-points">📊 10 points</span>
+                </div>
+                <div class="card-body">
+                    <p style="margin-bottom: 1rem; font-weight:500;">${prob.description}</p>
+                    <div class="network-diagram">
+                        ${prob.diagram}
+                    </div>
+                    <div class="input-area">
+                        <input type="number" step="any" id="input_${prob.id}" placeholder="Enter your answer (numeric)" value="${userValues[idx]}">
+                        <button class="btn-check" data-idx="${idx}" data-id="${prob.id}">✓ Check & Show Solution</button>
+                    </div>
+                    <div id="feedback_${prob.id}" class="feedback"></div>
+                    <div id="solution_${prob.id}" class="solution-panel"></div>
+                </div>
+            `;
+            gridContainer.appendChild(card);
+
+            const inputField = document.getElementById(`input_${prob.id}`);
+            inputField.addEventListener('input', (e) => {
+                userValues[idx] = e.target.value;
+            });
+
+            const checkBtn = card.querySelector('.btn-check');
+            checkBtn.addEventListener('click', () => {
+                const userVal = parseFloat(userValues[idx]);
+                const solDiv = document.getElementById(`solution_${prob.id}`);
+                const feedbackDiv = document.getElementById(`feedback_${prob.id}`);
+                const correct = prob.correctValue;
+                const tolerance = prob.tolerance;
+                let isCorrect = false;
+                if (!isNaN(userVal)) {
+                    isCorrect = Math.abs(userVal - correct) <= tolerance;
+                }
+                if (isCorrect) {
+                    feedbackDiv.innerHTML = `<div class="correct-feedback">✅ Correct! Answer: ${correct} ${prob.unit}</div>`;
+                } else {
+                    const expectedMsg = !isNaN(userVal) ? `Your answer: ${userVal} ${prob.unit}` : 'No valid number entered.';
+                    feedbackDiv.innerHTML = `<div class="wrong-feedback">❌ ${expectedMsg}<br>Correct answer: ${correct} ${prob.unit}</div>`;
+                }
+                solDiv.style.display = 'block';
+                solDiv.innerHTML = `
+                    <h4>📖 Step-by-Step Solution</h4>
+                    <div>${prob.solutionSteps}</div>
+                    <div class="info-note" style="margin-top:0.5rem;"><strong>🎯 Final answer:</strong> ${correct} ${prob.unit}</div>
+                `;
+            });
+        });
+    }
+
+    // Build answer key panel (complete solutions)
+    function buildAnswerKey() {
+        let html = `<h3>✅ Complete Answer Key (Sheet 2 Solutions)</h3><hr>`;
+        problems.forEach((prob, idx) => {
+            html += `
+                <div style="margin-bottom:1.5rem; border-bottom:1px solid #ddd; padding-bottom:0.8rem;">
+                    <strong style="font-size:1.1rem;">📌 ${prob.title}</strong>
+                    <div style="margin-top:0.5rem;">${prob.solutionSteps}</div>
+                    <div style="background:#eef4e0; padding:0.3rem 0.6rem; border-radius:1rem; display:inline-block; margin-top:0.4rem;"><strong>Answer:</strong> ${prob.correctValue} ${prob.unit}</div>
+                </div>
+            `;
+        });
+        html += `<hr><h4>📚 Important Formulas Recap</h4>
+        <ul>
+            <li><strong>Transmission Delay:</strong> D<sub>trans</sub> = L / R (bits / bps)</li>
+            <li><strong>Propagation Delay:</strong> D<sub>prop</sub> = distance / speed (m / (m/s))</li>
+            <li><strong>Nodal Delay:</strong> D<sub>nodal</sub> = D<sub>proc</sub> + D<sub>queue</sub> + D<sub>trans</sub> + D<sub>prop</sub></li>
+            <li><strong>End-to-End (store-and-forward):</strong> sum of all D<sub>trans</sub> + D<sub>prop</sub> over each hop + processing delays</li>
+        </ul>`;
+        return html;
+    }
+
+    // Toggle answer key visibility
+    let keyVisible = false;
+    const keyPanel = document.getElementById('answerKeyPanel');
+    const toggleBtn = document.getElementById('toggleKeyBtn');
+    toggleBtn.addEventListener('click', () => {
+        keyVisible = !keyVisible;
+        if (keyVisible) {
+            keyPanel.innerHTML = buildAnswerKey();
+            keyPanel.style.display = 'block';
+            toggleBtn.innerHTML = '📕 Hide Complete Answer Key ▲';
+        } else {
+            keyPanel.style.display = 'none';
+            toggleBtn.innerHTML = '📘 Show Complete Answer Key (All Problems Solved) ▼';
+        }
+    });
+
+    renderProblems();
+    keyPanel.style.display = 'none';
+
+    // Add some styling for formula boxes inside dynamic content
+    const style = document.createElement('style');
+    style.textContent = `
+        .solution-panel ul, .solution-panel ol { margin-left: 1.2rem; }
+        .formula-box code { background: #e9e9e9; padding: 0.1rem 0.3rem; border-radius: 6px; }
+        pre { white-space: pre-wrap; font-family: monospace; background: #fef7e0; padding: 0.5rem; border-radius: 0.8rem; }
+    `;
+    document.head.appendChild(style);
+</script>
+</body>
+</html>
