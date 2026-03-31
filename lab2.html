@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Cisco IOS & Packet Tracer Lab Quiz | Switch Configuration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #1a2a32;
+            font-family: 'Segoe UI', 'Cascadia Code', 'Fira Code', Roboto, monospace;
+            padding: 2rem 1rem;
+        }
+
+        .quiz-lab-wrapper {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: #f4f7fc;
+            border-radius: 2rem;
+            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            border: 1px solid #2c5a6e;
+        }
+
+        /* header with Cisco style */
+        .ios-header {
+            background: #0b2b38;
+            background-image: linear-gradient(135deg, #0c3848 0%, #06212b 100%);
+            padding: 1.5rem 2rem;
+            color: #f0f9ff;
+            border-bottom: 4px solid #00a0d2;
+        }
+
+        .ios-header h1 {
+            font-family: monospace;
+            font-size: 1.9rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .ios-header h1 span {
+            background: #1e6f5c;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            font-size: 1rem;
+            margin-left: 12px;
+            font-weight: normal;
+        }
+
+        .ios-header p {
+            font-family: 'Segoe UI', sans-serif;
+            opacity: 0.85;
+            margin-top: 0.5rem;
+        }
+
+        .stats-bar {
+            background: #e2edf2;
+            padding: 0.7rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            border-bottom: 1px solid #bdd4df;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .badge {
+            background: #1c4e6c;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .badge span {
+            background: #ffcd7e;
+            color: #1e3a4d;
+            padding: 0.1rem 0.7rem;
+            border-radius: 30px;
+            margin-left: 8px;
+        }
+
+        .quiz-main {
+            padding: 2rem;
+        }
+
+        .question-panel {
+            background: white;
+            border-radius: 1.5rem;
+            margin-bottom: 1.6rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid #cde1ec;
+            transition: all 0.1s ease;
+        }
+
+        .q-header {
+            background: #eef3f8;
+            padding: 0.9rem 1.5rem;
+            border-bottom: 1px solid #d4e2ec;
+            border-radius: 1.5rem 1.5rem 0 0;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #0f4c5f;
+            display: flex;
+            gap: 10px;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+
+        .q-num {
+            background: #1c6c84;
+            color: white;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+        }
+
+        .question-text {
+            font-family: 'Segoe UI', system-ui;
+            font-weight: 600;
+            flex: 1;
+        }
+
+        .options-area {
+            padding: 1.2rem 1.5rem 1rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
+        .opt {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 0.5rem 0.8rem;
+            background: #fdfdfd;
+            border-radius: 1rem;
+            border: 1px solid #e2edf2;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+
+        .opt:hover {
+            background: #eef5fa;
+            border-color: #8fb9ce;
+        }
+
+        input[type="radio"] {
+            margin-top: 2px;
+            accent-color: #1c6e8c;
+            width: 18px;
+            height: 18px;
+        }
+
+        .opt label {
+            flex: 1;
+            font-weight: 500;
+            color: #1c4e63;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .feedback-line {
+            margin: 0.2rem 1.5rem 1rem 1.5rem;
+            font-size: 0.8rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .correct-fb {
+            background: #dff0e4;
+            color: #1b6b43;
+            border-left: 3px solid #2b8c5e;
+            font-weight: 500;
+        }
+
+        .wrong-fb {
+            background: #ffe6e5;
+            color: #ac3a3a;
+            border-left: 3px solid #c24a4a;
+        }
+
+        .btn-group-lab {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0 1rem;
+            flex-wrap: wrap;
+        }
+
+        button {
+            background: #1f6e8c;
+            border: none;
+            padding: 0.7rem 1.8rem;
+            font-weight: bold;
+            border-radius: 40px;
+            color: white;
+            font-family: monospace;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        button:hover {
+            background: #0d556f;
+            transform: translateY(-1px);
+        }
+
+        .reset-lab {
+            background: #4c6a7a;
+        }
+
+        .submit-lab {
+            background: #2d7a5c;
+        }
+
+        .answer-key-section {
+            background: #eef2f0;
+            border-radius: 1.2rem;
+            margin-top: 2rem;
+            padding: 1rem 1.5rem;
+            border: 1px solid #cbdadf;
+        }
+
+        .key-toggle {
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #1a5d72;
+        }
+
+        .key-content {
+            margin-top: 1rem;
+            display: none;
+            background: #ffffffd9;
+            border-radius: 1rem;
+            padding: 1rem;
+        }
+
+        .key-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+
+        .key-item {
+            background: #f8fafc;
+            padding: 0.5rem 0.8rem;
+            border-left: 4px solid #2c7da0;
+            font-size: 0.8rem;
+            font-family: monospace;
+        }
+
+        .final-score-area {
+            background: #e1edf2;
+            border-radius: 2rem;
+            text-align: center;
+            padding: 0.8rem;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        code {
+            background: #eef0f2;
+            padding: 0.1rem 0.3rem;
+            border-radius: 6px;
+            font-family: monospace;
+        }
+
+        hr {
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 680px) {
+            .quiz-main {
+                padding: 1rem;
+            }
+            .q-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="quiz-lab-wrapper">
+    <div class="ios-header">
+        <h1>🔧 Cisco IOS & Switch Lab Simulator <span>Packet Tracer Skills</span></h1>
+        <p>📡 Based on Lab (2): Navigating IOS, Switch config, Console/Enable passwords, MOTD, and memory types</p>
+    </div>
+    <div class="stats-bar">
+        <div class="badge">📋 Answered: <span id="answeredCount">0</span> / <span id="totalQ"></span></div>
+        <div class="badge">🏆 Current Score: <span id="liveScore">0</span></div>
+    </div>
+    <div class="quiz-main" id="quizMain">
+        <div id="questionsContainer"></div>
+        <div class="btn-group-lab">
+            <button class="reset-lab" id="resetBtn">⟳ Reset All Answers</button>
+            <button class="submit-lab" id="submitBtn">✅ Grade Exam & Show Score</button>
+        </div>
+        <div id="scoreMessage"></div>
+        <div class="answer-key-section">
+            <div class="key-toggle" id="toggleKeyBtn">
+                📘 Show Answer Key (Correct Answers & CLI Facts) ▼
+            </div>
+            <div id="answerKeyPanel" class="key-content"></div>
+        </div>
+        <footer style="font-size:0.7rem; text-align:center; margin-top:1.5rem; color:#2c627a;">
+            ⚡ Based on real Cisco IOS commands: enable secret, service password-encryption, banner motd, show running-config, console line & more.
+        </footer>
+    </div>
+</div>
+
+<script>
+    // ---------- QUESTION BANK based on Lab2 & Switch PPT (IOS, Packet Tracer, Config) ----------
+    const QUESTIONS = [
+        {
+            text: "In Packet Tracer, what is the default bits per second setting when accessing a switch via the Console port using the Terminal application?",
+            options: ["9600", "19200", "115200", "4800"],
+            correct: "9600",
+            explanation: "Console connections typically use 9600 bps, 8 data bits, no parity, 1 stop bit (8N1)."
+        },
+        {
+            text: "After connecting to a Cisco switch console and pressing ENTER at the 'Press RETURN to get started!' message, which prompt indicates User EXEC mode?",
+            options: ["Switch#", "Switch(config)#", "Switch>", "Switch(config-line)#"],
+            correct: "Switch>",
+            explanation: "User EXEC mode prompt ends with '>' ; privileged EXEC shows '#'."
+        },
+        {
+            text: "Which IOS feature allows you to type a partial command followed by '?' to see available options starting with those letters?",
+            options: ["Command completion", "Context-sensitive help", "Tab completion", "Inline syntax check"],
+            correct: "Context-sensitive help",
+            explanation: "Typing '?' at any point shows context help; 't?' displays commands starting with 't'."
+        },
+        {
+            text: "What is the command to enter privileged EXEC mode from user EXEC mode?",
+            options: ["configure terminal", "enable", "login", "privileged mode"],
+            correct: "enable",
+            explanation: "The 'enable' command moves from user EXEC (>) to privileged EXEC (#)."
+        },
+        {
+            text: "Which global configuration command sets an encrypted password that overrides the standard enable password?",
+            options: ["enable password", "service password-encryption", "enable secret", "line console 0"],
+            correct: "enable secret",
+            explanation: "'enable secret' stores the password using MD5 hash, overriding any 'enable password'."
+        },
+        {
+            text: "A network technician wants to encrypt all plaintext passwords (like console and vty) in the running-config. Which command achieves this?",
+            options: ["encrypt all", "enable secret", "service password-encryption", "password encryption aes"],
+            correct: "service password-encryption",
+            explanation: "'service password-encryption' encrypts plaintext passwords in configuration (weak encryption but hides them)."
+        },
+        {
+            text: "What does the 'banner motd' command do on a Cisco switch?",
+            options: ["Sets the hostname", "Configures IP address", "Displays a message before login", "Saves config to NVRAM"],
+            correct: "Displays a message before login",
+            explanation: "Message of the Day (MOTD) banner is shown to users before authentication."
+        },
+        {
+            text: "Which command saves the current active configuration to NVRAM so it persists after a reload?",
+            options: ["write memory", "copy running-config startup-config", "save config", "write erase"],
+            correct: "copy running-config startup-config",
+            explanation: "The classic command copies from RAM (running) to NVRAM (startup). 'write memory' is an older alias."
+        },
+        {
+            text: "A switch displays 'Switch#' prompt. Which mode is this?",
+            options: ["User EXEC", "Global Configuration", "Privileged EXEC (Enable mode)", "Interface Configuration"],
+            correct: "Privileged EXEC (Enable mode)",
+            explanation: "Privileged EXEC mode is indicated by '#' and allows configuration access via 'configure terminal'."
+        },
+        {
+            text: "Which memory type stores the startup configuration that is loaded when the switch boots?",
+            options: ["RAM", "ROM", "Flash", "NVRAM"],
+            correct: "NVRAM",
+            explanation: "Non-Volatile RAM holds startup-config; it persists after power loss."
+        },
+        {
+            text: "What is the purpose of the 'login' command under line configuration (line console 0)?",
+            options: ["Encrypts the password", "Enables password checking at login", "Sets the hostname", "Disables remote access"],
+            correct: "Enables password checking at login",
+            explanation: "Without 'login', the switch will not prompt for the configured password on that line."
+        },
+        {
+            text: "After configuring 'enable secret itsasecret', how is the password displayed in 'show running-config'?",
+            options: ["Plain text: itsasecret", "Encrypted (hashed) format", "Blank line", "Base64 encoded"],
+            correct: "Encrypted (hashed) format",
+            explanation: "enable secret stores an MD5 hash, so it appears as a scrambled string, not plain text."
+        },
+        {
+            text: "Which type of access provides a secure, encrypted remote connection to a Cisco switch?",
+            options: ["Telnet", "Console", "SSH", "HTTP"],
+            correct: "SSH",
+            explanation: "SSH (Secure Shell) encrypts session data, unlike Telnet which sends credentials in plaintext."
+        },
+        {
+            text: "Which command displays the current active configuration stored in RAM?",
+            options: ["show startup-config", "show version", "show running-config", "show flash"],
+            correct: "show running-config",
+            explanation: "'show running-config' shows the active, in-memory configuration."
+        },
+        {
+            text: "A switch responds with 'startup-config is not present' when entering 'show startup-config'. Why?",
+            options: ["NVRAM is empty (no saved config)", "Flash memory is corrupted", "Running config not saved yet", "Switch is in ROMmon mode"],
+            correct: "NVRAM is empty (no saved config)",
+            explanation: "If no configuration has been saved to NVRAM, the startup-config file does not exist."
+        }
+    ];
+
+    let userAnswers = new Array(QUESTIONS.length).fill(null);
+    let submitted = false;
+    let finalScore = 0;
+
+    const questionsDiv = document.getElementById('questionsContainer');
+    const totalQSpan = document.getElementById('totalQ');
+    const answeredSpan = document.getElementById('answeredCount');
+    const liveScoreSpan = document.getElementById('liveScore');
+    const scoreMsgDiv = document.getElementById('scoreMessage');
+    const answerKeyPanel = document.getElementById('answerKeyPanel');
+    let keyVisible = false;
+
+    // helper update stats
+    function updateStats() {
+        const answered = userAnswers.filter(a => a !== null).length;
+        answeredSpan.innerText = answered;
+        if (!submitted) {
+            let tentative = 0;
+            for (let i = 0; i < QUESTIONS.length; i++) {
+                if (userAnswers[i] !== null && userAnswers[i] === QUESTIONS[i].correct) tentative++;
+            }
+            liveScoreSpan.innerText = tentative;
+        } else {
+            liveScoreSpan.innerText = finalScore;
+        }
+    }
+
+    // render individual question feedback (inline)
+    function updateSingleFeedback(idx) {
+        const fbDiv = document.getElementById(`fb-${idx}`);
+        if (!fbDiv) return;
+        const selected = userAnswers[idx];
+        const correctAns = QUESTIONS[idx].correct;
+        if (!selected) {
+            fbDiv.innerHTML = '';
+            fbDiv.className = 'feedback-line';
+            return;
+        }
+        if (selected === correctAns) {
+            fbDiv.innerHTML = `<div class="correct-fb" style="padding:0.4rem 1rem;">✓ Correct! ${QUESTIONS[idx].explanation.substring(0,110)}</div>`;
+        } else {
+            fbDiv.innerHTML = `<div class="wrong-fb" style="padding:0.4rem 1rem;">✗ Incorrect. Correct: ${correctAns}. ${QUESTIONS[idx].explanation.substring(0,110)}</div>`;
+        }
+    }
+
+    function refreshAllFeedbacks() {
+        for (let i = 0; i < QUESTIONS.length; i++) updateSingleFeedback(i);
+    }
+
+    function renderQuestions() {
+        questionsDiv.innerHTML = '';
+        QUESTIONS.forEach((q, idx) => {
+            const card = document.createElement('div');
+            card.className = 'question-panel';
+            card.dataset.qid = idx;
+
+            const headerDiv = document.createElement('div');
+            headerDiv.className = 'q-header';
+            headerDiv.innerHTML = `
+                <span class="q-num">Q${idx+1}</span>
+                <span class="question-text">${q.text}</span>
+            `;
+
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'options-area';
+
+            q.options.forEach(opt => {
+                const optWrapper = document.createElement('div');
+                optWrapper.className = 'opt';
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = `q_${idx}`;
+                radio.value = opt;
+                radio.id = `q${idx}_${opt.replace(/\s/g, '_')}`;
+                if (userAnswers[idx] === opt) radio.checked = true;
+                radio.addEventListener('change', (e) => {
+                    if (e.target.checked) {
+                        userAnswers[idx] = opt;
+                        if (submitted) {
+                            // reset submitted flag if user changes after grading
+                            submitted = false;
+                            scoreMsgDiv.innerHTML = '';
+                            document.getElementById('submitBtn').innerText = '✅ Grade Exam & Show Score';
+                        }
+                        updateStats();
+                        updateSingleFeedback(idx);
+                    }
+                });
+                const label = document.createElement('label');
+                label.htmlFor = radio.id;
+                label.innerText = opt;
+                optWrapper.appendChild(radio);
+                optWrapper.appendChild(label);
+                optionsDiv.appendChild(optWrapper);
+            });
+            card.appendChild(headerDiv);
+            card.appendChild(optionsDiv);
+
+            const feedbackDiv = document.createElement('div');
+            feedbackDiv.id = `fb-${idx}`;
+            feedbackDiv.className = 'feedback-line';
+            card.appendChild(feedbackDiv);
+            questionsDiv.appendChild(card);
+            updateSingleFeedback(idx);
+        });
+        totalQSpan.innerText = QUESTIONS.length;
+        updateStats();
+    }
+
+    // compute total correct
+    function computeScore() {
+        let correctCount = 0;
+        for (let i = 0; i < QUESTIONS.length; i++) {
+            if (userAnswers[i] && userAnswers[i] === QUESTIONS[i].correct) correctCount++;
+        }
+        return correctCount;
+    }
+
+    function submitGrade() {
+        const total = QUESTIONS.length;
+        const correct = computeScore();
+        finalScore = correct;
+        const percent = Math.round((correct / total) * 100);
+        let feedbackMsg = '';
+        if (percent >= 85) feedbackMsg = '🌟 Excellent! You master Cisco IOS basics.';
+        else if (percent >= 65) feedbackMsg = '👍 Good, but review console security, enable secret and memory types.';
+        else feedbackMsg = '📘 Re-read Lab2: focus on EXEC modes, passwords, and configuration commands.';
+        scoreMsgDiv.innerHTML = `<div class="final-score-area">📊 Score: ${correct} / ${total} (${percent}%)<br>${feedbackMsg}</div>`;
+        liveScoreSpan.innerText = correct;
+        submitted = true;
+        document.getElementById('submitBtn').innerText = '📌 Score Updated';
+        refreshAllFeedbacks(); // ensure all feedbacks show correct/wrong detailed
+        updateStats();
+    }
+
+    function resetQuiz() {
+        userAnswers.fill(null);
+        submitted = false;
+        finalScore = 0;
+        // clear radio selections
+        for (let i = 0; i < QUESTIONS.length; i++) {
+            const radios = document.getElementsByName(`q_${i}`);
+            radios.forEach(r => r.checked = false);
+            const fbDiv = document.getElementById(`fb-${i}`);
+            if (fbDiv) fbDiv.innerHTML = '';
+        }
+        scoreMsgDiv.innerHTML = '';
+        document.getElementById('submitBtn').innerText = '✅ Grade Exam & Show Score';
+        updateStats();
+        refreshAllFeedbacks();
+    }
+
+    function buildKeyHtml() {
+        let html = `<div class="key-grid">`;
+        QUESTIONS.forEach((q, idx) => {
+            html += `
+                <div class="key-item">
+                    <strong>Q${idx+1}:</strong> ${q.correct}<br>
+                    <span style="font-size:0.7rem; color:#2d6a4f;">📖 ${q.explanation.substring(0,100)}${q.explanation.length>100?'…':''}</span>
+                </div>
+            `;
+        });
+        html += `</div><p style="margin-top:0.6rem; font-size:0.7rem;">💡 Based on Cisco IOS, Packet Tracer labs: console line, enable secret, service password-encryption, copy run start, etc.</p>`;
+        return html;
+    }
+
+    function toggleKey() {
+        keyVisible = !keyVisible;
+        const panel = document.getElementById('answerKeyPanel');
+        const toggleBtn = document.getElementById('toggleKeyBtn');
+        if (keyVisible) {
+            panel.style.display = 'block';
+            panel.innerHTML = buildKeyHtml();
+            toggleBtn.innerHTML = '📕 Hide Answer Key (Correct Answers) ▲';
+        } else {
+            panel.style.display = 'none';
+            toggleBtn.innerHTML = '📘 Show Answer Key (Correct Answers & CLI Facts) ▼';
+        }
+    }
+
+    // event binding
+    document.getElementById('resetBtn').addEventListener('click', resetQuiz);
+    document.getElementById('submitBtn').addEventListener('click', submitGrade);
+    document.getElementById('toggleKeyBtn').addEventListener('click', toggleKey);
+    // initial key hidden
+    document.getElementById('answerKeyPanel').style.display = 'none';
+
+    renderQuestions();
+</script>
+</body>
+</html>
