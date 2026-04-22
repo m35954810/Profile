@@ -2,1563 +2,1289 @@
 <html lang="ar" dir="rtl">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>محمد أيمن | مطور ويب — الفيوم · جامعة السويدي</title>
-    <meta name="description"
-        content="محمد أيمن، طالب سنة أولى في جامعة السويدي من محافظة الفيوم. مطور ويب شغوف يبني مستقبله الرقمي بخطوات واثقة." />
-    <meta name="keywords"
-        content="محمد أيمن, Mohamed Ayman, محمد ايمن, جامعة السويدي, الفيوم, مطور ويب, MohmedAyman.dev, Fayoum developer, Swedish University Egypt" />
-    <meta name="author" content="محمد أيمن — Mohamed Ayman" />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
-    <meta name="google-adsense-account" content="ca-pub-7076759703723068">
-    <link rel="canonical" href="https://mohmedayman.dev/" />
-    <link rel="icon" type="image/webp"
-        href="https://maxst.icons8.com/vue-static/icon/landing/benefits/benefit4-2x.webp" />
-    <meta property="og:type" content="profile" />
-    <meta property="og:title" content="محمد أيمن | مطور ويب — جامعة السويدي" />
-    <meta property="og:description" content="طالب سنة أولى في جامعة السويدي من الفيوم. شغوف بالبرمجة وتطوير الويب." />
-    <meta property="og:url" content="https://mohmedayman.dev/" />
-    <meta property="og:locale" content="ar_EG" />
-    <meta property="profile:first_name" content="محمد" />
-    <meta property="profile:last_name" content="أيمن" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="محمد أيمن | مطور ويب — الفيوم" />
-    <meta name="twitter:description" content="طالب سنة أولى في جامعة السويدي. مطور ويب شغوف من الفيوم." />
-    <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"Mohamed Ayman","alternateName":["محمد أيمن","محمد ايمن","MohmedAyman"],"description":"طالب سنة أولى في جامعة السويدي من محافظة الفيوم، مطور ويب طموح.","url":"https://mohmedayman.dev","sameAs":["https://www.facebook.com/MohmedAyman.dev"],"address":{"@type":"PostalAddress","addressLocality":"الفيوم","addressCountry":"EG"},"alumniOf":{"@type":"CollegeOrUniversity","name":"جامعة السويدي","alternateName":"Swedish University"},"jobTitle":"طالب مطور ويب","knowsAbout":["Web Development","Programming","Computer Science","HTML","CSS","JavaScript"]}
-</script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Cairo:wght@300;400;600;700;900&family=Bebas+Neue&display=swap"
-        rel="stylesheet" />
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-MSSV8H65');</script>
-<!-- End Google Tag Manager -->
-    <style>
-        :root {
-            --bg: #04080f;
-            --bg2: #070d1a;
-            --cyan: #00e5ff;
-            --cyan2: #00b8d4;
-            --cyan-dim: rgba(0, 229, 255, .08);
-            --cyan-glow: rgba(0, 229, 255, .25);
-            --white: #f0f4ff;
-            --muted: #5a6a80;
-            --muted2: #8899aa;
-            --card: #0a1220;
-            --border: rgba(0, 229, 255, .12);
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0
-        }
-
-        html {
-            scroll-behavior: smooth
-        }
-
-        body {
-            background: var(--bg);
-            color: var(--white);
-            font-family: 'Cairo', sans-serif;
-            overflow-x: hidden;
-            cursor: none;
-        }
-
-        /* CURSOR */
-        #cursor {
-            position: fixed;
-            width: 12px;
-            height: 12px;
-            background: var(--cyan);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            transition: width .25s, height .25s;
-            mix-blend-mode: screen;
-        }
-
-        #cursor-ring {
-            position: fixed;
-            width: 40px;
-            height: 40px;
-            border: 1.5px solid rgba(0, 229, 255, .5);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9998;
-            transform: translate(-50%, -50%);
-            transition: width .3s, height .3s;
-        }
-
-        /* PROGRESS */
-        #progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--cyan), #7b61ff);
-            z-index: 1000;
-            width: 0%;
-        }
-
-        /* NOISE */
-        body::after {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: 998;
-            opacity: .5;
-        }
-
-        /* NAV */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 500;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: .9rem 3rem;
-            background: rgba(4, 8, 15, .8);
-            backdrop-filter: blur(24px);
-            border-bottom: 1px solid rgba(0, 229, 255, .06);
-            transition: padding .3s, background .3s;
-        }
-
-        nav.scrolled {
-            padding: .6rem 3rem;
-            background: rgba(4, 8, 15, .97);
-        }
-
-        .nav-logo {
-            font-family: 'Bebas Neue', cursive;
-            font-size: 1.5rem;
-            letter-spacing: .12em;
-            color: var(--cyan);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--muted2);
-            text-decoration: none;
-            font-size: .85rem;
-            font-weight: 600;
-            letter-spacing: .06em;
-            transition: color .2s;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            right: 0;
-            width: 0;
-            height: 1px;
-            background: var(--cyan);
-            transition: width .3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--cyan);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* HERO */
-        .hero {
-            min-height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            padding: 2rem;
-        }
-
-        #heroCanvas {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .hero-scan {
-            position: absolute;
-            left: 0;
-            right: 0;
-            height: 40px;
-            background: linear-gradient(to bottom, rgba(0, 229, 255, .04), transparent);
-            animation: scan 8s linear infinite;
-            pointer-events: none;
-            z-index: 3;
-        }
-
-        @keyframes scan {
-            from {
-                top: -40px
-            }
-
-            to {
-                top: 100vh
-            }
-        }
-
-        .hero-inner {
-            position: relative;
-            z-index: 2;
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-            padding-top: 6rem;
-        }
-
-        .hero-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: .6rem;
-            font-size: .75rem;
-            font-weight: 700;
-            letter-spacing: .18em;
-            color: var(--cyan);
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeUp .7s .3s ease forwards;
-        }
-
-        .hero-eyebrow span {
-            display: inline-block;
-            width: 28px;
-            height: 1px;
-            background: var(--cyan);
-        }
-
-        .hero-name {
-            font-family: 'Bebas Neue', cursive;
-            font-size: clamp(4.5rem, 13vw, 12rem);
-            line-height: .9;
-            letter-spacing: -.01em;
-            opacity: 0;
-            animation: fadeUp .8s .5s ease forwards;
-        }
-
-        .hero-name .ar {
-            display: block;
-            background: linear-gradient(110deg, #fff 0%, var(--cyan) 45%, #fff 100%);
-            background-size: 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: shimmer 4s 1.5s infinite;
-        }
-
-        .hero-name .en {
-            display: block;
-            font-size: .38em;
-            letter-spacing: .1em;
-            color: transparent;
-            -webkit-text-stroke: 1px rgba(255, 255, 255, .18);
-            margin-top: .15em;
-        }
-
-        @keyframes shimmer {
-            0% {
-                background-position: 100%
-            }
-
-            100% {
-                background-position: -100%
-            }
-        }
-
-        .hero-tagline {
-            font-size: clamp(.95rem, 2.5vw, 1.2rem);
-            color: var(--muted2);
-            font-weight: 300;
-            margin-top: 1.5rem;
-            line-height: 1.8;
-            max-width: 520px;
-            opacity: 0;
-            animation: fadeUp .8s .7s ease forwards;
-        }
-
-        .hero-tagline strong {
-            color: var(--white);
-            font-weight: 700;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-top: 2.5rem;
-            opacity: 0;
-            animation: fadeUp .8s .9s ease forwards;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: .5rem;
-            padding: .85rem 2rem;
-            border-radius: 4px;
-            font-family: 'Cairo', sans-serif;
-            font-size: .95rem;
-            font-weight: 700;
-            text-decoration: none;
-            cursor: none;
-            transition: transform .25s, box-shadow .25s;
-            border: none;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(255, 255, 255, .1);
-            transform: translateX(110%);
-            transition: transform .4s ease;
-        }
-
-        .btn:hover::before {
-            transform: translateX(-110%);
-        }
-
-        .btn-cyan {
-            background: var(--cyan);
-            color: #04080f;
-        }
-
-        .btn-cyan:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 16px 40px var(--cyan-glow);
-        }
-
-        .btn-ghost {
-            background: transparent;
-            color: var(--cyan);
-            border: 1.5px solid rgba(0, 229, 255, .35);
-        }
-
-        .btn-ghost:hover {
-            transform: translateY(-3px);
-            border-color: var(--cyan);
-            box-shadow: 0 8px 30px rgba(0, 229, 255, .15);
-        }
-
-        .hero-stat-strip {
-            display: flex;
-            gap: 3rem;
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-            opacity: 0;
-            animation: fadeUp .8s 1.1s ease forwards;
-            flex-wrap: wrap;
-        }
-
-        .hstat-num {
-            font-family: 'Syne', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--cyan);
-            line-height: 1;
-        }
-
-        .hstat-label {
-            font-size: .75rem;
-            color: var(--muted);
-            margin-top: .2rem;
-        }
-
-        .hstat-div {
-            width: 1px;
-            background: var(--border);
-            align-self: stretch;
-        }
-
-        .scroll-hint {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: .4rem;
-            color: var(--muted);
-            font-size: .68rem;
-            letter-spacing: .1em;
-            text-transform: uppercase;
-            opacity: 0;
-            animation: fadeUp .8s 1.4s ease forwards;
-        }
-
-        .scroll-mouse {
-            width: 22px;
-            height: 36px;
-            border: 1.5px solid rgba(0, 229, 255, .3);
-            border-radius: 20px;
-            display: flex;
-            justify-content: center;
-            padding-top: 6px;
-        }
-
-        .scroll-wheel {
-            width: 3px;
-            height: 6px;
-            background: var(--cyan);
-            border-radius: 4px;
-            animation: wheel 2s infinite;
-        }
-
-        @keyframes wheel {
-            0% {
-                transform: translateY(0);
-                opacity: 1
-            }
-
-            100% {
-                transform: translateY(12px);
-                opacity: 0
-            }
-        }
-
-        /* SECTIONS */
-        section {
-            padding: 8rem 2rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .sec-label {
-            display: inline-flex;
-            align-items: center;
-            gap: .75rem;
-            font-size: .7rem;
-            font-weight: 700;
-            letter-spacing: .2em;
-            text-transform: uppercase;
-            color: var(--cyan);
-            margin-bottom: .75rem;
-        }
-
-        .sec-label i {
-            display: block;
-            width: 28px;
-            height: 1px;
-            background: var(--cyan);
-        }
-
-        .sec-title {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 800;
-            line-height: 1.1;
-        }
-
-        .sec-title span {
-            color: transparent;
-            -webkit-text-stroke: 1px rgba(0, 229, 255, .4);
-        }
-
-        /* ABOUT */
-        #about {
-            background: var(--bg2);
-        }
-
-        .about-layout {
-            display: grid;
-            grid-template-columns: 1fr 1.1fr;
-            gap: 5rem;
-            align-items: center;
-            margin-top: 4rem;
-        }
-
-        .about-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-card-glow {
-            position: absolute;
-            top: -60px;
-            right: -60px;
-            width: 180px;
-            height: 180px;
-            background: radial-gradient(circle, var(--cyan-glow), transparent 70%);
-            pointer-events: none;
-        }
-
-        .about-card-bg {
-            position: absolute;
-            bottom: -10px;
-            left: 10px;
-            font-family: 'Bebas Neue', cursive;
-            font-size: 6rem;
-            color: rgba(0, 229, 255, .03);
-            line-height: 1;
-            pointer-events: none;
-            letter-spacing: .05em;
-        }
-
-        .about-card-name {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--cyan);
-        }
-
-        .about-card-sub {
-            color: var(--muted2);
-            font-size: .88rem;
-            margin-top: .3rem;
-        }
-
-        .card-divider {
-            height: 1px;
-            background: var(--border);
-            margin: 1.5rem 0;
-        }
-
-        .info-row {
-            display: flex;
-            align-items: center;
-            gap: .75rem;
-            padding: .6rem 0;
-            border-bottom: 1px solid rgba(0, 229, 255, .05);
-            font-size: .9rem;
-        }
-
-        .info-row:last-child {
-            border-bottom: none;
-        }
-
-        .info-icon {
-            font-size: 1rem;
-            width: 28px;
-            text-align: center;
-            flex-shrink: 0;
-        }
-
-        .info-key {
-            color: var(--muted);
-            font-size: .78rem;
-            min-width: 82px;
-        }
-
-        .info-val {
-            color: var(--white);
-            font-weight: 600;
-        }
-
-        .about-text p {
-            color: var(--muted2);
-            line-height: 2;
-            font-size: 1rem;
-            margin-bottom: 1.2rem;
-        }
-
-        .about-text p strong {
-            color: var(--white);
-        }
-
-        .mini-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .mini-stat {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 1.2rem;
-            text-align: center;
-            transition: border-color .3s, transform .3s;
-        }
-
-        .mini-stat:hover {
-            border-color: var(--cyan);
-            transform: translateY(-4px);
-        }
-
-        .mini-n {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--cyan);
-        }
-
-        .mini-l {
-            color: var(--muted);
-            font-size: .72rem;
-            margin-top: .2rem;
-        }
-
-        /* SKILLS */
-        .skills-layout {
-            margin-top: 4rem;
-        }
-
-        .skill-cat-title {
-            font-size: .75rem;
-            font-weight: 700;
-            letter-spacing: .15em;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin-bottom: 1.2rem;
-        }
-
-        .skill-category {
-            margin-bottom: 2.5rem;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: .75rem;
-        }
-
-        .skill-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: .5rem;
-            background: var(--card);
-            border: 1px solid var(--border);
-            color: var(--white);
-            border-radius: 6px;
-            padding: .55rem 1.1rem;
-            font-size: .88rem;
-            font-weight: 600;
-            transition: all .25s;
-            cursor: none;
-        }
-
-        .skill-tag:hover {
-            background: var(--cyan-dim);
-            border-color: var(--cyan);
-            color: var(--cyan);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 229, 255, .12);
-        }
-
-        /* JOURNEY */
-        #journey {
-            background: var(--bg2);
-        }
-
-        .journey-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-
-        .journey-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-            transition: transform .3s, border-color .3s, box-shadow .3s;
-            cursor: none;
-        }
-
-        .jcard-year-bg {
-            position: absolute;
-            top: .5rem;
-            left: 1rem;
-            font-family: 'Bebas Neue', cursive;
-            font-size: 4rem;
-            color: rgba(0, 229, 255, .06);
-            line-height: 1;
-            pointer-events: none;
-        }
-
-        .journey-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, var(--cyan-dim), transparent);
-            opacity: 0;
-            transition: opacity .3s;
-        }
-
-        .journey-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(0, 229, 255, .3);
-            box-shadow: 0 20px 60px rgba(0, 229, 255, .1);
-        }
-
-        .journey-card:hover::after {
-            opacity: 1;
-        }
-
-        .jcard-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .jcard-title {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 800;
-            position: relative;
-            z-index: 1;
-            margin-bottom: .6rem;
-        }
-
-        .jcard-desc {
-            color: var(--muted2);
-            font-size: .87rem;
-            line-height: 1.8;
-            position: relative;
-            z-index: 1;
-        }
-
-        .jcard-tag {
-            display: inline-block;
-            margin-top: .9rem;
-            background: var(--cyan-dim);
-            border: 1px solid rgba(0, 229, 255, .2);
-            color: var(--cyan);
-            font-size: .7rem;
-            font-weight: 700;
-            letter-spacing: .08em;
-            padding: .3rem .75rem;
-            border-radius: 4px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* CONTACT */
-        .contact-hero {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .contact-big {
-            font-family: 'Bebas Neue', cursive;
-            font-size: clamp(3rem, 10vw, 8rem);
-            letter-spacing: .05em;
-            color: transparent;
-            -webkit-text-stroke: 1px rgba(0, 229, 255, .2);
-            line-height: 1;
-        }
-
-        .contact-big span {
-            color: var(--cyan);
-            -webkit-text-stroke: 0;
-        }
-
-        .contact-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .contact-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem 1.5rem;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            gap: .6rem;
-            transition: all .3s;
-            position: relative;
-            overflow: hidden;
-            cursor: none;
-        }
-
-        .contact-card::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-            transform: scaleX(0);
-            transition: transform .4s;
-        }
-
-        .contact-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(0, 229, 255, .3);
-            box-shadow: 0 20px 50px rgba(0, 229, 255, .1);
-        }
-
-        .contact-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .cc-icon {
-            font-size: 2rem;
-        }
-
-        .cc-net {
-            font-size: .7rem;
-            font-weight: 700;
-            letter-spacing: .15em;
-            text-transform: uppercase;
-            color: var(--cyan);
-        }
-
-        .cc-handle {
-            font-size: 1rem;
-            font-weight: 800;
-        }
-
-        .cc-desc {
-            font-size: .82rem;
-            color: var(--muted);
-            line-height: 1.6;
-        }
-
-        .cc-arrow {
-            margin-top: auto;
-            color: var(--cyan);
-            font-size: 1.2rem;
-            transition: transform .3s;
-        }
-
-        .contact-card:hover .cc-arrow {
-            transform: translateX(-6px);
-        }
-
-        .line-deco {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            color: var(--muted);
-            font-size: .75rem;
-            letter-spacing: .1em;
-            text-transform: uppercase;
-            margin-top: 2.5rem;
-        }
-
-        .line-deco::before,
-        .line-deco::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border);
-        }
-
-        /* FOOTER */
-        footer {
-            background: #020508;
-            border-top: 1px solid var(--border);
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-
-        .footer-logo {
-            font-family: 'Bebas Neue', cursive;
-            font-size: 2.5rem;
-            letter-spacing: .12em;
-            color: var(--cyan);
-            display: block;
-            margin-bottom: .75rem;
-        }
-
-        .footer-tagline {
-            color: var(--muted);
-            font-size: .82rem;
-            line-height: 1.8;
-        }
-
-        /* ORBS */
-        .orb {
-            position: fixed;
-            border-radius: 50%;
-            pointer-events: none;
-            filter: blur(100px);
-            animation: orbFloat 12s infinite alternate ease-in-out;
-        }
-
-        .orb1 {
-            width: 500px;
-            height: 500px;
-            background: rgba(0, 229, 255, .04);
-            top: -150px;
-            right: -150px;
-        }
-
-        .orb2 {
-            width: 400px;
-            height: 400px;
-            background: rgba(123, 97, 255, .04);
-            bottom: -100px;
-            left: -100px;
-            animation-delay: -6s;
-        }
-
-        @keyframes orbFloat {
-            from {
-                transform: translate(0, 0)
-            }
-
-            to {
-                transform: translate(30px, 40px)
-            }
-        }
-
-        /* REVEAL */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity .7s ease, transform .7s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px)
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0)
-            }
-        }
-
-        /* GLITCH */
-        .glitch {
-            position: relative;
-        }
-
-        .glitch::before {
-            content: attr(data-text);
-            position: absolute;
-            inset: 0;
-            color: var(--cyan);
-            clip-path: polygon(0 20%, 100% 20%, 100% 35%, 0 35%);
-            transform: translate(-3px, 0);
-            animation: glitch1 5s 2s infinite;
-            opacity: 0;
-            -webkit-background-clip: unset;
-            background-clip: unset;
-            -webkit-text-fill-color: var(--cyan);
-        }
-
-        .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            inset: 0;
-            color: #ff2d55;
-            clip-path: polygon(0 60%, 100% 60%, 100% 75%, 0 75%);
-            transform: translate(3px, 0);
-            animation: glitch2 5s 2.1s infinite;
-            opacity: 0;
-            -webkit-text-fill-color: #ff2d55;
-        }
-
-        @keyframes glitch1 {
-
-            0%,
-            90%,
-            100% {
-                opacity: 0
-            }
-
-            92% {
-                opacity: .7;
-                transform: translate(-4px, 0)
-            }
-
-            94% {
-                opacity: 0
-            }
-
-            96% {
-                opacity: .4;
-                transform: translate(-2px, 1px)
-            }
-
-            98% {
-                opacity: 0
-            }
-        }
-
-        @keyframes glitch2 {
-
-            0%,
-            90%,
-            100% {
-                opacity: 0
-            }
-
-            92% {
-                opacity: .5;
-                transform: translate(4px, 0)
-            }
-
-            94% {
-                opacity: 0
-            }
-
-            96% {
-                opacity: .3;
-                transform: translate(2px, -1px)
-            }
-
-            98% {
-                opacity: 0
-            }
-        }
-
-        /* TYPED */
-        .typed-cursor {
-            display: inline-block;
-            width: 2px;
-            height: 1em;
-            background: var(--cyan);
-            margin-right: 2px;
-            animation: blink .7s infinite;
-            vertical-align: text-bottom;
-        }
-
-        @keyframes blink {
-
-            0%,
-            100% {
-                opacity: 1
-            }
-
-            50% {
-                opacity: 0
-            }
-        }
-
-        /* RESPONSIVE */
-        @media(max-width:900px) {
-            nav {
-                padding: .8rem 1.5rem;
-            }
-
-            .about-layout {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-
-            .journey-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-stat-strip {
-                gap: 1.5rem;
-            }
-        }
-
-        @media(max-width:600px) {
-            .nav-links {
-                display: none;
-            }
-
-            section {
-                padding: 5rem 1.2rem;
-            }
-
-            .hero-inner {
-                padding-top: 5rem;
-            }
-
-            .mini-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ====================================================
+       🔥 SEO MAXIMUM — محمد أيمن
+       الهدف: رقم 1 في جوجل لكلمة "محمد أيمن"
+  ===================================================== -->
+
+  <!-- ✅ 1. Title Tag — أهم عنصر في الـ SEO -->
+  <title>محمد أيمن — مطوّر تطبيقات وويب | Mohamed Ayman</title>
+
+  <!-- ✅ 2. Meta Description — بتظهر تحت العنوان في جوجل -->
+  <meta name="description"
+    content="محمد أيمن — شاب طموح من الفيوم، عمره 19 سنة، بيتعلم تطوير التطبيقات والويب والتصميم. موقع محمد أيمن الرسمي mohamedayman.online" />
+
+  <!-- ✅ 3. Keywords -->
+  <meta name="keywords"
+    content="محمد أيمن, Mohamed Ayman, محمد ايمن, مطور تطبيقات, مطور ويب, الفيوم, مصر, mohamedayman, mohamedayman.online" />
+
+  <!-- ✅ 4. Author & Identity -->
+  <meta name="author" content="محمد أيمن" />
+  <meta name="copyright" content="محمد أيمن" />
+  <meta name="owner" content="محمد أيمن — Mohamed Ayman" />
+  <meta name="reply-to" content="mohamedayman.online" />
+
+  <!-- ✅ 5. Robots — اسمح لجوجل يفهرس كل حاجة -->
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow" />
+
+  <!-- ✅ 6. Canonical — يمنع تكرار المحتوى -->
+  <link rel="canonical" href="https://mohamedayman.online/" />
+
+  <!-- ✅ 7. Language & Geo Targeting -->
+  <meta name="language" content="Arabic" />
+  <meta name="geo.region" content="EG-FYM" />
+  <meta name="geo.placename" content="Faiyum, Egypt" />
+  <link rel="alternate" hreflang="ar" href="https://mohamedayman.online/" />
+  <link rel="icon" type="image/webp"
+    href="https://maxst.icons8.com/vue-static/icon/landing/benefits/benefit4-2x.webp" />
+
+  <!-- ✅ 8. Open Graph — Facebook / LinkedIn / WhatsApp -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="محمد أيمن | مطوّر تطبيقات وويب — موقعه الرسمي" />
+  <meta property="og:description"
+    content="محمد أيمن، شاب من الفيوم بيبني مستقبله في عالم التطوير والتصميم. اعرف أكتر عن محمد أيمن من موقعه الرسمي." />
+  <meta property="og:url" content="https://mohamedayman.online/" />
+  <meta property="og:image" content="https://mohamedayman.online/og-image.jpg" />
+  <meta property="og:image:alt" content="محمد أيمن — مطوّر تطبيقات وويب" />
+  <meta property="og:locale" content="ar_EG" />
+  <meta property="og:site_name" content="محمد أيمن" />
+  <meta property="profile:first_name" content="محمد" />
+  <meta property="profile:last_name" content="أيمن" />
+  <meta property="profile:username" content="mohmedayman" />
+
+  <!-- ✅ 9. Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="محمد أيمن | مطوّر تطبيقات وويب" />
+  <meta name="twitter:description" content="محمد أيمن من الفيوم — بيتعلم تطوير التطبيقات والويب والتصميم." />
+  <meta name="twitter:image" content="https://mohamedayman.online/og-image.jpg" />
+  <meta name="twitter:image:alt" content="محمد أيمن" />
+
+  <!-- ✅ 10. Schema.org Person — بيقول لجوجل مين أنت بالضبط -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "محمد أيمن",
+    "alternateName": ["Mohamed Ayman", "محمد ايمن", "Mohmed Ayman"],
+    "url": "https://mohamedayman.online",
+    "image": "https://mohamedayman.online/og-image.jpg",
+    "description": "محمد أيمن شاب طموح من الفيوم، مصر، عمره 19 سنة، بيتعلم تطوير التطبيقات والويب والتصميم.",
+    "jobTitle": "مطوّر تطبيقات وويب",
+    "nationality": "Egyptian",
+    "birthPlace": {
+      "@type": "Place",
+      "name": "الفيوم، مصر",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "الفيوم",
+        "addressRegion": "الفيوم",
+        "addressCountry": "EG"
+      }
+    },
+    "knowsAbout": ["تطوير الويب", "تطوير التطبيقات", "التصميم", "الميديا"],
+    "sameAs": [
+      "https://mohamedayman.online",
+      "https://www.facebook.com/MohmedAyman.dev",
+      "https://www.linkedin.com/in/mohmed-ayman/",
+      "https://www.instagram.com/mohmedaymandev/",
+      "https://wa.me/201028707543"
+    ]
+  }
+  </script>
+
+  <!-- ✅ 11. WebSite Schema — بيخلي جوجل يعرف موقعك ويضيفه كـ Sitelink -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "محمد أيمن",
+    "alternateName": "Mohamed Ayman",
+    "url": "https://mohamedayman.online",
+    "description": "الموقع الرسمي لمحمد أيمن — مطوّر تطبيقات وويب من الفيوم، مصر.",
+    "inLanguage": "ar",
+    "author": {
+      "@type": "Person",
+      "name": "محمد أيمن"
+    }
+  }
+  </script>
+
+  <!-- ✅ 12. BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "محمد أيمن", "item": "https://mohamedayman.online/" },
+      { "@type": "ListItem", "position": 2, "name": "من أنا", "item": "https://mohamedayman.online/#about" },
+      { "@type": "ListItem", "position": 3, "name": "تواصل مع محمد أيمن", "item": "https://mohamedayman.online/#contact" }
+    ]
+  }
+  </script>
+
+  <!-- ✅ 13. Google Search Console Verification (حط الكود بتاعك هنا) -->
+  <!-- <meta name="google-site-verification" content="YOUR_CODE_HERE" /> -->
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Cairo:wght@300;400;600;700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #09090f;
+      --surface: #111118;
+      --surface2: #1a1a26;
+      --accent: #6c63ff;
+      --accent2: #ff6584;
+      --gold: #f4c842;
+      --text: #e8e8f0;
+      --muted: #7878a0;
+      --border: rgba(108, 99, 255, 0.2);
+      --nav-h: 70px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border-radius: 3px;
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 1000;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      background: rgba(9, 9, 15, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+
+    nav.scrolled {
+      background: rgba(9, 9, 15, 0.97);
+      box-shadow: 0 4px 30px rgba(108, 99, 255, 0.15);
+    }
+
+    .nav-logo {
+      font-family: 'Cairo', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      right: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #fff !important;
+      padding: 8px 20px;
+      border-radius: 8px;
+      transition: background 0.3s, transform 0.2s !important;
+    }
+
+    .nav-cta::after {
+      display: none !important;
+    }
+
+    .nav-cta:hover {
+      background: #5550dd !important;
+      transform: translateY(-1px);
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      right: 0;
+      left: 0;
+      background: rgba(9, 9, 15, 0.98);
+      backdrop-filter: blur(20px);
+      padding: 2rem 5%;
+      z-index: 999;
+      flex-direction: column;
+      gap: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      transform: translateY(-10px);
+      opacity: 0;
+      transition: all 0.3s;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .mobile-menu a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.3s;
+    }
+
+    .mobile-menu a:hover {
+      color: var(--accent);
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: var(--nav-h) 5% 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 40%, rgba(108, 99, 255, 0.15) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 70%, rgba(255, 101, 132, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(108, 99, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(108, 99, 255, 0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 80%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 700px;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(108, 99, 255, 0.12);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.9s 0.1s ease both;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    h1 {
+      font-family: 'Cairo', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      letter-spacing: -1px;
+      animation: fadeUp 0.9s 0.2s ease both;
+    }
+
+    h1 .highlight {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 550px;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.9s 0.3s ease both;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.9s 0.4s ease both;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #9c94ff);
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(108, 99, 255, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(108, 99, 255, 0.5);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 14px 32px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      background: rgba(108, 99, 255, 0.08);
+    }
+
+    /* Stats */
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 4rem;
+      animation: fadeUp 0.9s 0.5s ease both;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Cairo', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* ─── SECTIONS COMMON ─── */
+    section {
+      padding: 100px 5%;
+    }
+
+    .section-tag {
+      display: inline-block;
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Cairo', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 550px;
+      margin-bottom: 3rem;
+    }
+
+    /* ─── ABOUT ─── */
+    #about {
+      background: var(--surface);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+    }
+
+    .about-img-wrap {
+      width: 100%;
+      aspect-ratio: 4/5;
+      border-radius: 24px;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--surface2), var(--accent) 200%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      border: 1px solid var(--border);
+    }
+
+    .about-img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      pointer-events: none;
+    }
+
+    .about-card {
+      position: absolute;
+      bottom: -20px;
+      left: -20px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      backdrop-filter: blur(10px);
+    }
+
+    .about-card-icon {
+      font-size: 1.8rem;
+    }
+
+    .about-card-text strong {
+      display: block;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .about-card-text span {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 1.5rem;
+    }
+
+    .skill-tag {
+      background: rgba(108, 99, 255, 0.1);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    /* ─── SERVICES ─── */
+    #services {
+      background: var(--bg);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      cursor: default;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 40px rgba(108, 99, 255, 0.15);
+    }
+
+    .service-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+
+    .service-card h3 {
+      font-family: 'Cairo', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+      color: var(--text);
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    /* ─── PORTFOLIO ─── */
+    #portfolio {
+      background: var(--surface);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(108, 99, 255, 0.18);
+    }
+
+    .project-thumb {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+
+    .project-thumb.t1 {
+      background: linear-gradient(135deg, #1a1a4e, #6c63ff44);
+    }
+
+    .project-thumb.t2 {
+      background: linear-gradient(135deg, #1a0a15, #ff658444);
+    }
+
+    .project-thumb.t3 {
+      background: linear-gradient(135deg, #0a1a15, #42f48444);
+    }
+
+    .project-info {
+      padding: 1.5rem;
+    }
+
+    .project-tag {
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-info h3 {
+      font-family: 'Cairo', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-info p {
+      color: var(--muted);
+      font-size: 0.875rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .project-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+
+    .project-link:hover {
+      gap: 10px;
+    }
+
+    /* ─── CONTACT ─── */
+    #contact {
+      background: var(--bg);
+    }
+
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info h2 {
+      font-family: 'Cairo', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(108, 99, 255, 0.12);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .contact-text span {
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: block;
+    }
+
+    .contact-text strong {
+      font-size: 0.9rem;
+    }
+
+    .contact-form {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 16px;
+      color: var(--text);
+      font-family: 'Tajawal', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.3s;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+    }
+
+    .form-submit {
+      width: 100%;
+      background: linear-gradient(135deg, var(--accent), #9c94ff);
+      color: #fff;
+      border: none;
+      padding: 14px;
+      border-radius: 12px;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(108, 99, 255, 0.35);
+    }
+
+    .form-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(108, 99, 255, 0.5);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 2rem 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    footer p {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-link {
+      width: 36px;
+      height: 36px;
+      background: rgba(108, 99, 255, 0.1);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .social-link:hover {
+      background: rgba(108, 99, 255, 0.25);
+      border-color: var(--accent);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.4;
+      }
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-image {
+        max-width: 360px;
+        margin: 0 auto;
+      }
+
+      .contact-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero-stats {
+        gap: 1.5rem;
+      }
+
+      .stat-num {
+        font-size: 1.8rem;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <div id="cursor"></div>
-    <div id="cursor-ring"></div>
-    <div id="progress"></div>
-    <div class="orb orb1"></div>
-    <div class="orb orb2"></div>
 
-    <!-- NAV -->
-    <nav id="navbar" aria-label="التنقل الرئيسي">
-        <a class="nav-logo" href="#home">M·A</a>
-        <ul class="nav-links">
-            <li><a href="#about">عني</a></li>
-            <li><a href="#skills">مهاراتي</a></li>
-            <li><a href="#journey">رحلتي</a></li>
-            <li><a href="#contact">تواصل</a></li>
-        </ul>
-    </nav>
+  <!-- ─── NAVBAR ─── -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">محمد أيمن<span>.</span></a>
 
-    <!-- HERO -->
-    <section class="hero" id="home">
-        <canvas id="heroCanvas"></canvas>
-        <div class="hero-scan"></div>
-        <div class="hero-inner">
-            <div class="hero-eyebrow">
-                <span></span>مرحباً بك في عالمي الرقمي<span></span>
-            </div>
-            <h1 class="hero-name">
-                <span class="ar glitch" data-text="محمد أيمن">محمد أيمن</span>
-                <span class="en">Mohamed Ayman</span>
-            </h1>
-            <p class="hero-tagline">
-                <span id="typed-text"></span><span class="typed-cursor"></span>
-            </p>
-            <div class="hero-actions">
-                <a href="https://www.facebook.com/MohmedAyman.dev" target="_blank" rel="noopener"
-                    class="btn btn-cyan">تواصل معي ✦</a>
-                <a href="#about" class="btn btn-ghost">اعرف أكتر ↓</a>
-            </div>
-            <div class="hero-stat-strip">
-                <div>
-                    <div class="hstat-num">2025</div>
-                    <div class="hstat-label">سنة الالتحاق</div>
-                </div>
-                <div class="hstat-div"></div>
-                <div>
-                    <div class="hstat-num">الفيوم</div>
-                    <div class="hstat-label">المحافظة</div>
-                </div>
-                <div class="hstat-div"></div>
-                <div>
-                    <div class="hstat-num">01</div>
-                    <div class="hstat-label">السنة الدراسية</div>
-                </div>
-                <div class="hstat-div"></div>
-                <div>
-                    <div class="hstat-num">∞</div>
-                    <div class="hstat-label">طموح</div>
-                </div>
-            </div>
+    <ul class="nav-links">
+      <li><a href="#about">من أنا</a></li>
+      <li><a href="#services">خدماتي</a></li>
+      <li><a href="#portfolio">أعمالي</a></li>
+      <li><a href="#contact" class="nav-cta">تواصل معي</a></li>
+    </ul>
+
+    <div class="hamburger" id="hamburger" aria-label="القائمة">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="closeMobile()">من أنا</a>
+    <a href="#services" onclick="closeMobile()">خدماتي</a>
+    <a href="#portfolio" onclick="closeMobile()">أعمالي</a>
+    <a href="#contact" onclick="closeMobile()">تواصل معي</a>
+  </div>
+
+  <!-- ─── HERO ─── -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">مرحباً 👋 أنا محمد أيمن — عندي 19 سنة وبابني مستقبلي</div>
+
+      <!-- ✅ H1 يحتوي على الاسم الكامل — أهم عنصر SEO في الصفحة -->
+      <h1>
+        أنا <span class="highlight">محمد أيمن</span><br />
+        بحلم أكون مطوّر تطبيقات
+      </h1>
+
+      <!-- ✅ اسم محمد أيمن مذكور في الـ paragraph للـ keyword density -->
+      <p class="hero-desc">
+        محمد أيمن — شاب من الفيوم، عمره 19 سنة، بيتعلم ويبني نفسه في مجال تطوير الويب والتطبيقات والتصميم. كل يوم خطوة
+        أقرب للحلم.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#about" class="btn-primary">تعرّف عليّ</a>
+        <a href="#contact" class="btn-outline">تواصل معي</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">19</div>
+          <div class="stat-label">سنة عمره</div>
         </div>
-        <div class="scroll-hint" aria-hidden="true">
-            <div class="scroll-mouse">
-                <div class="scroll-wheel"></div>
-            </div>
-            <span>scroll</span>
+        <div class="stat-item">
+          <div class="stat-num">3</div>
+          <div class="stat-label">مجالات يتعلمها</div>
         </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" aria-labelledby="about-h">
-        <div class="container">
-            <div class="about-layout">
-                <div>
-                    <div class="sec-label reveal"><i></i>من أنا</div>
-                    <h2 class="sec-title reveal" id="about-h">طالب شغوف<br /><span>بالكود</span></h2>
-                    <div style="margin-top:2rem">
-                        <p class="reveal"
-                            style="color:var(--muted2);line-height:2;font-size:1rem;margin-bottom:1.2rem;">
-                            أنا <strong style="color:var(--white)">محمد أيمن</strong>، شاب طموح نشأ في <strong
-                                style="color:var(--white)">محافظة الفيوم</strong> وبدأ رحلته الأكاديمية في <strong
-                                style="color:var(--white)">جامعة السويدي</strong>. منذ اللحظة الأولى وأنا أفهم إن الكود
-                            هو اللغة اللي بتغيّر العالم.
-                        </p>
-                        <p class="reveal"
-                            style="color:var(--muted2);line-height:2;font-size:1rem;margin-bottom:1.2rem;">
-                            شغفي بالبرمجة مش بس هواية، ده <strong style="color:var(--white)">هدف حياة</strong>. بسعى كل
-                            يوم أتعلم تقنية جديدة، أبني مشروع جديد، وأقترب خطوة من حلمي إني أبقى <strong
-                                style="color:var(--white)">مطور Full-Stack محترف</strong> يصنع فرقاً حقيقياً.
-                        </p>
-                        <p class="reveal" style="color:var(--muted2);line-height:2;font-size:1rem;">
-                            أؤمن إن <strong style="color:var(--white)">الفيوم</strong> قادرة تنجب مبدعين يُعرَفون في كل
-                            مكان. وأنا هنا لإثبات ده. 🚀
-                        </p>
-                    </div>
-                    <div class="mini-stats" style="margin-top:2rem">
-                        <div class="mini-stat reveal">
-                            <div class="mini-n">1st</div>
-                            <div class="mini-l">السنة الدراسية</div>
-                        </div>
-                        <div class="mini-stat reveal">
-                            <div class="mini-n">100%</div>
-                            <div class="mini-l">شغف وإصرار</div>
-                        </div>
-                        <div class="mini-stat reveal">
-                            <div class="mini-n">∞</div>
-                            <div class="mini-l">إمكانيات</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="reveal">
-                    <div class="about-card">
-                        <div class="about-card-glow"></div>
-                        <div class="about-card-bg">DEV</div>
-                        <div class="about-card-name">محمد أيمن</div>
-                        <div class="about-card-sub">Mohamed Ayman · Web Developer Student</div>
-                        <div class="card-divider"></div>
-                        <div class="info-row"><span class="info-icon">🎓</span><span
-                                class="info-key">الجامعة</span><span class="info-val">جامعة السويدي</span></div>
-                        <div class="info-row"><span class="info-icon">📅</span><span class="info-key">السنة</span><span
-                                class="info-val">الأولى · 2024</span></div>
-                        <div class="info-row"><span class="info-icon">📍</span><span
-                                class="info-key">المحافظة</span><span class="info-val">الفيوم · مصر 🇪🇬</span></div>
-                        <div class="info-row"><span class="info-icon">💼</span><span class="info-key">التخصص</span><span
-                                class="info-val">Web Development</span></div>
-                        <div class="info-row"><span class="info-icon">📘</span><span
-                                class="info-key">Facebook</span><span class="info-val">MohmedAyman.dev</span></div>
-                        <div class="info-row"><span class="info-icon">📱</span><span class="info-key">الهاتف</span><span
-                                class="info-val">01028707543</span></div>
-                    </div>
-                </div>
-            </div>
+        <div class="stat-item">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">طموح وشغف</div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- CERTIFICATES -->
-    <section id="certificates" aria-labelledby="certificates-h" style="background:var(--bg2)">
-        <div class="container">
-            <div class="sec-label reveal"><i></i>الشهادات</div>
-            <h2 class="sec-title reveal" id="certificates-h">شهاداتي <span>وتطويري</span></h2>
-            <div class="journey-grid" style="margin-top:2rem">
-                <div class="journey-card reveal" style="background:var(--card);border:1px solid var(--border)">
-                    <div class="jcard-year-bg">2026</div>
-                    <div class="jcard-icon">🎖️</div>
-                    <div class="jcard-title">Getting Started with Cisco Packet Tracer</div>
-                    <p class="jcard-desc">شهادة من Cisco Networking Academy عبر جامعة السويدي للتعلم العملي على Packet
-                        Tracer.</p>
-                    <img src="certificate-cisco.png" alt="Cisco Packet Tracer Certificate"
-                        style="margin-top:1rem;border-radius:8px;width:100%;object-fit:cover;border:1px solid rgba(0,229,255,.2);">
-                    <span class="jcard-tag">Cisco · 15 Mar 2026</span>
-                </div>
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7076759703723068"
-     crossorigin="anonymous"></script>
-<!-- oll -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7076759703723068"
-     data-ad-slot="2054866623"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-                <div class="journey-card reveal" style="background:var(--card);border:1px solid var(--border)">
-                    <div class="jcard-year-bg">2025</div>
-                    <div class="jcard-icon">📜</div>
-                    <div class="jcard-title">HTML & CSS Foundations</div>
-                    <p class="jcard-desc">شهادة في أساسيات تصميم الويب من مسارات تعليمية عبر الإنترنت.</p>
-                    <span class="jcard-tag">Web Basics · 2025</span>
-                </div>
-            </div>
+  <!-- ─── ABOUT ─── -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-image reveal">
+        <div class="about-img-wrap">🧑‍💻</div>
+        <div class="about-card">
+          <div class="about-card-icon">🎯</div>
+          <div class="about-card-text">
+            <strong>الفيوم، مصر</strong>
+            <span>19 سنة وشغف بلا حدود</span>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- SKILLS -->
-    <section id="skills" aria-labelledby="skills-h">
-        <div class="container">
-            <div class="sec-label reveal"><i></i>الخبرات التقنية</div>
-            <h2 class="sec-title reveal" id="skills-h">ما <span>أتعلمته</span><br />حتى الآن</h2>
-            <div class="skills-layout">
-                <div class="skill-category reveal">
-                    <div class="skill-cat-title">— Frontend Development</div>
-                    <div class="skill-tags">
-                        <div class="skill-tag"><span>🌐</span>HTML5</div>
-                        <div class="skill-tag"><span>🎨</span>CSS3</div>
-                        <div class="skill-tag"><span>⚡</span>JavaScript</div>
-                        <div class="skill-tag"><span>⚛️</span>React</div>
-                        <div class="skill-tag"><span>📱</span>Responsive Design</div>
-                        <div class="skill-tag"><span>🎭</span>Animations</div>
-                    </div>
-                </div>
-                <div class="skill-category reveal">
-                    <div class="skill-cat-title">— Backend & Tools</div>
-                    <div class="skill-tags">
-                        <div class="skill-tag"><span>🐍</span>Python</div>
-                        <div class="skill-tag"><span>🗄️</span>Databases</div>
-                        <div class="skill-tag"><span>🔧</span>Git & GitHub</div>
-                        <div class="skill-tag"><span>☁️</span>Cloud Basics</div>
-                        <div class="skill-tag"><span>🖥️</span>VS Code</div>
-                    </div>
-                </div>
-                <div class="skill-category reveal">
-                    <div class="skill-cat-title">— Design & Other</div>
-                    <div class="skill-tags">
-                        <div class="skill-tag"><span>🎯</span>UI/UX Basics</div>
-                        <div class="skill-tag"><span>🔍</span>SEO</div>
-                        <div class="skill-tag"><span>🤖</span>AI Tools</div>
-                        <div class="skill-tag"><span>💡</span>Problem Solving</div>
-                        <div class="skill-tag"><span>📐</span>Figma</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- JOURNEY -->
-    <section id="journey" aria-labelledby="journey-h">
-        <div class="container">
-            <div class="sec-label reveal"><i></i>المسيرة</div>
-            <h2 class="sec-title reveal" id="journey-h">رحلة <span>البناء</span></h2>
-            <div class="journey-grid">
-                <div class="journey-card reveal">
-                    <div class="jcard-year-bg">2024</div>
-                    <div class="jcard-icon">🎓</div>
-                    <div class="jcard-title">الالتحاق بجامعة السويدي</div>
-                    <p class="jcard-desc">بدأت رحلتي الأكاديمية الرسمية في جامعة السويدي، أول خطوة نحو مستقبل علمي واسع
-                        في عالم التكنولوجيا والبرمجة.</p>
-                    <span class="jcard-tag">Current · حالياً</span>
-                </div>
-                <div class="journey-card reveal">
-                    <div class="jcard-year-bg">CODE</div>
-                    <div class="jcard-icon">💻</div>
-                    <div class="jcard-title">أول سطر كود</div>
-                    <p class="jcard-desc">كانت البداية.. أول ما كتبت HTML وشفت الصفحة اتعمر قدامي. من ساعتها وأنا بحب
-                        البرمجة وبتعلم كل يوم جديد.</p>
-                    <span class="jcard-tag">Foundation · الأساس</span>
-                
-                </div>
-                <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MSSV8H65"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-                <div class="journey-card reveal">
-                    <div class="jcard-year-bg">🌊</div>
-                    <div class="jcard-icon">📍</div>
-                    <div class="jcard-title">من الفيوم إلى العالم</div>
-                    <p class="jcard-desc">نشأت في محافظة الفيوم الجميلة. المسافات مش عائق — الإنترنت بيوصلني لأي علم وأي
-                        فرصة في أي مكان على الكرة الأرضية.</p>
-                    <span class="jcard-tag">الفيوم · Egypt 🇪🇬</span>
-                </div>
-                <div class="journey-card reveal">
-                    <div class="jcard-year-bg">∞</div>
-                    <div class="jcard-icon">🚀</div>
-                    <div class="jcard-title">الهدف القادم</div>
-                    <p class="jcard-desc">Full-Stack Developer محترف يبني منتجات رقمية تخدم ملايين المستخدمين. الطريق
-                        واضح، العزيمة أوضح، والطموح بلا حدود.</p>
-                    <span class="jcard-tag">Future · المستقبل</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" aria-labelledby="contact-h">
-        <div class="container">
-            <div class="contact-hero">
-                <div class="sec-label reveal" style="justify-content:center"><i></i>تواصل<i></i></div>
-                <div class="contact-big reveal" id="contact-h">LET'S<br /><span>CONNECT</span></div>
-                <p class="reveal" style="color:var(--muted2);margin-top:1rem;font-size:1rem">يسعدني أسمع منك — فرصة
-                    تعاون، سؤال، أو مجرد تعارف 👋</p>
-            </div>
-            <div class="contact-cards">
-                <a href="https://www.facebook.com/MohmedAyman.dev" target="_blank" rel="noopener"
-                    class="contact-card reveal" aria-label="صفحة فيسبوك محمد أيمن">
-                    <div class="cc-icon">📘</div>
-                    <div class="cc-net">Facebook</div>
-                    <div class="cc-handle">MohmedAyman.dev</div>
-                    <div class="cc-desc">تابعني على فيسبوك وشوف أحدث مشاريعي وأفكاري في عالم البرمجة.</div>
-                    <div class="cc-arrow">←</div>
-                </a>
-                <div class="contact-card reveal" style="cursor:default">
-                    <div class="cc-icon">🎓</div>
-                    <div class="cc-net">Academic</div>
-                    <div class="cc-handle">جامعة السويدي</div>
-                    <div class="cc-desc">طالب سنة أولى · Swedish University · 2024 — أبني أساسي العلمي خطوة بخطوة.</div>
-                    <div class="cc-arrow">✦</div>
-                </div>
-                <div class="contact-card reveal" style="cursor:default">
-                    <div class="cc-icon">📍</div>
-                    <div class="cc-net">Location</div>
-                    <div class="cc-handle">الفيوم · مصر</div>
-                    <div class="cc-desc">ابن الفيوم الفخور، بيعمل من قلب مصر ويطمح للعالمية. 🇪🇬</div>
-                    <div class="cc-arrow">🌍</div>
-                </div>
-            </div>
-            <div class="line-deco reveal">
-                <span>محمد أيمن · Mohamed Ayman · الفيوم · جامعة السويدي · 2024</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <span class="footer-logo">MOHMED AYMAN</span>
-        <p class="footer-tagline">
-            طالب مطور · جامعة السويدي · محافظة الفيوم · مصر<br />
-            <small style="color:#2a3a4a">&copy; <span id="yr"></span> — جميع الحقوق محفوظة لمحمد أيمن</small>
+      <div class="reveal">
+        <span class="section-tag">من أنا</span>
+        <!-- ✅ H2 يحتوي على الاسم -->
+        <h2 class="section-title">محمد أيمن — شاب من الفيوم بيحلم بكبر</h2>
+        <p class="section-desc">
+          اسمي <strong>محمد أيمن</strong>، عندي 19 سنة وأنا من محافظة الفيوم. حلمي الأكبر إني أكون مطوّر تطبيقات محترف،
+          وأنا شايل الحلم ده وبتعلم كل يوم.
         </p>
-    </footer>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7076759703723068"
-     crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="autorelaxed"
-     data-ad-client="ca-pub-7076759703723068"
-     data-ad-slot="3288786196"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-    <script>
-        /* Year */
-        document.getElementById('yr').textContent = new Date().getFullYear();
+        <p style="color:var(--muted); font-size:0.95rem; line-height:1.8; margin-bottom:1.5rem;">
+          محمد أيمن بيتعلم دلوقتي في مجال تطوير الويب، الميديا والتصميم. بؤمن إن كل خطوة بتعلمها هي لبنة في بناء
+          مستقبلي.
+        </p>
+        <div class="skills-list">
+          <span class="skill-tag">تطوير الويب</span>
+          <span class="skill-tag">HTML & CSS</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">تصميم</span>
+          <span class="skill-tag">ميديا</span>
+          <span class="skill-tag">تطوير تطبيقات</span>
+        </div>
+        <div style="margin-top:2rem;">
+          <a href="#contact" class="btn-primary">تواصل معي 👋</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        /* Custom Cursor */
-        const cur = document.getElementById('cursor');
-        const ring = document.getElementById('cursor-ring');
-        let mx = 0, my = 0, rx = 0, ry = 0;
-        document.addEventListener('mousemove', e => {
-            mx = e.clientX; my = e.clientY;
-            cur.style.left = mx + 'px'; cur.style.top = my + 'px';
-        });
-        (function animRing() {
-            rx += (mx - rx) * .12; ry += (my - ry) * .12;
-            ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-            requestAnimationFrame(animRing);
-        })();
-        document.querySelectorAll('a,button,.btn,.skill-tag,.journey-card,.contact-card,.mini-stat,.about-card').forEach(el => {
-            el.addEventListener('mouseenter', () => { cur.style.width = '20px'; cur.style.height = '20px'; ring.style.width = '60px'; ring.style.height = '60px'; });
-            el.addEventListener('mouseleave', () => { cur.style.width = '12px'; cur.style.height = '12px'; ring.style.width = '40px'; ring.style.height = '40px'; });
-        });
+  <!-- ─── SERVICES ─── -->
+  <section id="services">
+    <div style="text-align:center; margin-bottom:3rem;" class="reveal">
+      <span class="section-tag">ماذا أقدم</span>
+      <h2 class="section-title">خدماتي</h2>
+      <p class="section-desc" style="margin:0 auto;">أقدم حلولاً متكاملة تغطي كل احتياجات مشروعك الرقمي من التصميم إلى
+        الإطلاق.</p>
+    </div>
 
-        /* Scroll Progress + Nav */
-        const prog = document.getElementById('progress');
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
-            prog.style.width = pct + '%';
-            navbar.classList.toggle('scrolled', window.scrollY > 60);
-            // active nav
-            let cur2 = '';
-            document.querySelectorAll('section[id]').forEach(s => {
-                if (window.scrollY >= s.offsetTop - 250) cur2 = s.id;
-            });
-            document.querySelectorAll('.nav-links a').forEach(a => {
-                a.style.color = a.getAttribute('href') === '#' + cur2 ? 'var(--cyan)' : '';
-            });
-        }, { passive: true });
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-icon">🌐</span>
+        <h3>تطوير الويب</h3>
+        <p>بتعلم بناء مواقع ويب من الصفر باستخدام HTML و CSS و JavaScript.</p>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.1s">
+        <span class="service-icon">📱</span>
+        <h3>تطوير التطبيقات</h3>
+        <p>حلمي وهدفي الأكبر — بتعلم تطوير التطبيقات وبابني مهاراتي فيها كل يوم.</p>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.2s">
+        <span class="service-icon">🎨</span>
+        <h3>التصميم</h3>
+        <p>بتعلم أساسيات التصميم الجرافيكي وتصميم الواجهات لأقدر أجمع بين الكود والشكل.</p>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.3s">
+        <span class="service-icon">🎬</span>
+        <h3>الميديا</h3>
+        <p>بتعلم في مجال الميديا والمحتوى الرقمي كجزء من رحلتي في عالم التكنولوجيا.</p>
+      </div>
+    </div>
+  </section>
 
-        /* Particle Canvas */
-        const canvas = document.getElementById('heroCanvas');
-        const ctx = canvas.getContext('2d');
-        let W, H;
-        function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
-        resize(); window.addEventListener('resize', resize);
-        class Particle {
-            constructor() { this.reset(); }
-            reset() {
-                this.x = Math.random() * W; this.y = Math.random() * H;
-                this.r = Math.random() * 1.4 + .3;
-                this.vx = (Math.random() - .5) * .35; this.vy = (Math.random() - .5) * .35;
-                this.alpha = Math.random() * .5 + .1;
-                this.life = Math.random() * 200 + 100; this.age = 0;
-            }
-            update() {
-                this.x += this.vx; this.y += this.vy; this.age++;
-                if (this.age > this.life || this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset();
-            }
-            draw() {
-                ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-                const a = Math.sin(this.age / this.life * Math.PI) * this.alpha;
-                ctx.fillStyle = `rgba(0,229,255,${a})`; ctx.fill();
-            }
+  <!-- ─── PORTFOLIO ─── -->
+  <section id="portfolio">
+    <div style="text-align:center; margin-bottom:3rem;" class="reveal">
+      <span class="section-tag">أعمالي</span>
+      <h2 class="section-title">مشاريعي وتجاربي</h2>
+      <p class="section-desc" style="margin:0 auto;">شوية من اللي شتغلت عليه وأنا بتعلم.</p>
+    </div>
+
+    <div class="portfolio-grid">
+      <div class="project-card reveal">
+        <div class="project-thumb t1">🌐</div>
+        <div class="project-info">
+          <div class="project-tag">تطوير ويب</div>
+          <h3>مشروع ويب تدريبي</h3>
+          <p>من أوائل مشاريعي في تطوير الويب، بنيته لأطبق اللي تعلمته في HTML و CSS.</p>
+          <a href="#" class="project-link">عرض المشروع ←</a>
+        </div>
+      </div>
+      <div class="project-card reveal" style="transition-delay:0.15s">
+        <div class="project-thumb t2">🎨</div>
+        <div class="project-info">
+          <div class="project-tag">تصميم</div>
+          <h3>تجارب تصميم</h3>
+          <p>تجارب في التصميم الجرافيكي وتصميم الواجهات كجزء من رحلة التعلم.</p>
+          <a href="#" class="project-link">عرض الأعمال ←</a>
+        </div>
+      </div>
+      <div class="project-card reveal" style="transition-delay:0.3s">
+        <div class="project-thumb t3">🚀</div>
+        <div class="project-info">
+          <div class="project-tag">قريباً</div>
+          <h3>مشروع التطبيق القادم</h3>
+          <p>حلمي الجاي — تطبيق موبايل كامل هبنيه وأنا بتعلم تطوير التطبيقات.</p>
+          <a href="#contact" class="project-link">ابقى على تواصل ←</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT ─── -->
+  <section id="contact">
+    <div class="contact-wrapper">
+      <div class="reveal">
+        <span class="section-tag">تواصل معي</span>
+        <!-- ✅ H2 يحتوي على الاسم للـ SEO -->
+        <h2 class="section-title">تواصل مع محمد أيمن</h2>
+        <p>محمد أيمن هنا للتواصل والتعاون! عندك فكرة أو مشروع؟ 👋</p>
+
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div class="contact-text">
+            <span>الموبايل / واتساب</span>
+            <strong>01028707543</strong>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-text">
+            <span>الموقع</span>
+            <strong>الفيوم، مصر</strong>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💼</div>
+          <div class="contact-text">
+            <span>LinkedIn</span>
+            <strong><a href="https://www.linkedin.com/in/mohmed-ayman/" target="_blank"
+                style="color:var(--accent);text-decoration:none;">mohmed-ayman</a></strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form reveal">
+        <div class="form-group">
+          <label>الاسم الكامل</label>
+          <input type="text" placeholder="اكتب اسمك هنا" />
+        </div>
+        <div class="form-group">
+          <label>البريد الإلكتروني</label>
+          <input type="email" placeholder="email@example.com" />
+        </div>
+        <div class="form-group">
+          <label>الموضوع</label>
+          <input type="text" placeholder="مثال: تطوير موقع" />
+        </div>
+        <div class="form-group">
+          <label>رسالتك</label>
+          <textarea placeholder="اكتب تفاصيل مشروعك أو طلبك..."></textarea>
+        </div>
+        <button class="form-submit" type="button">إرسال الرسالة ✉️</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ SEO Hidden Text — مذكور لجوجل بس مش ظاهر للزوار -->
+  <div style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;"
+    aria-hidden="true">
+    محمد أيمن | Mohamed Ayman | محمد ايمن | موقع محمد أيمن الرسمي | محمد أيمن مطور تطبيقات | محمد أيمن من الفيوم |
+    mohamedayman.online
+  </div>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <p>© 2025 <strong>محمد أيمن</strong> · الفيوم، مصر 🇪🇬 | <a href="https://mohamedayman.online"
+        style="color:var(--accent);text-decoration:none;">mohamedayman.online</a></p>
+    <div class="social-links">
+      <a href="https://www.facebook.com/MohmedAyman.dev" target="_blank" class="social-link"
+        title="محمد أيمن على Facebook" rel="noopener">f</a>
+      <a href="https://www.linkedin.com/in/mohmed-ayman/" target="_blank" class="social-link"
+        title="محمد أيمن على LinkedIn" rel="noopener">in</a>
+      <a href="https://www.instagram.com/mohmedaymandev/" target="_blank" class="social-link"
+        title="محمد أيمن على Instagram" rel="noopener">📷</a>
+      <a href="https://wa.me/201028707543" target="_blank" class="social-link" title="واتساب محمد أيمن"
+        rel="noopener">📱</a>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+
+    function closeMobile() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    }
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
         }
-        const particles = [];
-        for (let i = 0; i < 110; i++) particles.push(new Particle());
-        let mPx = W / 2, mPy = H / 2;
-        canvas.addEventListener('mousemove', e => { const r = canvas.getBoundingClientRect(); mPx = e.clientX - r.left; mPy = e.clientY - r.top; });
-        function drawLines() {
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y;
-                    const d = Math.sqrt(dx * dx + dy * dy);
-                    if (d < 95) {
-                        ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(0,229,255,${(1 - d / 95) * .1})`; ctx.lineWidth = .5; ctx.stroke();
-                    }
-                }
-            }
-        }
-        function loop() {
-            ctx.clearRect(0, 0, W, H);
-            particles.forEach(p => {
-                const dx = p.x - mPx, dy = p.y - mPy, d = Math.sqrt(dx * dx + dy * dy);
-                if (d < 130) { p.vx += dx / d * .013; p.vy += dy / d * .013; }
-                // speed clamp
-                const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
-                if (speed > .8) { p.vx *= .8 / speed; p.vy *= .8 / speed; }
-                p.update(); p.draw();
-            });
-            drawLines();
-            requestAnimationFrame(loop);
-        }
-        loop();
+      });
+    }, { threshold: 0.12 });
 
-        /* Typewriter */
-        const lines = [
-            'مطور ويب طموح من محافظة الفيوم 🌊',
-            'طالب سنة أولى في جامعة السويدي 🎓',
-            'بيبني مستقبله سطر كود بعد سطر 💻',
-            'شغوف، مصمم، ومؤمن بنفسه ✨'
-        ];
-        let li = 0, ci = 0, deleting = false;
-        const tel = document.getElementById('typed-text');
-        function type() {
-            const c = lines[li];
-            if (!deleting) {
-                tel.textContent = c.substring(0, ci + 1); ci++;
-                if (ci === c.length) { setTimeout(() => { deleting = true; setTimeout(type, 50); }, 2400); return; }
-            } else {
-                tel.textContent = c.substring(0, ci - 1); ci--;
-                if (ci === 0) { deleting = false; li = (li + 1) % lines.length; }
-            }
-            setTimeout(type, deleting ? 28 : 60);
-        }
-        setTimeout(type, 1400);
+    revealElements.forEach(el => observer.observe(el));
 
-        /* Scroll Reveal */
-        const obs = new IntersectionObserver(entries => {
-            entries.forEach((e, i) => {
-                if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
-            });
-        }, { threshold: .1 });
-        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-    </script>
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 100) current = s.getAttribute('id');
+      });
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute('href') === '#' + current
+          ? 'var(--text)' : '';
+      });
+    });
+  </script>
 </body>
 
 </html>
