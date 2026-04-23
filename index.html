@@ -550,6 +550,12 @@
       border: 1px solid var(--border);
     }
 
+    .about-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     .about-img-wrap::after {
       content: '';
       position: absolute;
@@ -749,6 +755,13 @@
       align-items: start;
     }
 
+    .contact-info {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2.5rem;
+    }
+
     .contact-info h2 {
       font-family: 'Cairo', sans-serif;
       font-size: 2rem;
@@ -853,6 +866,33 @@
     .form-submit:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 30px rgba(108, 99, 255, 0.5);
+    }
+
+    .form-submit.loading {
+      opacity: 0.8;
+      cursor: wait;
+    }
+
+    .form-status {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: var(--text);
+      padding: 0.9rem 1rem;
+      border-radius: 12px;
+      background: rgba(108, 99, 255, 0.08);
+      border: 1px solid transparent;
+    }
+
+    .form-status.success {
+      color: #d1fae5;
+      background: rgba(34, 197, 94, 0.12);
+      border-color: rgba(34, 197, 94, 0.25);
+    }
+
+    .form-status.error {
+      color: #fed7d7;
+      background: rgba(239, 68, 68, 0.12);
+      border-color: rgba(239, 68, 68, 0.25);
     }
 
     /* ─── FOOTER ─── */
@@ -1050,7 +1090,9 @@
   <section id="about">
     <div class="about-grid">
       <div class="about-image reveal">
-        <div class="about-img-wrap">🧑‍💻</div>
+        <div class="about-img-wrap">
+          <img src="images/profile.jpg" alt="محمد أيمن" />
+        </div>
         <div class="about-card">
           <div class="about-card-icon">🎯</div>
           <div class="about-card-text">
@@ -1162,7 +1204,7 @@
   <!-- ─── CONTACT ─── -->
   <section id="contact">
     <div class="contact-wrapper">
-      <div class="reveal">
+      <div class="contact-info reveal">
         <span class="section-tag">تواصل معي</span>
         <!-- ✅ H2 يحتوي على الاسم للـ SEO -->
         <h2 class="section-title">تواصل مع محمد أيمن</h2>
@@ -1173,6 +1215,14 @@
           <div class="contact-text">
             <span>الموبايل / واتساب</span>
             <strong>01028707543</strong>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-text">
+            <span>البريد الإلكتروني</span>
+            <strong><a href="mailto:info@mohamedayman.online"
+                style="color:var(--accent);text-decoration:none;">info@mohamedayman.online</a></strong>
           </div>
         </div>
         <div class="contact-item">
@@ -1192,25 +1242,28 @@
         </div>
       </div>
 
-      <div class="contact-form reveal">
+      <form id="contactForm" class="contact-form reveal" action="https://formsubmit.co/info@mohamedayman.online"
+        method="POST">
+        <input type="hidden" name="_subject" value="طلب من الموقع: تواصل مع محمد أيمن" />
+        <input type="hidden" name="_captcha" value="false" />
         <div class="form-group">
           <label>الاسم الكامل</label>
-          <input type="text" placeholder="اكتب اسمك هنا" />
+          <input id="contactName" name="name" type="text" placeholder="اكتب اسمك هنا" required />
         </div>
         <div class="form-group">
           <label>البريد الإلكتروني</label>
-          <input type="email" placeholder="email@example.com" />
+          <input id="contactEmail" name="email" type="email" placeholder="email@example.com" required />
         </div>
         <div class="form-group">
           <label>الموضوع</label>
-          <input type="text" placeholder="مثال: تطوير موقع" />
+          <input id="contactSubject" name="subject" type="text" placeholder="مثال: تطوير موقع" required />
         </div>
         <div class="form-group">
           <label>رسالتك</label>
-          <textarea placeholder="اكتب تفاصيل مشروعك أو طلبك..."></textarea>
+          <textarea id="contactMessage" name="message" placeholder="اكتب تفاصيل مشروعك أو طلبك..." required></textarea>
         </div>
-        <button class="form-submit" type="button">إرسال الرسالة ✉️</button>
-      </div>
+        <button class="form-submit" type="submit">إرسال الرسالة ✉️</button>
+      </form>
     </div>
   </section>
 
@@ -1284,6 +1337,60 @@
           ? 'var(--text)' : '';
       });
     });
+
+    // إرسال الفورم بسرعة بدون إعادة تحميل الصفحة
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+
+    if (contactForm && formStatus) {
+      contactForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const submitButton = contactForm.querySelector('.form-submit');
+        submitButton.classList.add('loading');
+        submitButton.disabled = true;
+        formStatus.style.display = 'block';
+        formStatus.className = 'form-status';
+        formStatus.textContent = 'جاري إرسال الرسالة...';
+
+        const formData = new FormData(contactForm);
+        const endpoint = contactForm.action.replace('/info@mohamedayman.online', '/ajax/info@mohamedayman.online');
+
+        try {
+          const response = await fetch(endpoint, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          if (!response.ok) throw new Error('تعذر إرسال الرسالة');
+
+          const result = await response.json();
+
+          if (result.success === 'true' || result.success === true) {
+            formStatus.classList.add('success');
+            formStatus.textContent = 'تم إرسال الرسالة بنجاح! شكراً لتواصلك.';
+            contactForm.reset();
+          } else {
+            throw new Error(result.message || 'حدث خطأ أثناء الإرسال');
+          }
+        } catch (error) {
+          formStatus.classList.add('error');
+          formStatus.textContent = 'حدث خطأ. حاول مرة أخرى بعد ثوانٍ قليلة.';
+          console.error(error);
+        } finally {
+          submitButton.classList.remove('loading');
+          submitButton.disabled = false;
+        }
+      });
+    }
+
+    // تحويل #admin إلى لوحة التحكم
+    if (window.location.hash === '#admin') {
+      window.location.href = 'admin-dashboard.html';
+    }
   </script>
 </body>
 
