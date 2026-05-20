@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Paragraph Practice Tool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .text-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: #475569; /* لون رمادي مناسب للخلفية الباهتة */
+            font-family: monospace;
+            font-size: 1.25rem;
+            line-height: 2rem;
+            white-space: pre-wrap;
+            pointer-events: none;
+            z-index: 1;
+            padding: 1rem;
+        }
+        .text-input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            color: transparent; 
+            caret-color: #3b82f6; 
+            font-family: monospace;
+            font-size: 1.25rem;
+            line-height: 2rem;
+            border: none;
+            resize: none;
+            outline: none;
+            white-space: pre-wrap;
+            z-index: 2;
+            padding: 1rem;
+        }
+        .display-box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-family: monospace;
+            font-size: 1.25rem;
+            line-height: 2rem;
+            white-space: pre-wrap;
+            z-index: 3;
+            pointer-events: none;
+            padding: 1rem;
+        }
+        .correct { color: #10b981; font-weight: bold; } 
+        .incorrect { color: #ef4444; background-color: #fee2e2; font-weight: bold; } 
+    </style>
+</head>
+<body class="bg-slate-900 min-h-screen flex flex-col items-center justify-center p-4">
+
+    <div class="w-full max-w-3xl bg-slate-800 rounded-xl shadow-2xl p-6 border border-slate-700 space-y-6">
+        <h1 class="text-2xl font-bold text-center text-emerald-400">✍️ أداة الحفظ الذكي والكتابة فوق النص</h1>
+        
+        <div class="flex flex-col space-y-2">
+            <label class="text-slate-300 font-medium text-right flex justify-between items-center">
+                <span class="text-xs text-slate-400">(يمكنك مسح هذا النص ووضع أي نص آخر تريد حفظه)</span>
+                <span>:ضع النص الذي تريد حفظه هنا</span>
+            </label>
+            <textarea id="sourceText" class="w-full h-32 bg-slate-950 text-slate-200 p-3 rounded-lg border border-slate-700 focus:border-emerald-500 focus:outline-none text-right placeholder-slate-600" dir="auto" placeholder="اضغط هنا واكتب أو الصق النص...">On Eid morning, I always wake up early to wear new clothes. In the morning, I go to pray at the mosque with my family. We usually have a big breakfast in the garden after the prayer. In the afternoon, we often visit our relatives at their home. At night, I meet my friends to play games on the street. In conclusion, Eid is a wonderful festival.</textarea>
+        </div>
+
+        <hr class="border-slate-700">
+
+        <div class="flex flex-col space-y-2">
+            <label class="text-slate-300 font-medium text-right">:ابدأ الكتابة فوق الحروف هنا</label>
+            <div class="relative w-full h-64 bg-slate-950 rounded-lg border-2 border-slate-700 focus-within:border-emerald-500 overflow-y-auto">
+                <div id="textOverlay" class="text-overlay"></div>
+                
+                <textarea id="textInput" class="text-input" autofocus></textarea>
+                
+                <div id="displayBox" class="display-box"></div>
+            </div>
+        </div>
+
+        <div class="flex justify-between items-center">
+            <button id="resetBtn" class="bg-emerald-600 hover:bg-emerald-500 text-white font-medium py-2 px-5 rounded-lg transition shadow-md">
+                إعادة البدء 🔄
+            </button>
+            <div id="status" class="text-slate-400 text-sm font-medium">ابدأ الكتابة الآن...</div>
+        </div>
+    </div>
+
+    <script>
+        const sourceText = document.getElementById('sourceText');
+        const textOverlay = document.getElementById('textOverlay');
+        const textInput = document.getElementById('textInput');
+        const displayBox = document.getElementById('displayBox');
+        const resetBtn = document.getElementById('resetBtn');
+        const status = document.getElementById('status');
+
+        let targetParagraph = sourceText.value;
+
+        // دالة لتحديث النص المستهدف بناءً على البوكس العلوي
+        function updateTargetText() {
+            targetParagraph = sourceText.value;
+            textOverlay.textContent = targetParagraph;
+            resetPractice();
+        }
+
+        // دالة لإعادة تصفير منطقة التدريب
+        function resetPractice() {
+            textInput.value = '';
+            displayBox.innerHTML = '';
+            status.textContent = 'ابدأ الكتابة الآن...';
+            status.className = "text-slate-400 text-sm font-medium";
+        }
+
+        // الاستماع للتغييرات في بوكس المدخلات العلوي
+        sourceText.addEventListener('input', updateTargetText);
+
+        // تشغيل الدالة لأول مرة عند تحميل الصفحة
+        textOverlay.textContent = targetParagraph;
+
+        // مراقبة عملية الكتابة والتصحيح التفاعلي
+        textInput.addEventListener('input', () => {
+            const inputValue = textInput.value;
+            let displayHTML = '';
+
+            for (let i = 0; i < targetParagraph.length; i++) {
+                if (i < inputValue.length) {
+                    if (inputValue[i] === targetParagraph[i]) {
+                        displayHTML += `<span class="correct">${targetParagraph[i]}</span>`;
+                    } else {
+                        displayHTML += `<span class="incorrect">${targetParagraph[i]}</span>`;
+                    }
+                } else {
+                    displayHTML += `<span class="text-transparent">${targetParagraph[i]}</span>`;
+                }
+            }
+
+            displayBox.innerHTML = displayHTML;
+
+            // تحديث شريط الحالة السفلي
+            if (inputValue.length >= targetParagraph.length && targetParagraph.length > 0) {
+                status.innerHTML = "🎉 مبروك! انتهيت من كتابة النص بنجاح.";
+                status.className = "text-emerald-400 font-bold text-sm text-right";
+            } else {
+                status.textContent = `تم كتابة ${inputValue.length} من أصل ${targetParagraph.length} حرف.`;
+                status.className = "text-slate-400 text-sm font-medium";
+            }
+        });
+
+        // زرار الريسيت
+        resetBtn.addEventListener('click', () => {
+            resetPractice();
+            textInput.focus();
+        });
+    </script>
+</body>
+</html>
